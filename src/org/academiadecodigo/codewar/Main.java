@@ -5,4 +5,8 @@ package org.academiadecodigo.codewar;
  */
 public class Main {
     // TODO: 24/05/16 change name to beijinhos & caralhinhos
+    public static void main(String[] args) {
+
+        Game g = new Game();
+    }
 }
