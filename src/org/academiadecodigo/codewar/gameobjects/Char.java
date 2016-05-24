@@ -18,7 +18,7 @@ public abstract class Char extends GameObjects {
 
     }
 
-    public void dead () {
-
+    public boolean isDead() {
+        return dead;
     }
 }

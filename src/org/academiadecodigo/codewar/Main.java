@@ -8,5 +8,12 @@ public class Main {
     public static void main(String[] args) {
 
         Game g = new Game();
+
+        //run the 'settings' part, which allows the player to choose the game mode and the codecadet char.
+        g.init();
+
+        //start the actual game.
+        g.start();
+
     }
 }
