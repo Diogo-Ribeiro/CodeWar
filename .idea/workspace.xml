@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0f95b459-dabc-4ae1-b38f-0d08886573d2" name="Default" comment="Added Main skeleton">
+    <list default="true" id="0f95b459-dabc-4ae1-b38f-0d08886573d2" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/academiadecodigo/codewar/Main.java" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/codewar/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/academiadecodigo/codewar/gameobjects/Char.java" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/codewar/gameobjects/Char.java" />
     </list>
     <ignored path="CodeWar.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -315,7 +313,7 @@
       <option name="presentableId" value="Default" />
       <updated>1464081032886</updated>
       <workItem from="1464081034516" duration="2378000" />
-      <workItem from="1464083942969" duration="1348000" />
+      <workItem from="1464083942969" duration="1431000" />
     </task>
     <task id="LOCAL-00001" summary="Add Char properties and Codecadet properties">
       <created>1464083702131</created>
@@ -345,15 +343,22 @@
       <option name="project" value="LOCAL" />
       <updated>1464084394042</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Altered Main">
+      <created>1464100118388</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1464100118388</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3726000" />
+    <option name="totallyTimeSpent" value="3809000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="977" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -387,7 +392,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add Char properties and Codecadet properties" />
     <MESSAGE value="Added Main skeleton" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Main skeleton" />
+    <MESSAGE value="Altered Main" />
+    <option name="LAST_COMMIT_MESSAGE" value="Altered Main" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
