@@ -25,12 +25,18 @@ public class Game {
     public void init () {
 
         chars = CharFactory.charMaker();
+        //Test codeCadet move
+        ((Codecadet)chars[0]).setMoving(true);
+        chars[0].move();
     }
 
     public void start () {
 
+
+
         masterCodersShoot();
         updateProjectiles();
+
     }
 
     private void masterCodersShoot () {

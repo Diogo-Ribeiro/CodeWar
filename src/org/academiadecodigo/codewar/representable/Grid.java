@@ -1,0 +1,7 @@
+package org.academiadecodigo.codewar.representable;
+
+/**
+ * Created by codecadet on 25/05/16.
+ */
+public interface Grid {
+}
