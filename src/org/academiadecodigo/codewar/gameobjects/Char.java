@@ -9,11 +9,12 @@ public abstract class Char extends GameObjects {
     private boolean dead;
     private boolean specialShot;
 
-    public void move ( ){
-
-    public abstract Projectile shoot( );
+    public void move ( ) {
 
     }
+
+    public abstract Projectile shoot();
+
 
     public boolean isDead() {
 

@@ -5,6 +5,7 @@ package org.academiadecodigo.codewar.gameobjects;
  */
 public class Projectile extends GameObjects {
 
+    
     @Override
     public String toString() {
         return "I am a projectile!";
