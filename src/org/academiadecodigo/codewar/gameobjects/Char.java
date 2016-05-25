@@ -9,8 +9,6 @@ public abstract class Char extends GameObjects {
     private boolean dead;
     private boolean specialShot;
 
-
-
     public void move ( ){
 
     }
