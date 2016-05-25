@@ -23,9 +23,10 @@ public class Codecadet extends Char {
     }
 
     @Override
-    public void shoot(){
+    public Projectile shoot(){
 
         //should I get the playerProjectiles[]? or should we have some sort of collision checker?
+        return new Projectile();
     }
 
     public void dead () {

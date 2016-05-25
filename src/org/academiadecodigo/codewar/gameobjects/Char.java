@@ -15,10 +15,7 @@ public abstract class Char extends GameObjects {
 
     }
 
-    public void shoot( ){
-
-
-    }
+    public abstract Projectile shoot( );
 
     public boolean isDead() {
 
