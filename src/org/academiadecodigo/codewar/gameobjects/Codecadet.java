@@ -6,30 +6,35 @@ package org.academiadecodigo.codewar.gameobjects;
 public class Codecadet extends Char {
     // TODO: 24/05/16 one char for each codecadet and associated game mode
 
-
-    private int hp;
-    private boolean dead;
-    private boolean bug;
-
+    private boolean moving;
 
     public Codecadet(){
 
     }
 
-    public static void move (){
+    @Override
+    public void move ( ){
+
+        while (moving) {
+
+            //move
+        }
 
     }
-    public void shoot(){
 
+    @Override
+    public Projectile shoot(){
+
+        //should I get the playerProjectiles[]? or should we have some sort of collision checker?
+        return new Projectile();
     }
 
     public void dead () {
 
     }
 
+    public void setMoving(boolean moving) {
 
-
-
-
-
+        this.moving = moving;
+    }
 }

@@ -7,18 +7,21 @@ public abstract class Char extends GameObjects {
 
     private int hp;
     private boolean dead;
-    private boolean bug;
+    private boolean specialShot;
 
+    public void move ( ){
 
-
-    public static void move (){
-
-    }
-    public void shoot(){
+    public abstract Projectile shoot( );
 
     }
 
     public boolean isDead() {
+
         return dead;
+    }
+
+    public void Die () {
+
+        dead = true;
     }
 }
