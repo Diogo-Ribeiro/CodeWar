@@ -9,7 +9,7 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 /**
  * Created by diogocodecadet on 23/05/16.
  */
-public class Codecadet extends Char implements KeyboardHandler{
+public class Codecadet extends Char implements KeyboardHandler {
     // TODO: 24/05/16 one char for each codecadet and associated game mode
 
     private boolean moving;
@@ -20,12 +20,13 @@ public class Codecadet extends Char implements KeyboardHandler{
     }
 
     @Override
-    public void move ( ){
+    public void move () throws InterruptedException{
 
         while (moving) {
 
             System.out.println(currentDirection);
 
+            Thread.sleep(2000);
         }
 
     }
@@ -50,19 +51,23 @@ public class Codecadet extends Char implements KeyboardHandler{
     @Override
     public void keyPressed(KeyboardEvent e){
 
-        switch (e.getKey()){
+        setMoving(true);
+        System.out.println("Moving");
+        /*switch (e.getKey()){
             case KeyboardEvent.KEY_LEFT:
+
                 currentDirection = Direction.LEFT;
             break;
 
             case KeyboardEvent.KEY_RIGHT:
                 currentDirection = Direction.RIGHT;
-        }
+        }*/
 
     }
 
     @Override
     public void keyReleased(KeyboardEvent e){
+        setMoving(false);
 
     }
 
@@ -88,6 +93,11 @@ public class Codecadet extends Char implements KeyboardHandler{
         event3.setKey(KeyboardEvent.KEY_SPACE);
         event3.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         k.addEventListener(event3);
+
+        KeyboardEvent event4 = new KeyboardEvent();
+        event4.setKey(KeyboardEvent.KEY_LEFT);
+        event4.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+        k.addEventListener(event4);
     }
 
 

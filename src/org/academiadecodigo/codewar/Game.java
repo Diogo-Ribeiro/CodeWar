@@ -22,12 +22,12 @@ public class Game {
         MCProjectiles = new Projectile[(MAX_PROJECTILES/2)*MASTER_CODERS];
 
     }
-    public void init () {
+    public void init () throws InterruptedException{
 
         chars = CharFactory.charMaker();
         //Test codeCadet move
-        ((Codecadet)chars[0]).setMoving(true);
         chars[0].move();
+
     }
 
     public void start () {
