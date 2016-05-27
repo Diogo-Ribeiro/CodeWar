@@ -21,7 +21,7 @@ public class SimpleGfxGrid implements Grid {
 
     public void init() {
 
-        Rectangle rectangle = new Rectangle(0, 0, convertToPixels(cols), convertToPixels(rows));
+        Rectangle rectangle = new Rectangle(0, 0, cols*CELL_SIZE, rows*CELL_SIZE);
         rectangle.setColor(Color.BLACK);
         rectangle.draw();
 

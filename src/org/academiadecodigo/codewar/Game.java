@@ -1,6 +1,8 @@
 package org.academiadecodigo.codewar;
 
 import org.academiadecodigo.codewar.gameobjects.*;
+import org.academiadecodigo.codewar.representable.Grid;
+import org.academiadecodigo.codewar.representable.SimpleGfxGrid;
 
 /**
  * Created by diogocodecadet on 23/05/16.
@@ -13,6 +15,7 @@ public class Game {
     Char[] chars;
     Projectile[] playerProjectiles;
     Projectile[] MCProjectiles;
+    SimpleGfxGrid grid = new SimpleGfxGrid(40, 80);
 
     public Game () {
 
@@ -24,15 +27,12 @@ public class Game {
     }
     public void init () {
 
+        grid.init();
         chars = CharFactory.charMaker();
-        //Test codeCadet move
-        ((Codecadet)chars[0]).setMoving(true);
-        chars[0].move();
+
     }
 
     public void start () {
-
-
 
         masterCodersShoot();
         updateProjectiles();
