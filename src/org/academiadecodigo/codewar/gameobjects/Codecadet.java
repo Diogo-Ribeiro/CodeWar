@@ -27,10 +27,9 @@ public class Codecadet extends Char implements KeyboardHandler {
     @Override
     public void move ( ) throws InterruptedException {
 
-        while (moving) {
+        if (moving) {
 
             getPosition().move(this.getCurrentDirection(), 1);
-            Thread.sleep(75);
 
         }
 
