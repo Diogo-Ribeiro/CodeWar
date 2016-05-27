@@ -1,6 +1,7 @@
 package org.academiadecodigo.codewar.gameobjects;
 
 import org.academiadecodigo.codewar.Direction;
+import org.academiadecodigo.codewar.representable.Grid;
 import org.academiadecodigo.codewar.representable.SimpleGfxGrid;
 import org.academiadecodigo.codewar.representable.SimpleGfxGridPosition;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
@@ -21,14 +22,17 @@ public class Codecadet extends Char{
     }
 
     @Override
-    public void move() {
+    public void move (Grid grid ) {
 
-        getPosition().move(this.getCurrentDirection(), 1);
+        if (true) {
 
+            getPosition().move(this.getCurrentDirection(), 1);
+
+        }
     }
 
 
-    @Override
+
     public Projectile shoot() {
         //should I get the playerProjectiles[]? or should we have some sort of collision checker?
         return new Projectile();

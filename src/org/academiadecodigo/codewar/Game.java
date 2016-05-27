@@ -39,11 +39,11 @@ public class Game implements KeyboardHandler{
 
     public void start () throws InterruptedException {
 
-        while (true) {
+        while (!chars[0].isDead()) {
 
             for (int i = 1; i < chars.length; i++) {
 
-                chars[i].move();
+                chars[i].move(grid);
             }
 
             //masterCodersShoot();
@@ -80,7 +80,7 @@ public class Game implements KeyboardHandler{
 
         for (int i = 0; i < MCProjectiles.length; i++) {
 
-            //if (projectile.reachedEdge) {
+            //if (MCProjectiles[i].reachedEdge()) {
             //MCProjectiles[i] = null;
             //  }
             System.out.println(MCProjectiles[i]);
@@ -94,13 +94,13 @@ public class Game implements KeyboardHandler{
             case KeyboardEvent.KEY_LEFT:
 
                 chars[0].setCurrentDirection(Direction.LEFT);
-                chars[0].move();
+                chars[0].move(grid);
                 break;
 
             case KeyboardEvent.KEY_RIGHT:
 
                 chars[0].setCurrentDirection(Direction.RIGHT);
-                chars[0].move();
+                chars[0].move(grid);
                 break;
 
             case KeyboardEvent.KEY_SPACE:
@@ -137,6 +137,4 @@ public class Game implements KeyboardHandler{
         k.addEventListener(event5);
     }
 }
-
-
 

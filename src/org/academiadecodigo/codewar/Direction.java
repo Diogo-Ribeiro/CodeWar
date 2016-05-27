@@ -5,7 +5,9 @@ package org.academiadecodigo.codewar;
  */
 public enum Direction {
     LEFT,
-    RIGHT;
+    RIGHT,
+    UP,
+    DOWN;
 
     public static Direction getRandom() {
 
