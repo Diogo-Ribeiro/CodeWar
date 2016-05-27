@@ -11,47 +11,36 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 /**
  * Created by diogocodecadet on 23/05/16.
  */
-public class Codecadet extends Char implements KeyboardHandler {
+public class Codecadet extends Char{
     // TODO: 24/05/16 one char for each codecadet and associated game mode
 
-    private boolean moving;
-    Keyboard k;
-
-    public Codecadet(SimpleGfxGridPosition position){
+    public Codecadet(SimpleGfxGridPosition position) {
 
         super(position);
-        registerKeyboardInput();
 
     }
 
     @Override
-    public void move ( ) throws InterruptedException {
+    public void move() {
 
-        if (moving) {
-
-            getPosition().move(this.getCurrentDirection(), 1);
-
-        }
+        getPosition().move(this.getCurrentDirection(), 1);
 
     }
 
 
     @Override
-    public Projectile shoot(){
+    public Projectile shoot() {
         //should I get the playerProjectiles[]? or should we have some sort of collision checker?
         return new Projectile();
     }
 
-    public void dead () {
+    public void dead() {
 
     }
 
-    public void setMoving(boolean moving) {
+}
 
-        this.moving = moving;
-    }
-
-    public void keyPressed(KeyboardEvent e) {
+ /*   public void keyPressed(KeyboardEvent e) {
 
         switch (e.getKey()) {
             case KeyboardEvent.KEY_LEFT:
@@ -116,3 +105,4 @@ public class Codecadet extends Char implements KeyboardHandler {
         k.addEventListener(event5);
     }
 }
+*/

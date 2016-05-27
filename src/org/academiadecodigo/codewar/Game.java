@@ -10,7 +10,7 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 /**
  * Created by diogocodecadet on 23/05/16.
  */
-public class Game{
+public class Game implements KeyboardHandler{
 
     public static final int MASTER_CODERS = MasterCoderType.values().length;
     public static final int MAX_PROJECTILES = 5;
@@ -27,6 +27,7 @@ public class Game{
         chars = new Char[MASTER_CODERS + 1];
         playerProjectiles = new Projectile[MAX_PROJECTILES];
         MCProjectiles = new Projectile[(MAX_PROJECTILES/2)*MASTER_CODERS];
+        registerKeyboardInput();
 
     }
     public void init () {
@@ -40,7 +41,7 @@ public class Game{
 
         while (true) {
 
-            for (int i = 0; i < chars.length; i++) {
+            for (int i = 1; i < chars.length; i++) {
 
                 chars[i].move();
             }
@@ -87,6 +88,55 @@ public class Game{
     }
 
 
+    public void keyPressed(KeyboardEvent e) {
+
+        switch (e.getKey()) {
+            case KeyboardEvent.KEY_LEFT:
+
+                chars[0].setCurrentDirection(Direction.LEFT);
+                chars[0].move();
+                break;
+
+            case KeyboardEvent.KEY_RIGHT:
+
+                chars[0].setCurrentDirection(Direction.RIGHT);
+                chars[0].move();
+                break;
+
+            case KeyboardEvent.KEY_SPACE:
+                System.out.println("space");
+                break;
+        }
+    }
+
+    public void keyReleased(KeyboardEvent e) {
+
+    }
+
+    private void registerKeyboardInput() {
+        k = new Keyboard(this);
+
+        KeyboardEvent event = new KeyboardEvent();
+        event.setKey(KeyboardEvent.KEY_LEFT);
+        event.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        k.addEventListener(event);
+
+        KeyboardEvent event2 = new KeyboardEvent();
+        event2.setKey(KeyboardEvent.KEY_RIGHT);
+        event2.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        k.addEventListener(event2);
+
+        KeyboardEvent event4 = new KeyboardEvent();
+        event4.setKey(KeyboardEvent.KEY_B);
+        event4.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        k.addEventListener(event4);
+
+        KeyboardEvent event5 = new KeyboardEvent();
+        event5.setKey(KeyboardEvent.KEY_SPACE);
+        event5.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        k.addEventListener(event5);
+    }
 }
+
 
 

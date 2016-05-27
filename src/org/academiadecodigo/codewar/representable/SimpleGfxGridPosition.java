@@ -35,9 +35,6 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
     @Override
     public void move (Direction direction, int d) {
 
-        System.out.println(d);
-        System.out.println(this.getCol());
-
         if (direction == Direction.LEFT) {
 
             if (this.getCol() - d < 0) {
@@ -60,13 +57,8 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
 
         } else {
 
-            System.out.println("fuck");
+            System.out.println("error");
         }
-
-        System.out.println(this.col);
-
-
-
     }
 
     @Override
