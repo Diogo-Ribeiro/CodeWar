@@ -1,6 +1,5 @@
 package org.academiadecodigo.codewar.gameobjects;
 
-import org.academiadecodigo.codewar.representable.Grid;
 import org.academiadecodigo.codewar.representable.SimpleGfxGridPosition;
 
 /**
@@ -17,7 +16,7 @@ public abstract class Char extends GameObjects {
 
         this.position = position;
     }
-    public void move (Grid grid ){
+    public void move ( ) throws InterruptedException {
 
     }
 

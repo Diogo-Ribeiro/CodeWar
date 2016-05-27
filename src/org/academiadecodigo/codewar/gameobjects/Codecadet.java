@@ -15,6 +15,8 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 public class Codecadet extends Char{
     // TODO: 24/05/16 one char for each codecadet and associated game mode
 
+
+    public boolean moving;
     public Codecadet(SimpleGfxGridPosition position) {
 
         super(position);
@@ -22,12 +24,15 @@ public class Codecadet extends Char{
     }
 
     @Override
-    public void move (Grid grid ) {
+    public void move () {
 
         if (true) {
 
-            getPosition().move(this.getCurrentDirection(), 1);
+            if (moving) {
 
+                getPosition().move(this.getCurrentDirection(), 1);
+
+            }
         }
     }
 
@@ -42,6 +47,13 @@ public class Codecadet extends Char{
 
     }
 
+    public boolean isMoving() {
+        return moving;
+    }
+
+    public void setMoving(boolean moving) {
+        this.moving = moving;
+    }
 }
 
  /*   public void keyPressed(KeyboardEvent e) {

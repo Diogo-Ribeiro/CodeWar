@@ -10,7 +10,7 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 /**
  * Created by diogocodecadet on 23/05/16.
  */
-public class Game implements KeyboardHandler{
+public class Game implements KeyboardHandler {
 
     public static final int MASTER_CODERS = MasterCoderType.values().length;
     public static final int MAX_PROJECTILES = 5;
@@ -41,14 +41,14 @@ public class Game implements KeyboardHandler{
 
         while (!chars[0].isDead()) {
 
-            for (int i = 1; i < chars.length; i++) {
+            for (int i = 0; i < chars.length; i++) {
 
-                chars[i].move(grid);
+                chars[i].move();
             }
 
             //masterCodersShoot();
             //updateProjectiles();
-            Thread.sleep(200);
+            Thread.sleep(100);
         }
     }
 
@@ -87,21 +87,20 @@ public class Game implements KeyboardHandler{
         }
     }
 
-
     public void keyPressed(KeyboardEvent e) {
 
         switch (e.getKey()) {
             case KeyboardEvent.KEY_LEFT:
 
-                chars[0].setCurrentDirection(Direction.LEFT);
-                chars[0].move(grid);
-                break;
+            chars[0].setCurrentDirection(Direction.LEFT);
+            ((Codecadet)chars[0]).setMoving(true);
+            break;
 
             case KeyboardEvent.KEY_RIGHT:
 
-                chars[0].setCurrentDirection(Direction.RIGHT);
-                chars[0].move(grid);
-                break;
+            chars[0].setCurrentDirection(Direction.RIGHT);
+            ((Codecadet)chars[0]).setMoving(true);
+            break;
 
             case KeyboardEvent.KEY_SPACE:
                 System.out.println("space");
@@ -111,30 +110,62 @@ public class Game implements KeyboardHandler{
 
     public void keyReleased(KeyboardEvent e) {
 
+        switch (e.getKey()) {
+            case KeyboardEvent.KEY_LEFT:
+
+                chars[0].setCurrentDirection(Direction.LEFT);
+                ((Codecadet)chars[0]).setMoving(false);
+                break;
+
+            case KeyboardEvent.KEY_RIGHT:
+
+                chars[0].setCurrentDirection(Direction.RIGHT);
+                ((Codecadet)chars[0]).setMoving(false);
+                break;
+
+        }
     }
 
     private void registerKeyboardInput() {
         k = new Keyboard(this);
+
+
+        KeyboardEvent event5 = new KeyboardEvent();
+        event5.setKey(KeyboardEvent.KEY_SPACE);
+        event5.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        k.addEventListener(event5);
+
+        KeyboardEvent event6 = new KeyboardEvent();
+        event6.setKey(KeyboardEvent.KEY_SPACE);
+        event6.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+        k.addEventListener(event6);
 
         KeyboardEvent event = new KeyboardEvent();
         event.setKey(KeyboardEvent.KEY_LEFT);
         event.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         k.addEventListener(event);
 
+        KeyboardEvent event1 = new KeyboardEvent();
+        event1.setKey(KeyboardEvent.KEY_LEFT);
+        event1.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+        k.addEventListener(event1);
+
         KeyboardEvent event2 = new KeyboardEvent();
         event2.setKey(KeyboardEvent.KEY_RIGHT);
         event2.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         k.addEventListener(event2);
 
+        KeyboardEvent event3 = new KeyboardEvent();
+        event3.setKey(KeyboardEvent.KEY_RIGHT);
+        event3.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+        k.addEventListener(event3);
+
         KeyboardEvent event4 = new KeyboardEvent();
         event4.setKey(KeyboardEvent.KEY_B);
         event4.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         k.addEventListener(event4);
-
-        KeyboardEvent event5 = new KeyboardEvent();
-        event5.setKey(KeyboardEvent.KEY_SPACE);
-        event5.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        k.addEventListener(event5);
     }
 }
+
+
 

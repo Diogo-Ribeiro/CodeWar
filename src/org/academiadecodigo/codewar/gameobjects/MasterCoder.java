@@ -23,21 +23,27 @@ public class MasterCoder extends Char {
         this.type = type;
         step = MAX_STEP;
         this.setCurrentDirection(Direction.getRandom());
-
     }
 
-    public void move (Grid grid){
+    public void move (){
 
-        if(step <= 0) {
-            this.setCurrentDirection(Direction.getRandom());
-            step = MAX_STEP;
+        if (step%2 == 0) {
+
+            if (step == 0) {
+
+                this.setCurrentDirection(Direction.getRandom());
+                step = MAX_STEP;
+            }
+
+            if (isHittingWall(getPosition().getGrid())) {
+
+                setCurrentDirection(Direction.getOpposite(getCurrentDirection()));
+            }
+
+            getPosition().move(this.getCurrentDirection(), 1);
+
         }
-        if(isHittingWall(grid)){
-            setCurrentDirection(Direction.getOpposite(getCurrentDirection()));
-        }
-        getPosition().move(this.getCurrentDirection(), 1);
         step--;
-
     }
 
     public Projectile shoot () {
