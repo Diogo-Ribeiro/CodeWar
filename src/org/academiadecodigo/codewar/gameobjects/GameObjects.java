@@ -8,7 +8,15 @@ import org.academiadecodigo.codewar.representable.Representable;
  */
 public abstract class GameObjects implements Representable{
     // Allow direct access from subclasses
-    protected Direction currentDirection;
+    private Direction currentDirection;
+
+    public void setCurrentDirection(Direction newDirection){
+        currentDirection = newDirection;
+    }
+
+    public Direction getCurrentDirection(){
+        return currentDirection;
+    }
 
 
 }

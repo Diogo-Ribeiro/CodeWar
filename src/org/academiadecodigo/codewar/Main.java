@@ -15,7 +15,7 @@ public class Main {
         g.init();
 
         //start the actual game.
-        g.start();
+       g.start();
 
     }
 }

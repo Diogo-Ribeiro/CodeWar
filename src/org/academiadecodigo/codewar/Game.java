@@ -25,21 +25,24 @@ public class Game {
         MCProjectiles = new Projectile[(MAX_PROJECTILES/2)*MASTER_CODERS];
 
     }
-    public void init () throws InterruptedException{
+    public void init () {
 
         grid.init();
         chars = CharFactory.charMaker();
-        //Test codeCadet move
-        chars[0].move();
+        ((Codecadet)chars[0]).setMoving(true);
 
     }
 
-    public void start () {
+    public void start () throws InterruptedException{
 
+//Test codeCadet move
+        while(((Codecadet)chars[0]).getMoving()) {
+            ((Codecadet)chars[0]).move();
 
-
-        masterCodersShoot();
-        updateProjectiles();
+            //masterCodersShoot();
+            //updateProjectiles();
+            Thread.sleep(2000);
+        }
 
     }
 
