@@ -33,6 +33,7 @@ public class Codecadet extends Char implements KeyboardHandler {
             Thread.sleep(75);
 
         }
+
     }
 
 
