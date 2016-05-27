@@ -6,4 +6,14 @@ package org.academiadecodigo.codewar;
 public enum Direction {
     LEFT,
     RIGHT;
+
+    public static Direction getRandom() {
+
+        return RandomNumberGenerator.get(0, 1) < 1 ? LEFT : RIGHT;
+    }
+
+    public static Direction getOpposite(Direction direction) {
+
+        return direction == LEFT ? RIGHT : LEFT;
+    }
 }

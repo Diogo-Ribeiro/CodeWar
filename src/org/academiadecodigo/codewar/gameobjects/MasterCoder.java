@@ -1,6 +1,8 @@
 package org.academiadecodigo.codewar.gameobjects;
 
+import org.academiadecodigo.codewar.Direction;
 import org.academiadecodigo.codewar.RandomNumberGenerator;
+import org.academiadecodigo.codewar.representable.SimpleGfxGridPosition;
 
 /**
  * Created by diogocodecadet on 23/05/16.
@@ -10,9 +12,19 @@ public class MasterCoder extends Char {
     private MasterCoderType type;
     // TODO: 24/05/16 mcs open mouth to shoot kissies or dickies
 
-    public MasterCoder (MasterCoderType type) {
+    public MasterCoder (MasterCoderType type, SimpleGfxGridPosition position) {
 
+        super(position);
         this.type = type;
+        this.currentDirection = Direction.getRandom();
+        System.out.println(currentDirection);
+
+    }
+
+    public void move () {
+
+        currentDirection = Direction.getRandom();
+        getPosition().move(this.currentDirection, 1);
     }
 
     public Projectile shoot () {

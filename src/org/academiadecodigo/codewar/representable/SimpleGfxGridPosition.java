@@ -1,21 +1,86 @@
 package org.academiadecodigo.codewar.representable;
 
+import org.academiadecodigo.codewar.Direction;
 import org.academiadecodigo.codewar.RandomNumberGenerator;
+import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 /**
  * Created by codecadet on 25/05/16.
  */
 public class SimpleGfxGridPosition extends AbstractGridPosition {
 
-    public SimpleGfxGridPosition (SimpleGfxGrid grid) {
+    // TODO: 27/05/16  change to image
+    Rectangle representable;
 
-        super(RandomNumberGenerator.get(0, grid.getCols()), RandomNumberGenerator.get(0, grid.getCols()), grid);
+    public SimpleGfxGridPosition (SimpleGfxGrid grid, Rectangle representable) {
+
+        super(RandomNumberGenerator.get(0, grid.getCols()-1), 0, grid);
+        this.representable = representable;
+        this.representable.translate(this.getCol()*SimpleGfxGrid.CELL_SIZE, this.getRow()*SimpleGfxGrid.CELL_SIZE);
+
+        representable.fill();
 
     }
 
-    public SimpleGfxGridPosition (int col, int row, SimpleGfxGrid grid) {
+    public SimpleGfxGridPosition (int col, int row, SimpleGfxGrid grid, Rectangle representable) {
 
         super (col, row, grid);
+        this.representable = representable;
+        this.representable.translate(this.getCol()*SimpleGfxGrid.CELL_SIZE, this.getRow()*SimpleGfxGrid.CELL_SIZE);
+
+        representable.fill();
+
+    }
+
+    @Override
+    public void move (Direction direction, int d) {
+
+        System.out.println(d);
+        System.out.println(this.getCol());
+
+        if (direction == Direction.LEFT) {
+
+            if (this.getCol() - d < 0) {
+
+               d = this.getCol();
+            }
+
+            this.setCol(this.getCol() - d);
+            representable.translate(-(d * SimpleGfxGrid.CELL_SIZE), 0);
+
+        } else if (direction == Direction.RIGHT){
+
+            if (this.col + d > grid.getCols()-1) {
+
+                d = (grid.getCols()-1) - this.col;
+            }
+
+            this.setCol(this.getCol() + d);
+            representable.translate(d * SimpleGfxGrid.CELL_SIZE, 0);
+
+        } else {
+
+            System.out.println("fuck");
+        }
+
+        System.out.println(this.col);
+
+
+
+    }
+
+    @Override
+    public void show() {
+
+        representable.fill();
+
+    }
+
+    @Override
+    public void hide() {
+
+        representable.delete();
+
     }
 
     @Override

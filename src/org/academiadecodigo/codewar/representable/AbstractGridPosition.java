@@ -1,9 +1,11 @@
 package org.academiadecodigo.codewar.representable;
 
+import org.academiadecodigo.codewar.Direction;
+
 /**
  * Created by codecadet on 25/05/16.
  */
-public abstract class AbstractGridPosition implements GridPosition {
+public abstract class AbstractGridPosition implements GridPosition, Representable {
 
     int col;
     int row;
@@ -14,6 +16,10 @@ public abstract class AbstractGridPosition implements GridPosition {
         this.row = row;
         this.grid = grid;
     }
+
+    public abstract void move (Direction direction, int cols);
+    public abstract void show ();
+    public abstract void hide ();
 
     @Override
     public int getCol() {
@@ -31,5 +37,9 @@ public abstract class AbstractGridPosition implements GridPosition {
 
     public void setRow(int row) {
         this.row = row;
+    }
+
+    public Grid getGrid() {
+        return grid;
     }
 }

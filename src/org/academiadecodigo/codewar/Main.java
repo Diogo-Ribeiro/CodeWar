@@ -7,7 +7,7 @@ import org.academiadecodigo.codewar.gameobjects.MasterCoder;
  */
 public class Main {
     // TODO: 24/05/16 change name to beijinhos & caralhinhos
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         Game g = new Game();
 

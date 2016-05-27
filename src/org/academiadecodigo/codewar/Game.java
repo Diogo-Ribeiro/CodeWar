@@ -1,16 +1,20 @@
 package org.academiadecodigo.codewar;
 
 import org.academiadecodigo.codewar.gameobjects.*;
-import org.academiadecodigo.codewar.representable.Grid;
 import org.academiadecodigo.codewar.representable.SimpleGfxGrid;
+import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
 /**
  * Created by diogocodecadet on 23/05/16.
  */
-public class Game {
+public class Game{
 
     public static final int MASTER_CODERS = MasterCoderType.values().length;
     public static final int MAX_PROJECTILES = 5;
+    Keyboard k;
 
     Char[] chars;
     Projectile[] playerProjectiles;
@@ -28,15 +32,23 @@ public class Game {
     public void init () {
 
         grid.init();
-        chars = CharFactory.charMaker();
+        chars = CharFactory.charMaker(grid);
 
     }
 
-    public void start () {
+    public void start () throws InterruptedException {
 
-        masterCodersShoot();
-        updateProjectiles();
+        while (true) {
 
+            for (int i = 0; i < chars.length; i++) {
+
+                chars[i].move();
+            }
+
+            //masterCodersShoot();
+            //updateProjectiles();
+            Thread.sleep(200);
+        }
     }
 
     private void masterCodersShoot () {
@@ -73,4 +85,8 @@ public class Game {
             System.out.println(MCProjectiles[i]);
         }
     }
+
+
 }
+
+

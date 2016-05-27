@@ -35,19 +35,13 @@ public class SimpleGfxGrid implements Grid {
         return rows;
     }
 
-    public GridPosition makeGridPosition() {
-        return new SimpleGfxGridPosition(this);
+    public SimpleGfxGridPosition makeGridPosition(Rectangle representable) {
+        return new SimpleGfxGridPosition(this, representable);
 
     }
 
-    public GridPosition makeGridPosition(int col, int row) {
-        return new SimpleGfxGridPosition(col, row, this);
-    }
-
-    public int convertToPixels (int gridPos) {
-
-        return gridPos*CELL_SIZE;
-
+    public SimpleGfxGridPosition makeGridPosition(int col, int row, Rectangle representable) {
+        return new SimpleGfxGridPosition(col, row, this, representable);
     }
 }
 
