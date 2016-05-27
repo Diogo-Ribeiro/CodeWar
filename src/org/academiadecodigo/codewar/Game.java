@@ -29,19 +29,18 @@ public class Game {
 
         grid.init();
         chars = CharFactory.charMaker();
-        ((Codecadet)chars[0]).setMoving(true);
 
     }
 
     public void start () throws InterruptedException{
 
-//Test codeCadet move
-        while(((Codecadet)chars[0]).getMoving()) {
+        //Test codeCadet move
+        while(!chars[0].isDead()) {
             ((Codecadet)chars[0]).move();
 
             //masterCodersShoot();
             //updateProjectiles();
-            Thread.sleep(2000);
+            Thread.sleep(1000);
         }
 
     }

@@ -15,19 +15,21 @@ public class Codecadet extends Char implements KeyboardHandler {
     private boolean moving;
     Keyboard k;
 
+
     public Codecadet(){
 
+        registerKeyboardInput();
     }
 
     @Override
     public void move (){
 
-        //while (moving) {
+        if(moving) {
 
             System.out.println(getCurrentDirection());
 
 
-        //}
+        }
 
     }
 
@@ -55,27 +57,31 @@ public class Codecadet extends Char implements KeyboardHandler {
     @Override
     public void keyPressed(KeyboardEvent e){
 
-        //setMoving(true);
-       if(e.getKey() == KeyboardEvent.KEY_RIGHT){
-           setCurrentDirection(Direction.RIGHT);
-       }
-
-
-        /*switch (e.getKey()){
+        switch (e.getKey()){
             case KeyboardEvent.KEY_LEFT:
-
-                currentDirection = Direction.LEFT;
+                setCurrentDirection(Direction.LEFT);
+                setMoving(true);
             break;
 
             case KeyboardEvent.KEY_RIGHT:
-                currentDirection = Direction.RIGHT;
-        }*/
+                setCurrentDirection(Direction.RIGHT);
+                setMoving(true);
+                break;
+            case KeyboardEvent.KEY_B:
+                System.out.println("Special shoot");
+                shoot();
+                break;
+            case KeyboardEvent.KEY_SPACE:
+                System.out.println("Shoot");
+                shoot();
+                break;
+        }
 
     }
 
     @Override
     public void keyReleased(KeyboardEvent e){
-        //setMoving(false);
+        setMoving(false);
 
     }
 
@@ -102,11 +108,16 @@ public class Codecadet extends Char implements KeyboardHandler {
         event3.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         k.addEventListener(event3);
 
-        /*
+
         KeyboardEvent event4 = new KeyboardEvent();
         event4.setKey(KeyboardEvent.KEY_LEFT);
         event4.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
-        k.addEventListener(event4);*/
+        k.addEventListener(event4);
+
+        KeyboardEvent event5 = new KeyboardEvent();
+        event5.setKey(KeyboardEvent.KEY_RIGHT);
+        event5.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+        k.addEventListener(event5);
     }
 
 
