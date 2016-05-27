@@ -16,15 +16,14 @@ public class MasterCoder extends Char {
 
         super(position);
         this.type = type;
-        this.currentDirection = Direction.getRandom();
-        System.out.println(currentDirection);
+        this.setCurrentDirection(Direction.getRandom());
 
     }
 
     public void move () {
 
-        currentDirection = Direction.getRandom();
-        getPosition().move(this.currentDirection, 1);
+       this.setCurrentDirection(Direction.getRandom());
+        getPosition().move(this.getCurrentDirection(), 1);
     }
 
     public Projectile shoot () {

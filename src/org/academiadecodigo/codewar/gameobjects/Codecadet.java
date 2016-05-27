@@ -29,10 +29,11 @@ public class Codecadet extends Char implements KeyboardHandler {
 
         while (moving) {
 
-            getPosition().move(this.currentDirection, 1);
+            getPosition().move(this.getCurrentDirection(), 1);
             Thread.sleep(75);
 
         }
+
     }
 
 
