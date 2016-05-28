@@ -42,4 +42,17 @@ public abstract class AbstractGridPosition implements GridPosition, Representabl
     public Grid getGrid() {
         return grid;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+
+        if (obj instanceof GridPosition) {
+
+            GridPosition position = (GridPosition)obj;
+            return this.getCol() == position.getCol()
+                    && this.getRow() == position.getRow();
+        }
+
+        return false;
+    }
 }

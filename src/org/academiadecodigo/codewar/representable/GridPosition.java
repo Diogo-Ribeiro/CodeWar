@@ -1,5 +1,7 @@
 package org.academiadecodigo.codewar.representable;
 
+import org.academiadecodigo.codewar.Direction;
+
 /**
  * Created by codecadet on 25/05/16.
  */
@@ -10,4 +12,7 @@ public interface GridPosition {
 
     public Grid getGrid();
 
+    public void move(Direction direction, int distance);
+
+    public void hide();
 }

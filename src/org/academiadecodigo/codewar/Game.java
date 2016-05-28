@@ -19,7 +19,7 @@ public class Game implements KeyboardHandler {
     Char[] chars;
     Projectile[] playerProjectiles;
     Projectile[] MCProjectiles;
-    SimpleGfxGrid grid = new SimpleGfxGrid(40, 80);
+    SimpleGfxGrid grid = new SimpleGfxGrid(40, 60);
 
     public Game () {
 
@@ -30,6 +30,7 @@ public class Game implements KeyboardHandler {
         registerKeyboardInput();
 
     }
+
     public void init () {
 
         grid.init();
@@ -48,26 +49,47 @@ public class Game implements KeyboardHandler {
 
             masterCodersShoot();
             updateProjectiles();
-            System.out.println("_______________________");
+
+            checkCollisions (MCProjectiles, playerProjectiles, chars);
             Thread.sleep(100);
+        }
+
+        SimpleGfxGrid.gameOver();
+    }
+
+    private void checkCollisions(Projectile[] mcProjectiles, Projectile[] playerProjectiles, Char[] chars) {
+
+        CollisionChecker.check(mcProjectiles, chars);
+    }
+
+    private void codeCadetShoot() {
+
+        Projectile currentProjectile = chars[0].shoot();
+
+        if (currentProjectile != null) {
+
+            for (int i = 0; i < playerProjectiles.length; i++) {
+
+                if (playerProjectiles[i] == null) {
+
+                    playerProjectiles[i] = currentProjectile;
+                    break;
+                }
+            }
         }
     }
 
     private void masterCodersShoot () {
 
-        // TODO: 25/05/16
-        Projectile currentProjectile;
-        for (int j = 1; j < chars.length; j++) {
+        for (int j = 1; j < 2; j++) {
 
-            if (chars[j] != null && !isFull(MCProjectiles)) {
+            if (chars[j] != null) {
 
-                    currentProjectile = chars[j].shoot();
+                Projectile currentProjectile = chars[j].shoot();
 
                 if (currentProjectile != null) {
-                    System.out.println("shot a projectile : " + currentProjectile.getType() + " position " + currentProjectile.getPosition().getRow());
 
                     for (int i = 0; i < MCProjectiles.length; i++) {
-
 
                         if (MCProjectiles[i] == null) {
 
@@ -83,27 +105,34 @@ public class Game implements KeyboardHandler {
     private void updateProjectiles () {
 
         for (int i = 0; i < MCProjectiles.length; i++) {
-            if(MCProjectiles[i] != null) {
-                MCProjectiles[i].move();
-                System.out.println("projectile number " + i + " type " + MCProjectiles[i].getType() + "position is: " + MCProjectiles[i].getPosition().getRow());
-            if (MCProjectiles[i].reachedEdge()) {
-                MCProjectiles[i].getPosition().hide();
-                MCProjectiles[i] = null;
-                  }
 
+            if (MCProjectiles[i] != null) {
 
-                //System.out.println(MCProjectiles[i]);
-            }
-            }
-        }
+                if (MCProjectiles[i].isHitTarget()) {
 
-    public boolean isFull(Projectile[] projectiles){
-        for(int i=0; i < projectiles.length; i++ ){
-            if(projectiles[i] == null){
-                return false;
+                    MCProjectiles[i] = null;
+
+                } else {
+
+                    MCProjectiles[i].move();
+                }
             }
         }
-        return true;
+
+        for (int i = 0; i < playerProjectiles.length; i++) {
+
+            if (playerProjectiles[i] != null) {
+
+                if (playerProjectiles[i].isHitTarget()) {
+
+                   playerProjectiles[i] = null;
+
+                } else {
+
+                    playerProjectiles[i].move();
+                }
+            }
+        }
     }
 
     public void keyPressed(KeyboardEvent e) {
@@ -122,9 +151,10 @@ public class Game implements KeyboardHandler {
             break;
 
             case KeyboardEvent.KEY_SPACE:
-                System.out.println("space");
-                chars[0].shoot();
+                codeCadetShoot();
                 break;
+            case KeyboardEvent.KEY_B:
+                ((Codecadet)chars[0]).specialShoot();
         }
     }
 
@@ -155,11 +185,11 @@ public class Game implements KeyboardHandler {
         event5.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         k.addEventListener(event5);
 
-        KeyboardEvent event6 = new KeyboardEvent();
+        /*KeyboardEvent event6 = new KeyboardEvent();
         event6.setKey(KeyboardEvent.KEY_SPACE);
         event6.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
         k.addEventListener(event6);
-
+*/
         KeyboardEvent event = new KeyboardEvent();
         event.setKey(KeyboardEvent.KEY_LEFT);
         event.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);

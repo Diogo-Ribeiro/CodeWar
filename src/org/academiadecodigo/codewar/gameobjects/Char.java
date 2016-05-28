@@ -7,7 +7,7 @@ import org.academiadecodigo.codewar.representable.SimpleGfxGridPosition;
  */
 public abstract class Char extends GameObjects {
 
-    private int hp;
+    private int hp = 6;
     private boolean dead;
     private boolean specialShot;
     private SimpleGfxGridPosition position;
@@ -20,24 +20,31 @@ public abstract class Char extends GameObjects {
 
     }
 
+    public abstract void getHit(Projectile projectile);
     public abstract Projectile shoot();
 
+    public void lowerHP() {
 
+        hp--;
+
+        if (hp == 0) {
+
+            die();
+        }
+    }
+
+    public int getHp () {
+        return hp;
+    }
     public boolean isDead() {
 
         return dead;
     }
 
-    public void Die () {
+    public void die () {
 
         dead = true;
     }
-
-   /* public boolean hit(Projectile projectile){
-
-
-    }*/
-
 
     public SimpleGfxGridPosition getPosition() {
         return position;

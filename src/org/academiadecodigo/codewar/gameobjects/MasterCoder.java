@@ -26,44 +26,55 @@ public class MasterCoder extends Char {
 
     public void move (){
 
-        if (step%2 == 0) {
 
-            if (step == 0) {
+        if (!isDead()) {
 
-                this.setCurrentDirection(Direction.getRandom());
-                step = MAX_STEP;
+            if (step % 2 == 0) {
+
+                if (step == 0) {
+
+                    this.setCurrentDirection(Direction.getRandom());
+                    step = MAX_STEP;
+                }
+
+                if (isHittingWall(getPosition().getGrid())) {
+
+                    setCurrentDirection(Direction.getOpposite(getCurrentDirection()));
+                }
+
+                getPosition().move(this.getCurrentDirection(), 1);
+
             }
-
-            if (isHittingWall()) {
-
-                setCurrentDirection(Direction.getOpposite(getCurrentDirection()));
-            }
-
-            getPosition().move(this.getCurrentDirection(), 1);
-
+            step--;
         }
-        step--;
+    }
+
+    @Override
+    public void getHit(Projectile projectile) {
+
+        System.out.println("hit");
+        die();
     }
 
     public Projectile shoot () {
-        // TODO: 25/05/16 think of adequate shooting probabilities
-        int r = RandomNumberGenerator.get(0,10);
-        if (r < 2) {
 
-            //System.out.println("new beijinho fired");
-            return ProjectileFactory.get(ProjectileType.KISSY, this.getPosition(), this.getPosition().getGrid());
+        if (!isDead()) {
+            // TODO: 25/05/16 think of adequate shooting probabilities
+            int r = RandomNumberGenerator.get(0, 10);
+            if (r < 3) {
 
-        } else if (r == 2) {
+                return ProjectileFactory.get(ProjectileType.KISSY, this.getPosition(), Direction.DOWN);
 
-            //System.out.println("new caralhinho fired");
-            return ProjectileFactory.get(ProjectileType.DICKY, this.getPosition(), this.getPosition().getGrid());
+            } else if (r == 3) {
+
+                return ProjectileFactory.get(ProjectileType.DICKY, this.getPosition(), Direction.DOWN);
+            }
         }
 
-        //System.out.println("didn't shoot");
         return null;
     }
 
-    public boolean isHittingWall(){
-        return (getPosition().getCol() <= 0 || getPosition().getCol()>= getPosition().getGrid().getCols()-1);
+    public boolean isHittingWall(Grid grid){
+        return (getPosition().getCol() <= 0 || getPosition().getCol()>= grid.getCols()-1);
     }
 }

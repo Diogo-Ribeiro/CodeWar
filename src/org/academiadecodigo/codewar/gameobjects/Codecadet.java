@@ -16,7 +16,10 @@ public class Codecadet extends Char{
     // TODO: 24/05/16 one char for each codecadet and associated game mode
 
 
-    public boolean moving;
+    private boolean moving;
+    //// TODO: 28/05/2016 find better name
+    private int kissyCounter;
+
     public Codecadet(SimpleGfxGridPosition position) {
 
         super(position);
@@ -32,18 +35,41 @@ public class Codecadet extends Char{
 
                 getPosition().move(this.getCurrentDirection(), 1);
 
+                System.out.println(this.getPosition().getCol());
             }
         }
     }
 
+    @Override
+    public void getHit(Projectile projectile) {
+
+        System.out.println(projectile.getType());
+        if (projectile.getType() == ProjectileType.KISSY) {
+
+            kissyCounter++;
+
+        } else if (projectile.getType() == ProjectileType.DICKY) {
+
+            lowerHP();
+        }
+    }
+
     public Projectile shoot() {
-        //should I get the playerProjectiles[]? or should we have some sort of collision checker?
-        return ProjectileFactory.get(ProjectileType.QUESTION, this.getPosition(),this.getPosition().getGrid());
+
+        return ProjectileFactory.get(ProjectileType.QUESTION, this.getPosition(), Direction.UP);
     }
 
     public Projectile specialShoot() {
-        //should I get the playerProjectiles[]? or should we have some sort of collision checker?
-        return ProjectileFactory.get(ProjectileType.BUG, this.getPosition(), this.getPosition().getGrid());
+
+        System.out.println(kissyCounter);
+        if (kissyCounter == 4) {
+
+            kissyCounter = 0;
+            return ProjectileFactory.get(ProjectileType.BUG, this.getPosition(), Direction.UP);
+
+        }
+
+        return null;
     }
 
     public boolean isMoving() {
