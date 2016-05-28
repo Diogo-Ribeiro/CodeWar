@@ -34,7 +34,7 @@ public class MasterCoder extends Char {
                 step = MAX_STEP;
             }
 
-            if (isHittingWall(getPosition().getGrid())) {
+            if (isHittingWall()) {
 
                 setCurrentDirection(Direction.getOpposite(getCurrentDirection()));
             }
@@ -48,22 +48,22 @@ public class MasterCoder extends Char {
     public Projectile shoot () {
         // TODO: 25/05/16 think of adequate shooting probabilities
         int r = RandomNumberGenerator.get(0,10);
-        if (r < 3) {
+        if (r < 2) {
 
-            System.out.println("new beijinho fired");
-            return ProjectileFactory.get(ProjectileType.KISSY, this.getPosition());
+            //System.out.println("new beijinho fired");
+            return ProjectileFactory.get(ProjectileType.KISSY, this.getPosition(), this.getPosition().getGrid());
 
-        } else if (r == 3) {
+        } else if (r == 2) {
 
-            System.out.println("new caralhinho fired");
-            return ProjectileFactory.get(ProjectileType.DICKY, this.getPosition());
+            //System.out.println("new caralhinho fired");
+            return ProjectileFactory.get(ProjectileType.DICKY, this.getPosition(), this.getPosition().getGrid());
         }
 
-        System.out.println("didn't shoot");
+        //System.out.println("didn't shoot");
         return null;
     }
 
-    public boolean isHittingWall(Grid grid){
-        return (getPosition().getCol() <= 0 || getPosition().getCol()>= grid.getCols()-1);
+    public boolean isHittingWall(){
+        return (getPosition().getCol() <= 0 || getPosition().getCol()>= getPosition().getGrid().getCols()-1);
     }
 }

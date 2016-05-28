@@ -8,7 +8,7 @@ import org.academiadecodigo.codewar.gameobjects.Projectile;
  */
 public class CollisionChecker {
 
-    public static void check(Projectile[] projectiles, Char[] chars) {
+    /*public static void check(Projectile[] projectiles, Char[] chars) {
 
         for (int i = 0; i < chars.length; i++) {
 
@@ -22,5 +22,5 @@ public class CollisionChecker {
                 }
             }
         }
-    }
+    }*/
 }

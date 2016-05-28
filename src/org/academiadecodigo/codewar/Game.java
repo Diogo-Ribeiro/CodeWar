@@ -46,8 +46,9 @@ public class Game implements KeyboardHandler {
                 chars[i].move();
             }
 
-            //masterCodersShoot();
-            //updateProjectiles();
+            masterCodersShoot();
+            updateProjectiles();
+            System.out.println("_______________________");
             Thread.sleep(100);
         }
     }
@@ -55,15 +56,18 @@ public class Game implements KeyboardHandler {
     private void masterCodersShoot () {
 
         // TODO: 25/05/16
+        Projectile currentProjectile;
         for (int j = 1; j < chars.length; j++) {
 
-            if (chars[j] != null) {
+            if (chars[j] != null && !isFull(MCProjectiles)) {
 
-                Projectile currentProjectile = chars[j].shoot();
+                    currentProjectile = chars[j].shoot();
 
                 if (currentProjectile != null) {
+                    System.out.println("shot a projectile : " + currentProjectile.getType() + " position " + currentProjectile.getPosition().getRow());
 
                     for (int i = 0; i < MCProjectiles.length; i++) {
+
 
                         if (MCProjectiles[i] == null) {
 
@@ -79,12 +83,27 @@ public class Game implements KeyboardHandler {
     private void updateProjectiles () {
 
         for (int i = 0; i < MCProjectiles.length; i++) {
+            if(MCProjectiles[i] != null) {
+                MCProjectiles[i].move();
+                System.out.println("projectile number " + i + " type " + MCProjectiles[i].getType() + "position is: " + MCProjectiles[i].getPosition().getRow());
+            if (MCProjectiles[i].reachedEdge()) {
+                MCProjectiles[i].getPosition().hide();
+                MCProjectiles[i] = null;
+                  }
 
-            //if (MCProjectiles[i].reachedEdge()) {
-            //MCProjectiles[i] = null;
-            //  }
-            System.out.println(MCProjectiles[i]);
+
+                //System.out.println(MCProjectiles[i]);
+            }
+            }
         }
+
+    public boolean isFull(Projectile[] projectiles){
+        for(int i=0; i < projectiles.length; i++ ){
+            if(projectiles[i] == null){
+                return false;
+            }
+        }
+        return true;
     }
 
     public void keyPressed(KeyboardEvent e) {
@@ -104,6 +123,7 @@ public class Game implements KeyboardHandler {
 
             case KeyboardEvent.KEY_SPACE:
                 System.out.println("space");
+                chars[0].shoot();
                 break;
         }
     }

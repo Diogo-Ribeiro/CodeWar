@@ -33,6 +33,12 @@ public abstract class Char extends GameObjects {
         dead = true;
     }
 
+   /* public boolean hit(Projectile projectile){
+
+
+    }*/
+
+
     public SimpleGfxGridPosition getPosition() {
         return position;
     }

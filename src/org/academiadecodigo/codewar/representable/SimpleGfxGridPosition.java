@@ -47,15 +47,31 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
 
         } else if (direction == Direction.RIGHT){
 
-            if (this.col + d > grid.getCols()-1) {
+            if (this.getCol() + d > grid.getCols()-1) {
 
-                d = (grid.getCols()-1) - this.col;
+                d = (grid.getCols()-1) - this.getCol();
             }
 
             this.setCol(this.getCol() + d);
             representable.translate(d * SimpleGfxGrid.CELL_SIZE, 0);
 
-        } else {
+        }else if(direction == Direction.DOWN){
+            if(this.getRow() + d > grid.getRows()){
+                d = (grid.getRows())- this.getRow();
+            }
+            this.setRow(this.getRow()+d);
+            representable.translate(0,d * SimpleGfxGrid.CELL_SIZE);
+
+        }
+        else if(direction == Direction.UP){
+            if(this.getRow() - d < 0){
+                d =  this.getRow();
+            }
+            this.setRow(this.getRow()- d);
+            representable.translate(0,d * SimpleGfxGrid.CELL_SIZE);
+
+        }
+        else {
 
             System.out.println("error");
         }
