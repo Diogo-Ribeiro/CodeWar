@@ -68,11 +68,11 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
                 d =  this.getRow();
             }
             this.setRow(this.getRow()- d);
-            representable.translate(0,d * SimpleGfxGrid.CELL_SIZE);
+            representable.translate(0, -1 * d * SimpleGfxGrid.CELL_SIZE);
 
         }
-        else {
 
+        else {
             System.out.println("error");
         }
     }

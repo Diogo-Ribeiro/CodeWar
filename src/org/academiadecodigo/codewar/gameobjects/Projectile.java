@@ -30,7 +30,19 @@ public class Projectile extends GameObjects {
     }
 
     public void move(){
-        position.move(Direction.DOWN,1);
+        switch (type) {
+            case KISSY:
+            position.move(Direction.DOWN, 1);
+                break;
+            case DICKY:
+                position.move(Direction.DOWN, 1);
+                break;
+            case BUG:
+                position.move(Direction.UP, 1);
+                break;
+            case QUESTION:
+                position.move(Direction.UP, 1);
+        }
     }
 
     public ProjectileType getType() {

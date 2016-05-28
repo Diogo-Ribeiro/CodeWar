@@ -47,7 +47,8 @@ public class Game implements KeyboardHandler {
             }
 
             masterCodersShoot();
-            updateProjectiles();
+            updateProjectiles(MCProjectiles);
+            updateProjectiles(playerProjectiles);
             System.out.println("_______________________");
             Thread.sleep(100);
         }
@@ -80,15 +81,17 @@ public class Game implements KeyboardHandler {
         }
     }
 
-    private void updateProjectiles () {
+    private void updateProjectiles (Projectile[] projectiles) {
 
-        for (int i = 0; i < MCProjectiles.length; i++) {
-            if(MCProjectiles[i] != null) {
-                MCProjectiles[i].move();
-                System.out.println("projectile number " + i + " type " + MCProjectiles[i].getType() + "position is: " + MCProjectiles[i].getPosition().getRow());
-            if (MCProjectiles[i].reachedEdge()) {
-                MCProjectiles[i].getPosition().hide();
-                MCProjectiles[i] = null;
+        for (int i = 0; i < projectiles.length; i++) {
+            if(projectiles[i] != null) {
+                projectiles[i].move();
+                System.out.println("projectile number " + i + " type " + projectiles[i].getType() + "position is: " + projectiles[i].getPosition().getRow());
+            if (projectiles[i].reachedEdge()) {
+
+                projectiles[i].getPosition().hide();
+                projectiles[i] = null;
+
                   }
 
 
@@ -111,20 +114,28 @@ public class Game implements KeyboardHandler {
         switch (e.getKey()) {
             case KeyboardEvent.KEY_LEFT:
 
-            chars[0].setCurrentDirection(Direction.LEFT);
-            ((Codecadet)chars[0]).setMoving(true);
-            break;
+                chars[0].setCurrentDirection(Direction.LEFT);
+                ((Codecadet) chars[0]).setMoving(true);
+                break;
 
             case KeyboardEvent.KEY_RIGHT:
 
-            chars[0].setCurrentDirection(Direction.RIGHT);
-            ((Codecadet)chars[0]).setMoving(true);
-            break;
+                chars[0].setCurrentDirection(Direction.RIGHT);
+                ((Codecadet) chars[0]).setMoving(true);
+                break;
 
             case KeyboardEvent.KEY_SPACE:
                 System.out.println("space");
-                chars[0].shoot();
-                break;
+                if (!isFull(playerProjectiles)) {
+                    for (int i = 0; i < playerProjectiles.length; i++) {
+                        if (playerProjectiles[i] == null) {
+                            playerProjectiles[i] = chars[0].shoot();
+                            break;
+                        }
+                    }
+
+                    break;
+                }
         }
     }
 
