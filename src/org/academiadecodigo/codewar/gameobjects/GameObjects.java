@@ -1,6 +1,7 @@
 package org.academiadecodigo.codewar.gameobjects;
 
 import org.academiadecodigo.codewar.Direction;
+import org.academiadecodigo.codewar.representable.GridPosition;
 import org.academiadecodigo.codewar.representable.Representable;
 
 /**
@@ -17,6 +18,7 @@ public abstract class GameObjects{
     public Direction getCurrentDirection(){
         return currentDirection;
     }
+
 
 }
 

@@ -8,5 +8,5 @@ public interface GridPosition {
 
     public int getRow();
 
-
+    public Grid getGrid();
 }

@@ -16,7 +16,7 @@ public abstract class Char extends GameObjects {
 
         this.position = position;
     }
-    public void move ( ) throws InterruptedException {
+    public void move ( ){
 
     }
 

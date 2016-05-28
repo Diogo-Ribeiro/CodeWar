@@ -36,15 +36,14 @@ public class Codecadet extends Char{
         }
     }
 
-
-
     public Projectile shoot() {
         //should I get the playerProjectiles[]? or should we have some sort of collision checker?
-        return new Projectile();
+        return ProjectileFactory.get(ProjectileType.QUESTION, this.getPosition());
     }
 
-    public void dead() {
-
+    public Projectile specialShoot() {
+        //should I get the playerProjectiles[]? or should we have some sort of collision checker?
+        return ProjectileFactory.get(ProjectileType.BUG, this.getPosition());
     }
 
     public boolean isMoving() {

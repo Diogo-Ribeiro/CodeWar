@@ -1,5 +1,4 @@
 package org.academiadecodigo.codewar.gameobjects;
-
 import org.academiadecodigo.codewar.representable.GridPosition;
 
 /**
@@ -7,11 +6,8 @@ import org.academiadecodigo.codewar.representable.GridPosition;
  */
 public class ProjectileFactory {
 
-    public ProjectileFactory(GridPosition position){
+    public static Projectile get(ProjectileType type, GridPosition position){
 
-
-
+        return new Projectile(type, position);
     }
-
-
 }

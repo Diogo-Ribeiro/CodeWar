@@ -9,7 +9,4 @@ public enum ProjectileType {
     DICKY,
     BUG,
     QUESTION
-
-
-
 }

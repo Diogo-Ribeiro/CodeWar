@@ -3,7 +3,6 @@ package org.academiadecodigo.codewar.gameobjects;
 import org.academiadecodigo.codewar.Direction;
 import org.academiadecodigo.codewar.RandomNumberGenerator;
 import org.academiadecodigo.codewar.representable.Grid;
-import org.academiadecodigo.codewar.representable.SimpleGfxGrid;
 import org.academiadecodigo.codewar.representable.SimpleGfxGridPosition;
 
 /**
@@ -47,12 +46,17 @@ public class MasterCoder extends Char {
     }
 
     public Projectile shoot () {
-        // TODO: 25/05/16 think of an adequate shooting probability
-        if (RandomNumberGenerator.get(0,10) < 3) {
+        // TODO: 25/05/16 think of adequate shooting probabilities
+        int r = RandomNumberGenerator.get(0,10);
+        if (r < 3) {
 
-            System.out.println("new projectile fired");
-            return new Projectile();
+            System.out.println("new beijinho fired");
+            return ProjectileFactory.get(ProjectileType.KISSY, this.getPosition());
 
+        } else if (r == 3) {
+
+            System.out.println("new caralhinho fired");
+            return ProjectileFactory.get(ProjectileType.DICKY, this.getPosition());
         }
 
         System.out.println("didn't shoot");
