@@ -5,7 +5,8 @@ package org.academiadecodigo.codewar.representable;
  */
 public interface Representable {
 
-    //public void show();
-    //public void hide();
+    // TODO: 29/05/2016 do we really need this?
+    public void show();
+    public void hide();
 
 }

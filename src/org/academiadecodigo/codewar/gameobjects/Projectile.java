@@ -10,6 +10,7 @@ import org.academiadecodigo.codewar.representable.SimpleGfxGridPosition;
  * Created by diogocodecadet on 23/05/16.
  */
 public class Projectile extends GameObjects {
+
     ProjectileType type;
     private GridPosition position;
     private boolean hitTarget;
@@ -34,15 +35,11 @@ public class Projectile extends GameObjects {
         }
     }
 
+    // TODO: 29/05/2016 move this to gameobjects
     public boolean reachedEdge(){
 
         return (this.position.getRow() < 0
                 || this.position.getRow() == this.position.getGrid().getRows());
-    }
-
-    @Override
-    public String toString() {
-        return "I am a projectile!";
     }
 
     public void reachTarget() {
@@ -62,5 +59,10 @@ public class Projectile extends GameObjects {
 
     public boolean isHitTarget() {
         return hitTarget;
+    }
+
+    @Override
+    public String toString() {
+        return "I am a projectile!";
     }
 }

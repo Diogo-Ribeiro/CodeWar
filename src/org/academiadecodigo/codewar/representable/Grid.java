@@ -7,8 +7,17 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
  */
 public interface Grid {
 
+    public void init();
+
     public int getCols();
+
     public int getRows();
+
     public GridPosition makeGridPosition(Rectangle representable);
+
     public GridPosition makeGridPosition (int col, int row, Rectangle representable);
+
+    public void stackOverflow();
+
+    public void win();
 }

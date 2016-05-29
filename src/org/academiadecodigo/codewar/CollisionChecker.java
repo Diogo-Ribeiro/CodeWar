@@ -17,7 +17,7 @@ public class CollisionChecker {
                 if (projectiles[j]!= null && projectiles[j].getPosition().equals(chars[i].getPosition())) {
 
                     projectiles[j].reachTarget(); //update boolean, says it can be deleted
-                    chars[i].getHit (projectiles[j]);//deals damage (?) || increases kissy counter
+                    chars[i].getHit (projectiles[j]);//deals damage (?) || increases counters
                 }
             }
         }

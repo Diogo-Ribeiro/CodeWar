@@ -8,6 +8,8 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
  */
 public enum ProjectileType {
 
+    // TODO: 29/05/2016 how can we set the images?
+
     KISSY (0,0,5,5, Color.PINK),
     DICKY (0,0,5,5, Color.LIGHT_GRAY),
     BUG (0,0,5,5, Color.YELLOW),

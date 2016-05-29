@@ -1,6 +1,7 @@
 package org.academiadecodigo.codewar;
 
 import org.academiadecodigo.codewar.gameobjects.*;
+import org.academiadecodigo.codewar.representable.Grid;
 import org.academiadecodigo.codewar.representable.SimpleGfxGrid;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
@@ -14,48 +15,49 @@ public class Game implements KeyboardHandler {
 
     public static final int MASTER_CODERS = MasterCoderType.values().length;
     public static final int MAX_PROJECTILES = 5;
-    Keyboard k;
 
-    Char[] chars;
-    Projectile[] playerProjectiles;
-    Projectile[] MCProjectiles;
-    SimpleGfxGrid grid = new SimpleGfxGrid(40, 60);
+    private Keyboard k;
+
+    // TODO: 29/05/2016 separate player from other chars
+    private Char[] chars;
+    private Projectile[] playerProjectiles;
+    private Projectile[] masterCoderProjectiles;
+    private Grid grid = new SimpleGfxGrid(40, 60);
 
     public Game () {
 
         // TODO: 25/05/16 init or constructor?
+        // TODO: 29/05/2016 player selection
         chars = new Char[MASTER_CODERS + 1];
         playerProjectiles = new Projectile[MAX_PROJECTILES];
-        MCProjectiles = new Projectile[(MAX_PROJECTILES/2)*MASTER_CODERS];
+        masterCoderProjectiles = new Projectile[(MAX_PROJECTILES/2)*MASTER_CODERS];
         registerKeyboardInput();
-
     }
 
     public void init () {
 
         grid.init();
         chars = CharFactory.charMaker(grid);
-
     }
 
     public void start () throws InterruptedException {
 
         while (!chars[0].isDead() && !allMasterCodersDead()) {
 
+            //move all chars
             for (int i = 0; i < chars.length; i++) {
 
                 chars[i].move();
             }
 
             masterCodersShoot();
-            updateProjectiles(MCProjectiles);
+            updateProjectiles(masterCoderProjectiles);
             updateProjectiles(playerProjectiles);
-            checkCollisions(MCProjectiles, playerProjectiles, chars);
+            checkCollisions(masterCoderProjectiles, playerProjectiles, chars);
 
             Thread.sleep(100);
         }
-
-        SimpleGfxGrid.gameOver();
+        gameOver();
     }
 
     private boolean allMasterCodersDead() {
@@ -80,12 +82,8 @@ public class Game implements KeyboardHandler {
     private void codeCadetShoot() {
 
         if (!isFull(playerProjectiles)) {
-            for (int i = 0; i < playerProjectiles.length; i++) {
-                if (playerProjectiles[i] == null) {
-                    playerProjectiles[i] = chars[0].shoot();
-                    break;
-                }
-            }
+
+           storeProjectile(playerProjectiles);
         }
     }
 
@@ -94,21 +92,26 @@ public class Game implements KeyboardHandler {
         Projectile currentProjectile;
         for (int j = 1; j < chars.length; j++) {
 
-            if (chars[j] != null && !isFull(MCProjectiles)) {
+            // TODO: 29/05/2016 check if we can remove the second statement
+            if (!isFull(masterCoderProjectiles) && chars[j] != null) {
 
                     currentProjectile = chars[j].shoot();
 
                 if (currentProjectile != null) {
 
-                    for (int i = 0; i < MCProjectiles.length; i++) {
-
-                        if (MCProjectiles[i] == null) {
-
-                            MCProjectiles[i] = currentProjectile;
-                            break;
-                        }
-                    }
+                    storeProjectile(masterCoderProjectiles);
                 }
+            }
+        }
+    }
+
+    private void storeProjectile(Projectile[] projectiles) {
+        for (int i = 0; i < projectiles.length; i++) {
+
+            if (projectiles[i] == null) {
+
+                projectiles[i] = chars[0].shoot();
+                break;
             }
         }
     }
@@ -131,8 +134,6 @@ public class Game implements KeyboardHandler {
         }
     }
 
-
-
     public boolean isFull(Projectile[] projectiles){
 
         for(int i=0; i < projectiles.length; i++ ){
@@ -143,6 +144,18 @@ public class Game implements KeyboardHandler {
             }
         }
         return true;
+    }
+
+    public void gameOver () {
+
+        if (chars[0].isDead()) {
+
+            grid.stackOverflow();
+
+        } else {
+
+            grid.win();
+        }
     }
 
     public void keyPressed(KeyboardEvent e) {

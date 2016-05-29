@@ -15,9 +15,9 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
     public SimpleGfxGridPosition (SimpleGfxGrid grid, Rectangle representable) {
 
         super(RandomNumberGenerator.get(0, grid.getCols()-1), 0, grid);
+
         this.representable = representable;
         this.representable.translate(this.getCol()*SimpleGfxGrid.CELL_SIZE, this.getRow()*SimpleGfxGrid.CELL_SIZE);
-
         representable.fill();
 
     }
@@ -25,13 +25,14 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
     public SimpleGfxGridPosition (int col, int row, SimpleGfxGrid grid, Rectangle representable) {
 
         super (col, row, grid);
+
         this.representable = representable;
         this.representable.translate(this.getCol()*SimpleGfxGrid.CELL_SIZE, this.getRow()*SimpleGfxGrid.CELL_SIZE);
-
         representable.fill();
 
     }
 
+    // TODO: 29/05/2016 switch instead of is elses
     @Override
     public void move (Direction direction, int dist) {
 

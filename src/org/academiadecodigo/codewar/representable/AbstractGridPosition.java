@@ -7,6 +7,7 @@ import org.academiadecodigo.codewar.Direction;
  */
 public abstract class AbstractGridPosition implements GridPosition, Representable {
 
+    // TODO: 29/05/2016 change all properties to private
     int col;
     int row;
     Grid grid;

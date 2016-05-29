@@ -14,10 +14,10 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
  * Created by diogocodecadet on 23/05/16.
  */
 public class Codecadet extends Char{
+
     // TODO: 24/05/16 one char for each codecadet and associated game mode
-
-
     private boolean moving;
+
     //// TODO: 28/05/2016 find better name
     private int kissyCounter;
 
@@ -29,21 +29,16 @@ public class Codecadet extends Char{
     @Override
     public void move () {
 
-        if (true) {
+        if (moving) {
 
-            if (moving) {
+            getPosition().move(this.getCurrentDirection(), 1);
 
-                getPosition().move(this.getCurrentDirection(), 1);
-
-                System.out.println(this.getPosition().getCol());
-            }
         }
     }
 
     @Override
     public void getHit(Projectile projectile) {
 
-        System.out.println(projectile.getType());
         if (projectile.getType() == ProjectileType.KISSY) {
 
             kissyCounter++;

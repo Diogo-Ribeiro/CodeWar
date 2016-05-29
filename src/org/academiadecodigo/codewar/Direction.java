@@ -9,12 +9,13 @@ public enum Direction {
     UP,
     DOWN;
 
-    public static Direction getRandom() {
+    // TODO: 29/05/2016 regular ifs ou ternary operators?
+    public static Direction getRandomX() {
 
         return RandomNumberGenerator.get(0, 1) < 1 ? LEFT : RIGHT;
     }
 
-    public static Direction getOpposite(Direction direction) {
+    public static Direction getOppositeX(Direction direction) {
 
         return direction == LEFT ? RIGHT : LEFT;
     }

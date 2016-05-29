@@ -13,7 +13,6 @@ public class SimpleGfxGrid implements Grid {
     private int cols;
     private int rows;
 
-
     public SimpleGfxGrid (int cols, int rows) {
 
         this.cols = cols;
@@ -25,7 +24,6 @@ public class SimpleGfxGrid implements Grid {
         Rectangle rectangle = new Rectangle(0, 0, cols*CELL_SIZE, rows*CELL_SIZE);
         rectangle.setColor(Color.BLACK);
         rectangle.draw();
-
     }
 
     public int getCols() {
@@ -37,15 +35,17 @@ public class SimpleGfxGrid implements Grid {
     }
 
     public SimpleGfxGridPosition makeGridPosition(Rectangle representable) {
-        return new SimpleGfxGridPosition(this, representable);
 
+        return new SimpleGfxGridPosition(this, representable);
     }
 
     public SimpleGfxGridPosition makeGridPosition(int col, int row, Rectangle representable) {
+
         return new SimpleGfxGridPosition(col, row, this, representable);
     }
 
-    public static void gameOver() {
+    @Override
+    public void stackOverflow() {
 
         Rectangle rectangle = new Rectangle(0, 0, 400, 600);
         rectangle.fill();
@@ -53,7 +53,18 @@ public class SimpleGfxGrid implements Grid {
         Text text = new Text(150, 300, "StackOverflow");
         text.setColor(Color.RED);
         text.draw();
+    }
 
+    @Override
+    public void win() {
+
+        Rectangle rectangle = new Rectangle(0, 0, 400, 600);
+        rectangle.setColor(Color.WHITE);
+        rectangle.fill();
+
+        Text text = new Text(150, 300, "You did it!");
+        text.setColor(Color.BLACK);
+        text.draw();
     }
 }
 
