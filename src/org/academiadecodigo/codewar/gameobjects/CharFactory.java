@@ -9,7 +9,7 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
  */
 public class CharFactory {
 
-    public static Char[] charMaker (SimpleGfxGrid grid) {
+    public static Char[] charMaker (Grid grid) {
 
         Char[] chars = new Char[MasterCoderType.values().length + 1];
 

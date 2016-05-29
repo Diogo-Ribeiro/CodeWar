@@ -3,6 +3,7 @@ package org.academiadecodigo.codewar.gameobjects;
 import org.academiadecodigo.codewar.Direction;
 import org.academiadecodigo.codewar.RandomNumberGenerator;
 import org.academiadecodigo.codewar.representable.Grid;
+import org.academiadecodigo.codewar.representable.GridPosition;
 import org.academiadecodigo.codewar.representable.SimpleGfxGridPosition;
 
 /**
@@ -16,7 +17,7 @@ public class MasterCoder extends Char {
 
     // TODO: 24/05/16 mcs open mouth to shoot kissies or dickies
 
-    public MasterCoder (MasterCoderType type, SimpleGfxGridPosition position) {
+    public MasterCoder (MasterCoderType type, GridPosition position) {
 
         super(position);
         this.type = type;

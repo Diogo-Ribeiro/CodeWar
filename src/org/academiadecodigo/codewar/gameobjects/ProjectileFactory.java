@@ -12,8 +12,6 @@ public class ProjectileFactory {
 
         position = position.getGrid().makeGridPosition(position.getCol(), position.getRow(), new Rectangle(0,0,5, 5));
 
-        System.out.println(position.getCol());
-        System.out.println(position.getRow());
         return new Projectile(type, position, direction);
     }
 }

@@ -40,34 +40,6 @@ public class Projectile extends GameObjects {
                 || this.position.getRow() == this.position.getGrid().getRows());
     }
 
-    public void setType(ProjectileType type) {
-        this.type = type;
-    }
-
-    public void move(){
-        switch (type) {
-            case KISSY:
-            position.move(Direction.DOWN, 1);
-                break;
-            case DICKY:
-                position.move(Direction.DOWN, 1);
-                break;
-            case BUG:
-                position.move(Direction.UP, 1);
-                break;
-            case QUESTION:
-                position.move(Direction.UP, 1);
-        }
-    }
-
-    public ProjectileType getType() {
-        return type;
-    }
-
-    public AbstractGridPosition getPosition() {
-        return position;
-    }
-
     @Override
     public String toString() {
         return "I am a projectile!";

@@ -61,19 +61,19 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
             representable.translate(0, -dist * SimpleGfxGrid.CELL_SIZE);
 
         }else if(direction == Direction.DOWN){
-            if(this.getRow() + d > grid.getRows()){
-                d = (grid.getRows())- this.getRow();
+            if(this.getRow() + dist > grid.getRows()){
+                dist = (grid.getRows())- this.getRow();
             }
-            this.setRow(this.getRow()+d);
-            representable.translate(0,d * SimpleGfxGrid.CELL_SIZE);
+            this.setRow(this.getRow()+dist);
+            representable.translate(0,dist * SimpleGfxGrid.CELL_SIZE);
 
         }
         else if(direction == Direction.UP){
-            if(this.getRow() - d < 0){
-                d =  this.getRow();
+            if(this.getRow() - dist < 0){
+                dist =  this.getRow();
             }
-            this.setRow(this.getRow()- d);
-            representable.translate(0,d * SimpleGfxGrid.CELL_SIZE);
+            this.setRow(this.getRow()- dist);
+            representable.translate(0,dist * SimpleGfxGrid.CELL_SIZE);
 
         }
         else {

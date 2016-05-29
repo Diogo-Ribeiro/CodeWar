@@ -50,7 +50,7 @@ public class SimpleGfxGrid implements Grid {
         Rectangle rectangle = new Rectangle(0, 0, 400, 600);
         rectangle.fill();
 
-        Text text = new Text(200, 300, "STACK OVERFLOW");
+        Text text = new Text(150, 300, "StackOverflow");
         text.setColor(Color.RED);
         text.draw();
 
