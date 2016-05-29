@@ -75,7 +75,7 @@ public class Game implements KeyboardHandler {
 
     private void checkCollisions(Projectile[] mcProjectiles, Projectile[] playerProjectiles, Char[] chars) {
 
-        CollisionChecker.check(mcProjectiles, chars);
+        CollisionChecker.check(mcProjectiles, chars [0]);
         CollisionChecker.check(playerProjectiles, chars);
     }
 
@@ -83,7 +83,7 @@ public class Game implements KeyboardHandler {
 
         if (!isFull(playerProjectiles)) {
 
-           storeProjectile(playerProjectiles);
+            storeProjectile(playerProjectiles, chars[0].shoot());
         }
     }
 
@@ -99,18 +99,20 @@ public class Game implements KeyboardHandler {
 
                 if (currentProjectile != null) {
 
-                    storeProjectile(masterCoderProjectiles);
+                    storeProjectile(masterCoderProjectiles, currentProjectile);
+                    break;
                 }
             }
         }
     }
 
-    private void storeProjectile(Projectile[] projectiles) {
+    private void storeProjectile(Projectile[] projectiles, Projectile projectile) {
+
         for (int i = 0; i < projectiles.length; i++) {
 
             if (projectiles[i] == null) {
 
-                projectiles[i] = chars[0].shoot();
+                projectiles[i] = projectile;
                 break;
             }
         }
@@ -175,7 +177,6 @@ public class Game implements KeyboardHandler {
                 break;
 
             case KeyboardEvent.KEY_SPACE:
-
                 codeCadetShoot();
                 break;
 

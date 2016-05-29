@@ -22,4 +22,17 @@ public class CollisionChecker {
             }
         }
     }
-}
+
+    public static void check(Projectile[] projectiles, Char character) {
+
+            for (int j = 0; j < projectiles.length; j++) {
+
+                if (projectiles[j]!= null && projectiles[j].getPosition().equals(character.getPosition())) {
+
+                    projectiles[j].reachTarget(); //update boolean, says it can be deleted
+                    character.getHit(projectiles[j]);//deals damage (?) || increases counters
+                }
+            }
+        }
+    }
+

@@ -32,27 +32,33 @@ public class Projectile extends GameObjects {
 
         } else {
 
-            switch (type) {
+            getPosition().move(this.getCurrentDirection(), 1);
+
+            /*switch (type) {
 
                 case KISSY:
                     getPosition().move(Direction.DOWN, 1);
+                    break;
 
                 case DICKY:
                     getPosition().move(Direction.DOWN, 1);
+                    break;
 
                 case QUESTION:
                     getPosition().move(Direction.UP, 1);
+                    break;
 
                 case BUG:
                     getPosition().move(Direction.UP, 1);
+                    break;
             }
-        }
+     */   }
     }
 
     // TODO: 29/05/2016 move this to gameobjects
     public boolean reachedEdge(){
 
-        return (this.position.getRow() < 0
+        return (this.position.getRow() == 0
                 || this.position.getRow() == this.position.getGrid().getRows());
     }
 
