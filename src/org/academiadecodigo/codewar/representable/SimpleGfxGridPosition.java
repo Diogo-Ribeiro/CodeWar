@@ -10,7 +10,7 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 public class SimpleGfxGridPosition extends AbstractGridPosition {
 
     // TODO: 27/05/16  change to image
-    Rectangle representable;
+    private Rectangle representable;
 
     public SimpleGfxGridPosition (SimpleGfxGrid grid, Rectangle representable) {
 
@@ -48,9 +48,9 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
 
         } else if (direction == Direction.RIGHT){
 
-            if (this.col + dist > grid.getCols()-1) {
+            if (this.getCol() + dist > getGrid().getCols()-1) {
 
-                dist = (grid.getCols()-1) - this.col;
+                dist = (getGrid().getCols()-1) - this.getCol();
             }
 
             this.setCol(this.getCol() + dist);
@@ -58,9 +58,9 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
 
         }else if(direction == Direction.DOWN){
 
-            if(this.getRow() + dist > grid.getRows()){
+            if(this.getRow() + dist > getGrid().getRows()){
 
-                dist = (grid.getRows())- this.getRow();
+                dist = (getGrid().getRows())- this.getRow();
             }
 
             this.setRow(this.getRow() + dist);
@@ -95,6 +95,10 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
         representable.delete();
     }
 
+    public Rectangle getRepresentable(){
+        return representable;
+    }
+    /*
     @Override
     public int getCol() {
         return col;
@@ -103,5 +107,5 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
     @Override
     public int getRow() {
         return row;
-    }
+    }*/
 }

@@ -11,9 +11,12 @@ public class CharFactory {
 
     public static Char[] charMaker (Grid grid) {
 
+
         Char[] chars = new Char[MasterCoderType.values().length + 1];
 
         // TODO: 29/05/2016 move the position making logic to codecadet
+        //Class char receives "GridPosition" as argument. Here we use SimpleGfxGrid's method makeGridPosition (returns GridPosition)
+        //Should we change the method makeGridPosition to interface in order to generalize ?
         chars[0] = new Codecadet(grid.makeGridPosition(grid.getCols()/2, grid.getRows()-1, new Rectangle(0,0,10,10)));
 
         for (int i = 1; i < chars.length; i++) {

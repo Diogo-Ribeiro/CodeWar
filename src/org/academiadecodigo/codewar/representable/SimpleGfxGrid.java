@@ -34,6 +34,7 @@ public class SimpleGfxGrid implements Grid {
         return rows;
     }
 
+    //TODO: 29/05/2016 Change argument Rectangle to more general representable
     public SimpleGfxGridPosition makeGridPosition(Rectangle representable) {
 
         return new SimpleGfxGridPosition(this, representable);

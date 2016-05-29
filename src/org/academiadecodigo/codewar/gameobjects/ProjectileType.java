@@ -10,21 +10,27 @@ public enum ProjectileType {
 
     // TODO: 29/05/2016 how can we set the images?
 
-    KISSY (0,0,5,5, Color.PINK),
-    DICKY (0,0,5,5, Color.LIGHT_GRAY),
-    BUG (0,0,5,5, Color.YELLOW),
-    QUESTION (0,0,5,5, Color.DARK_GRAY);
+    // TODO: Change color to adress of the pictures.
+    KISSY (Color.PINK),
+    DICKY (Color.LIGHT_GRAY),
+    BUG (Color.YELLOW),
+    QUESTION (Color.GREEN);
 
+    private Color color;
+    //TODO change Rectangle to more general representable
     private Rectangle representable;
 
-    ProjectileType (int a, int b, int c, int d, Color color) {
+    //ProjectileType (int a, int b, int c, int d, Color color) {
+    ProjectileType(Color color){
+        this.color = color;
 
-        representable = new Rectangle(a, b, c, d);
-        representable.setColor(color);
-        this.representable = representable;
     }
 
     public Rectangle getRepresentable() {
+        //TODO change new Rectangle to new Picture.
+        representable = new Rectangle(0,0,5,5);
+        representable.setColor(color);
+        System.out.println(representable);
         return representable;
     }
 }
