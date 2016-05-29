@@ -25,13 +25,27 @@ public class Projectile extends GameObjects {
 
     public void move () {
 
+        // TODO: 29/05/2016 fix projectile directions 
         if (reachedEdge()) {
 
             reachTarget();
 
         } else {
 
-            this.getPosition().move(this.getCurrentDirection(), 1);
+            switch (type) {
+
+                case KISSY:
+                    getPosition().move(Direction.DOWN, 1);
+
+                case DICKY:
+                    getPosition().move(Direction.DOWN, 1);
+
+                case QUESTION:
+                    getPosition().move(Direction.UP, 1);
+
+                case BUG:
+                    getPosition().move(Direction.UP, 1);
+            }
         }
     }
 
