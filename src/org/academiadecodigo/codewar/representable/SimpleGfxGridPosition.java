@@ -33,27 +33,32 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
     }
 
     @Override
-    public void move (Direction direction, int d) {
+    public void move (Direction direction, int dist) {
 
         if (direction == Direction.LEFT) {
 
-            if (this.getCol() - d < 0) {
+            if (this.getCol() - dist < 0) {
 
-               d = this.getCol();
+               dist = this.getCol();
             }
 
-            this.setCol(this.getCol() - d);
-            representable.translate(-(d * SimpleGfxGrid.CELL_SIZE), 0);
+            this.setCol(this.getCol() - dist);
+            representable.translate(-(dist * SimpleGfxGrid.CELL_SIZE), 0);
 
         } else if (direction == Direction.RIGHT){
 
-            if (this.getCol() + d > grid.getCols()-1) {
+            if (this.col + dist > grid.getCols()-1) {
 
-                d = (grid.getCols()-1) - this.getCol();
+                dist = (grid.getCols()-1) - this.col;
             }
 
-            this.setCol(this.getCol() + d);
-            representable.translate(d * SimpleGfxGrid.CELL_SIZE, 0);
+            this.setCol(this.getCol() + dist);
+            representable.translate(dist * SimpleGfxGrid.CELL_SIZE, 0);
+
+        } else if (direction == Direction.UP){
+
+            row--;
+            representable.translate(0, -dist * SimpleGfxGrid.CELL_SIZE);
 
         }else if(direction == Direction.DOWN){
             if(this.getRow() + d > grid.getRows()){
@@ -68,11 +73,11 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
                 d =  this.getRow();
             }
             this.setRow(this.getRow()- d);
-            representable.translate(0, -1 * d * SimpleGfxGrid.CELL_SIZE);
+            representable.translate(0,d * SimpleGfxGrid.CELL_SIZE);
 
         }
-
         else {
+
             System.out.println("error");
         }
     }
@@ -88,7 +93,6 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
     public void hide() {
 
         representable.delete();
-
     }
 
     @Override

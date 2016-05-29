@@ -8,19 +8,18 @@ import org.academiadecodigo.codewar.gameobjects.Projectile;
  */
 public class CollisionChecker {
 
-    /*public static void check(Projectile[] projectiles, Char[] chars) {
+    public static void check(Projectile[] projectiles, Char[] chars) {
 
         for (int i = 0; i < chars.length; i++) {
 
-            for (int j = 0; j < chars.length; j++) {
+            for (int j = 0; j < projectiles.length; j++) {
 
-                if (projectiles[i].getPos() == chars[i].getPos()) {
+                if (projectiles[j]!= null && projectiles[j].getPosition().equals(chars[i].getPosition())) {
 
-                    projectiles[i].hitTarget(); //update boolean, says it can be deleted
-                    chars[i].getHit (projectiles[i]);
-
+                    projectiles[j].reachTarget(); //update boolean, says it can be deleted
+                    chars[i].getHit (projectiles[i]);//deals damage (?) and increases kissy counter
                 }
             }
         }
-    }*/
+    }
 }

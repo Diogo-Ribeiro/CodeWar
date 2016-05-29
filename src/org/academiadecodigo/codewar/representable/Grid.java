@@ -9,5 +9,6 @@ public interface Grid {
 
     public int getCols();
     public int getRows();
-    public SimpleGfxGridPosition makeGridPosition(int col, int row, Rectangle representable);
+    public GridPosition makeGridPosition(Rectangle representable);
+    public GridPosition makeGridPosition (int col, int row, Rectangle representable);
 }

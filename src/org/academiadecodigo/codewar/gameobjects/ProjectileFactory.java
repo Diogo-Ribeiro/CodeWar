@@ -1,5 +1,6 @@
 package org.academiadecodigo.codewar.gameobjects;
-import org.academiadecodigo.codewar.representable.*;
+import org.academiadecodigo.codewar.Direction;
+import org.academiadecodigo.codewar.representable.GridPosition;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 /**
@@ -7,13 +8,12 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
  */
 public class ProjectileFactory {
 
-    /*public ProjectileFactory(ProjectileType type, SimpleGfxGrid grid, SimpleGfxGridPosition position){
-        this.grid = grid;
+    public static Projectile get(ProjectileType type, GridPosition position, Direction direction){
 
-    }*/
+        position = position.getGrid().makeGridPosition(position.getCol(), position.getRow(), new Rectangle(0,0,5, 5));
 
-    public static Projectile get(ProjectileType type, SimpleGfxGridPosition position, Grid grid){
-
-        return new Projectile(type, grid.makeGridPosition(position.getCol(),position.getRow(),new Rectangle(0,0,10,10)));
+        System.out.println(position.getCol());
+        System.out.println(position.getRow());
+        return new Projectile(type, position, direction);
     }
 }
