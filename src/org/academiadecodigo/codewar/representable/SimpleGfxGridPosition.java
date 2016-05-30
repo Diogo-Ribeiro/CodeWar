@@ -3,6 +3,7 @@ package org.academiadecodigo.codewar.representable;
 import org.academiadecodigo.codewar.Direction;
 import org.academiadecodigo.codewar.RandomNumberGenerator;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 /**
  * Created by codecadet on 25/05/16.
@@ -10,9 +11,9 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 public class SimpleGfxGridPosition extends AbstractGridPosition {
 
     // TODO: 27/05/16  change to image
-    private Rectangle representable;
+    private Picture representable;
 
-    public SimpleGfxGridPosition (SimpleGfxGrid grid, Rectangle representable) {
+    public SimpleGfxGridPosition (SimpleGfxGrid grid, Picture representable) {
 
         super(RandomNumberGenerator.get(0, grid.getCols()-1), 0, grid);
 
@@ -22,13 +23,13 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
 
     }
 
-    public SimpleGfxGridPosition (int col, int row, SimpleGfxGrid grid, Rectangle representable) {
+    public SimpleGfxGridPosition (int col, int row, SimpleGfxGrid grid, Picture representable) {
 
         super (col, row, grid);
 
         this.representable = representable;
         this.representable.translate(this.getCol()*SimpleGfxGrid.CELL_SIZE, this.getRow()*SimpleGfxGrid.CELL_SIZE);
-        representable.fill();
+        representable.draw();
 
     }
 
@@ -85,17 +86,17 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
     @Override
     public void show() {
 
-        representable.fill();
+        representable.draw();
 
     }
 
     @Override
     public void hide() {
 
-        representable.delete();
+        representable.pause();
     }
 
-    public Rectangle getRepresentable(){
+    public Picture getRepresentable(){
         return representable;
     }
     /*

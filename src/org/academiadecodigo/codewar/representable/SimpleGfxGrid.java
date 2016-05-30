@@ -1,8 +1,13 @@
 package org.academiadecodigo.codewar.representable;
 
 import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.graphics.Picture;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.graphics.Text;
+
+import java.awt.*;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
 
 /**
  * Created by codecadet on 25/05/16.
@@ -18,12 +23,17 @@ public class SimpleGfxGrid implements Grid {
         this.cols = cols;
         this.rows = rows;
     }
-
+    Picture pic = new Picture();
     public void init() {
 
-        Rectangle rectangle = new Rectangle(0, 0, cols*CELL_SIZE, rows*CELL_SIZE);
-        rectangle.setColor(Color.BLACK);
-        rectangle.draw();
+
+        pic.load("/Users/diogocodecadet/Downloads/invaders_from_space_by_suicidalstickman.jpg");
+
+        pic.draw();
+
+        //Rectangle rectangle = new Rectangle(0, 0, cols*CELL_SIZE, rows*CELL_SIZE);
+        //rectangle.setColor(Color.BLACK);
+        //rectangle.draw();
     }
 
     public int getCols() {
@@ -34,13 +44,23 @@ public class SimpleGfxGrid implements Grid {
         return rows;
     }
 
+    @Override
+    public GridPosition makeGridPosition(Picture representable) {
+        return pic;
+    }
+
     //TODO: 29/05/2016 Change argument Rectangle to more general representable
-    public SimpleGfxGridPosition makeGridPosition(Rectangle representable) {
+    public SimpleGfxGridPosition makeGridPosition(Picture representable) {
 
         return new SimpleGfxGridPosition(this, representable);
     }
 
-    public SimpleGfxGridPosition makeGridPosition(int col, int row, Rectangle representable) {
+    @Override
+    public GridPosition makeGridPosition(int col, int row, Picture representable) {
+        return representable;
+    }
+
+    public SimpleGfxGridPosition makeGridPosition(int col, int row, Picture representable) {
 
         return new SimpleGfxGridPosition(col, row, this, representable);
     }

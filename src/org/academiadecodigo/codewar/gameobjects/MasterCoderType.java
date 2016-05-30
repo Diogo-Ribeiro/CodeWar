@@ -2,6 +2,7 @@ package org.academiadecodigo.codewar.gameobjects;
 
 import org.academiadecodigo.codewar.representable.Representable;
 import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.graphics.Picture;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 /**
@@ -9,22 +10,23 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
  */
 public enum MasterCoderType {
 
-    MARIO (new Rectangle(0,0,10,10), Color.BLACK),
-    ANTONINHO (new Rectangle(0,0,10,10), Color.RED),
-    ICEMAN (new Rectangle(0,0,10,10), Color.GREEN),
-    FERRAO (new Rectangle(0,0,10,10), Color.CYAN),
-    JOANA (new Rectangle(0,0,10,10), Color.MAGENTA),
-    NUNO (new Rectangle(0,0,10,10), Color.ORANGE);
+    MARIO (new Picture(10,10), "https://apkplz.com/storage/images/com/whileone/mastercode/300/master-code.png"),
+    ANTONINHO (new Picture(10,10),"https://apkplz.com/storage/images/com/whileone/mastercode/300/master-code.png"),
+    ICEMAN (new Picture(10,10),"https://apkplz.com/storage/images/com/whileone/mastercode/300/master-code.png"),
+    FERRAO (new Picture(10,10),"https://apkplz.com/storage/images/com/whileone/mastercode/300/master-code.png"),
+    JOANA (new Picture(10,10),"https://apkplz.com/storage/images/com/whileone/mastercode/300/master-code.png"),
+    NUNO (new Picture(10,10),"https://apkplz.com/storage/images/com/whileone/mastercode/300/master-code.png");
 
-    private Rectangle representable;
+    private Picture representable;
+    private Picture picture;
 
-    MasterCoderType (Rectangle representable, Color color) {
+    MasterCoderType (Picture representable, String pic) {
+        this.picture = representable;
+        representable.load(pic);
 
-        representable.setColor(color);
-        this.representable = representable;
     }
 
-    public Rectangle getRepresentable() {
-        return representable;
+    public Picture getRepresentable() {
+        return picture;
     }
 }
