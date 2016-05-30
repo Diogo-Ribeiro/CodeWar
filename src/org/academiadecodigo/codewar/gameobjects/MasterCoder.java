@@ -2,7 +2,6 @@ package org.academiadecodigo.codewar.gameobjects;
 
 import org.academiadecodigo.codewar.Direction;
 import org.academiadecodigo.codewar.RandomNumberGenerator;
-import org.academiadecodigo.codewar.representable.Grid;
 import org.academiadecodigo.codewar.representable.GridPosition;
 
 /**
@@ -39,7 +38,7 @@ public class MasterCoder extends Char {
                     step = MAX_STEP;
                 }
 
-                if (isHittingWall(getPosition().getGrid())) {
+                if (isHittingWall()) {
 
                     setCurrentDirection(Direction.getOppositeX(getCurrentDirection()));
                 }
@@ -75,8 +74,10 @@ public class MasterCoder extends Char {
         return null;
     }
 
-    public boolean isHittingWall(Grid grid){
+    // TODO: 27/05/16 remove grid from arguments
 
-        return (getPosition().getCol() <= 0 || getPosition().getCol()>= grid.getCols()-1);
+    public boolean isHittingWall(){
+
+        return (getPosition().getCol() <= 0 || getPosition().getCol()>= getPosition().getGrid().getCols()-1);
     }
 }

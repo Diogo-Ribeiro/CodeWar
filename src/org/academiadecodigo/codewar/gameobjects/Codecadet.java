@@ -1,14 +1,7 @@
 package org.academiadecodigo.codewar.gameobjects;
 
 import org.academiadecodigo.codewar.Direction;
-import org.academiadecodigo.codewar.representable.Grid;
 import org.academiadecodigo.codewar.representable.GridPosition;
-import org.academiadecodigo.codewar.representable.SimpleGfxGrid;
-import org.academiadecodigo.codewar.representable.SimpleGfxGridPosition;
-import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
 /**
  * Created by diogocodecadet on 23/05/16.
@@ -57,7 +50,7 @@ public class Codecadet extends Char{
     public Projectile specialShoot() {
 
         System.out.println(kissyCounter);
-        if (kissyCounter == 4) {
+        if (kissyCounter >= 4) {
 
             kissyCounter = 0;
             return ProjectileFactory.get(ProjectileType.BUG, this.getPosition(), Direction.UP);

@@ -79,11 +79,18 @@ public class Game implements KeyboardHandler {
         CollisionChecker.check(playerProjectiles, chars);
     }
 
-    private void codeCadetShoot() {
+    private void codeCadetShoot(ProjectileType type) {
 
         if (!isFull(playerProjectiles)) {
 
-            storeProjectile(playerProjectiles, chars[0].shoot());
+            if (type == ProjectileType.QUESTION) {
+
+                storeProjectile(playerProjectiles, chars[0].shoot());
+
+            } else {
+
+                storeProjectile(playerProjectiles, ((Codecadet)chars[0]).specialShoot());
+            }
         }
     }
 
@@ -177,12 +184,12 @@ public class Game implements KeyboardHandler {
                 break;
 
             case KeyboardEvent.KEY_SPACE:
-                codeCadetShoot();
+                codeCadetShoot(ProjectileType.QUESTION);
                 break;
 
             case KeyboardEvent.KEY_B:
 
-                ((Codecadet)chars[0]).specialShoot();
+                codeCadetShoot(ProjectileType.BUG);
         }
     }
 

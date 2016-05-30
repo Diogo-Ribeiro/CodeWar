@@ -18,7 +18,6 @@ public enum ProjectileType {
 
     private Color color;
     //TODO change Rectangle to more general representable
-    private Rectangle representable;
 
     //ProjectileType (int a, int b, int c, int d, Color color) {
     ProjectileType(Color color){
@@ -28,7 +27,7 @@ public enum ProjectileType {
 
     public Rectangle getRepresentable() {
         //TODO change new Rectangle to new Picture.
-        representable = new Rectangle(0,0,5,5);
+        Rectangle representable = new Rectangle(0,0,5,5);
         representable.setColor(color);
         System.out.println(representable);
         return representable;

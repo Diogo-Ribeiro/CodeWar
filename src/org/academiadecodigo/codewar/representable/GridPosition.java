@@ -9,7 +9,11 @@ public interface GridPosition {
 
     public int getCol();
 
+    public void setCol(int col);
+
     public int getRow();
+
+    public void setRow(int row);
 
     public Grid getGrid();
 
