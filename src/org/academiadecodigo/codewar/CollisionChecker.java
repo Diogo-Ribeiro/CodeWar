@@ -14,25 +14,32 @@ public class CollisionChecker {
 
             for (int j = 0; j < projectiles.length; j++) {
 
-                if (projectiles[j]!= null && projectiles[j].getPosition().equals(chars[i].getPosition())) {
+                if (projectiles[j] != null && projectiles[j].getPosition().equals(chars[i].getPosition())) {
 
                     projectiles[j].reachTarget(); //update boolean, says it can be deleted
-                    chars[i].getHit (projectiles[j]);//deals damage (?) || increases counters
+                    chars[i].getHit(projectiles[j]);//deals damage (?) || increases counters
                 }
             }
         }
     }
 
-    public static void check(Projectile[] projectiles, Char character) {
+    public static void check(Projectile[] mcProjectiles, Projectile[] playerProjectiles) {
 
-            for (int j = 0; j < projectiles.length; j++) {
+        for (int i = 0; i < mcProjectiles.length; i++) {
 
-                if (projectiles[j]!= null && projectiles[j].getPosition().equals(character.getPosition())) {
+            for (int j = 0; j < playerProjectiles.length; j++) {
 
-                    projectiles[j].reachTarget(); //update boolean, says it can be deleted
-                    character.getHit(projectiles[j]);//deals damage (?) || increases counters
+                if (mcProjectiles[i] != null
+                    && playerProjectiles[j] != null
+                    && mcProjectiles[i].getPosition().getCol() == playerProjectiles[j].getPosition().getCol()
+                    && (mcProjectiles[i].getPosition().getRow() == playerProjectiles[j].getPosition().getRow()-1
+                        || mcProjectiles[i].getPosition().getRow() == playerProjectiles[j].getPosition().getRow())) {
+
+                    mcProjectiles[i].reachTarget();
+                    playerProjectiles[j].reachTarget(); //update boolean, says it can be deleted
                 }
             }
         }
     }
+}
 

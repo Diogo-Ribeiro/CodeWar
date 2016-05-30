@@ -58,6 +58,7 @@ public class Projectile extends GameObjects {
     // TODO: 29/05/2016 move this to gameobjects
     public boolean reachedEdge(){
 
+        // TODO: 30/05/16 fix this, they are showing below the line!
         return (this.position.getRow() == 0
                 || this.position.getRow() == this.position.getGrid().getRows());
     }
