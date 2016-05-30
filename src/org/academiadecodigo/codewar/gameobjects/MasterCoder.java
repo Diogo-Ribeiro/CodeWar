@@ -14,7 +14,6 @@ public class MasterCoder extends Char {
     private MasterCoderType type;
     private int step;
 
-    private boolean moving;
 
     // TODO: 24/05/16 mcs open mouth to shoot kissies or dickies
 
@@ -23,14 +22,14 @@ public class MasterCoder extends Char {
         super(position);
         this.type = type;
         step = MAX_STEP;
-        this.moving = true;
+        this.setMoving(true);
         this.setCurrentDirection(Direction.getRandomX());
     }
 
     @Override
     public void move (){
 
-        if (!isDead() && moving) {
+        if (!isDead() && isMoving()) {
 
             //only move every other turn
             if (step % 2 == 0) {
@@ -49,9 +48,9 @@ public class MasterCoder extends Char {
                 getPosition().move(this.getCurrentDirection(), 1);
             }
 
-        } else if (!moving && step == 0) {
+        } else if (!isMoving() && step == 0) {
 
-            moving = true;
+            setMoving(true);
             step = MAX_STEP;
         }
         step--;
@@ -66,7 +65,7 @@ public class MasterCoder extends Char {
 
         } else {
 
-            moving = false;
+            setMoving(false);
             step = MAX_STEP;
         }
     }

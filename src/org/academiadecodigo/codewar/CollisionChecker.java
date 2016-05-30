@@ -1,6 +1,7 @@
 package org.academiadecodigo.codewar;
 
 import org.academiadecodigo.codewar.gameobjects.Char;
+import org.academiadecodigo.codewar.gameobjects.Codecadet;
 import org.academiadecodigo.codewar.gameobjects.Projectile;
 import org.academiadecodigo.codewar.gameobjects.ProjectileType;
 
@@ -20,6 +21,18 @@ public class CollisionChecker {
                     projectiles[j].reachTarget(); //update boolean, says it can be deleted
                     chars[i].getHit(projectiles[j]);//deals damage (?) || increases counters
                 }
+            }
+        }
+    }
+
+    public static void check (Projectile[] mcProjectiles, Codecadet player) {
+
+        for (int i = 0; i < mcProjectiles.length; i++) {
+
+            if (mcProjectiles[i] != null && mcProjectiles[i].getPosition().equals(player.getPosition())) {
+
+                mcProjectiles[i].reachTarget(); //update boolean, says it can be deleted
+                player.getHit(mcProjectiles[i]);//deals damage (?) || increases counters
             }
         }
     }
