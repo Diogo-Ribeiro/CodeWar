@@ -18,14 +18,6 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
 
         this.representable = representable;
         this.representable.translate(this.getCol()*SimpleGfxGrid.CELL_SIZE, this.getRow()*SimpleGfxGrid.CELL_SIZE);
-        System.out.println("col");
-        System.out.println(getCol());
-        System.out.println(representable.getX());
-        System.out.println(representable.getMaxX());
-
-        System.out.println("row");
-        System.out.println(getRow());
-        System.out.println(representable.getY());
         representable.draw();
 
     }

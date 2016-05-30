@@ -22,7 +22,7 @@ public class Game implements KeyboardHandler {
     private Char[] chars;
     private Projectile[] playerProjectiles;
     private Projectile[] masterCoderProjectiles;
-    private Grid grid = new SimpleGfxGrid(40, 60);
+    private Grid grid = new SimpleGfxGrid(20, 40);
 
     public Game () {
 
@@ -75,8 +75,9 @@ public class Game implements KeyboardHandler {
 
     private void checkCollisions(Projectile[] mcProjectiles, Projectile[] playerProjectiles, Char[] chars) {
 
-        CollisionChecker.check(mcProjectiles, chars [0]);
+        CollisionChecker.check(mcProjectiles, chars);
         CollisionChecker.check(playerProjectiles, chars);
+        CollisionChecker.check(mcProjectiles, playerProjectiles);
     }
 
     private void codeCadetShoot(ProjectileType type) {

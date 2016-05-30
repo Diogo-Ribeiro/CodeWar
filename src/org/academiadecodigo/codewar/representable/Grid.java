@@ -24,5 +24,4 @@ public interface Grid {
 
     public int getCellSize();
 
-
 }

@@ -1,5 +1,6 @@
 package org.academiadecodigo.codewar.gameobjects;
 
+import org.academiadecodigo.codewar.representable.SimpleGfxGrid;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 /**
@@ -23,9 +24,9 @@ public enum ProjectileType {
     public Picture getRepresentable() {
 
         Picture representable = new Picture(0,0,picture);
-        representable.grow((10-representable.getWidth())/2, (10 - representable.getWidth())/2);
-        System.out.println(representable.getWidth());
-        System.out.println(representable.getHeight());
+        representable.grow((SimpleGfxGrid.CELL_SIZE-representable.getWidth())/2, (SimpleGfxGrid.CELL_SIZE - representable.getWidth())/2);
+        representable.translate(-representable.getX(), -representable.getY());
+
         return representable;
     }
 }

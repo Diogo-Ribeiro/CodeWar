@@ -14,7 +14,7 @@ import java.awt.image.ImageProducer;
  */
 public class SimpleGfxGrid implements Grid {
 
-    public static final int CELL_SIZE = 10;
+    public static final int CELL_SIZE = 20;
     private int cols;
     private int rows;
 
@@ -22,14 +22,15 @@ public class SimpleGfxGrid implements Grid {
 
         this.cols = cols;
         this.rows = rows;
-
     }
 
-    Picture pic = new Picture();
     public void init() {
 
-        pic.load("/Users/codecadet/Desktop/CodeWar/resources/invaders_from_space_by_suicidalstickman.jpg");
-        pic.draw();
+        //Picture pic = new Picture();
+        /*pic.load("/Users/codecadet/Desktop/CodeWar/resources/invaders_from_space_by_suicidalstickman.jpg");
+        pic.grow((cols*CELL_SIZE - pic.getWidth())/2, (rows*CELL_SIZE - pic.getHeight())/2);
+        pic.translate(-pic.getX(), -pic.getY());
+        pic.draw();*/
 
         Rectangle rectangle = new Rectangle(0, 0, cols*CELL_SIZE, rows*CELL_SIZE);
         rectangle.setColor(Color.BLACK);
@@ -60,7 +61,7 @@ public class SimpleGfxGrid implements Grid {
     @Override
     public void stackOverflow() {
 
-        Rectangle rectangle = new Rectangle(0, 0, 400, 600);
+        Rectangle rectangle = new Rectangle(0, 0, cols*getCellSize(), rows*getCellSize());
         rectangle.fill();
 
         Text text = new Text(150, 300, "StackOverflow");
@@ -71,7 +72,7 @@ public class SimpleGfxGrid implements Grid {
     @Override
     public void win() {
 
-        Rectangle rectangle = new Rectangle(0, 0, 400, 600);
+        Rectangle rectangle = new Rectangle(0, 0, cols*getCellSize(), rows*getCellSize());
         rectangle.setColor(Color.WHITE);
         rectangle.fill();
 
