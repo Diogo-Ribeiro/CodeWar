@@ -1,6 +1,7 @@
 package org.academiadecodigo.codewar.gameobjects;
 
 import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.graphics.Picture;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 /**
@@ -25,10 +26,10 @@ public enum ProjectileType {
 
     }
 
-    public Rectangle getRepresentable() {
+    public Picture getRepresentable() {
         //TODO change new Rectangle to new Picture.
-        Rectangle representable = new Rectangle(0,0,5,5);
-        representable.setColor(color);
+        Picture representable = new Picture(5, 5);
+        representable.load("/Users/codecadet/Desktop/CodeWar/resources/00e8b7a51d52791be04e87acbe029132.png");
         System.out.println(representable);
         return representable;
     }

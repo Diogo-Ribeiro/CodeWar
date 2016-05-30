@@ -45,10 +45,6 @@ public class SimpleGfxGrid implements Grid {
     }
 
     @Override
-    public GridPosition makeGridPosition(Picture representable) {
-        return pic;
-    }
-
     //TODO: 29/05/2016 Change argument Rectangle to more general representable
     public SimpleGfxGridPosition makeGridPosition(Picture representable) {
 
@@ -57,10 +53,6 @@ public class SimpleGfxGrid implements Grid {
 
     @Override
     public GridPosition makeGridPosition(int col, int row, Picture representable) {
-        return representable;
-    }
-
-    public SimpleGfxGridPosition makeGridPosition(int col, int row, Picture representable) {
 
         return new SimpleGfxGridPosition(col, row, this, representable);
     }

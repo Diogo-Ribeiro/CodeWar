@@ -2,8 +2,7 @@ package org.academiadecodigo.codewar.representable;
 
 import org.academiadecodigo.codewar.Direction;
 import org.academiadecodigo.codewar.RandomNumberGenerator;
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
-import org.academiadecodigo.simplegraphics.pictures.Picture;
+import org.academiadecodigo.simplegraphics.graphics.Picture;
 
 /**
  * Created by codecadet on 25/05/16.
@@ -19,7 +18,7 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
 
         this.representable = representable;
         this.representable.translate(this.getCol()*SimpleGfxGrid.CELL_SIZE, this.getRow()*SimpleGfxGrid.CELL_SIZE);
-        representable.fill();
+        representable.draw();
 
     }
 
@@ -93,7 +92,7 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
     @Override
     public void hide() {
 
-        representable.pause();
+        representable.delete();
     }
 
     public Picture getRepresentable(){
