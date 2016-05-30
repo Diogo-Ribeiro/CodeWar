@@ -15,6 +15,7 @@ public enum ProjectileType {
 
     private String picture;
 
+
     ProjectileType(String picture){
 
         this.picture = picture;

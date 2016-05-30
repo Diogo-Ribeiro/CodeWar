@@ -2,6 +2,7 @@ package org.academiadecodigo.codewar.representable;
 
 import org.academiadecodigo.codewar.Direction;
 import org.academiadecodigo.codewar.RandomNumberGenerator;
+import org.academiadecodigo.codewar.gameobjects.Char;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 /**
@@ -14,7 +15,7 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
 
     public SimpleGfxGridPosition (SimpleGfxGrid grid, Picture representable) {
 
-        super(RandomNumberGenerator.get(0, grid.getCols()-1), 0, grid);
+        super(RandomNumberGenerator.get(0, grid.getCols()- Char.AVATAR_DIMENSION), 0, grid);
 
         this.representable = representable;
         this.representable.translate(this.getCol()*SimpleGfxGrid.CELL_SIZE, this.getRow()*SimpleGfxGrid.CELL_SIZE);
@@ -48,9 +49,9 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
 
         } else if (direction == Direction.RIGHT){
 
-            if (this.getCol() + dist > getGrid().getCols()-1) {
+            if (this.getCol() + dist > getGrid().getCols()-Char.AVATAR_DIMENSION) {
 
-                dist = (getGrid().getCols()-1) - this.getCol();
+                dist = (getGrid().getCols()-Char.AVATAR_DIMENSION) - this.getCol();
             }
 
             this.setCol(this.getCol() + dist);
@@ -76,6 +77,7 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
             representable.translate(0, -dist * SimpleGfxGrid.CELL_SIZE);
 
         }
+
         else {
 
             System.out.println("error");
@@ -104,8 +106,9 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
         if (obj instanceof GridPosition) {
 
             GridPosition position = (GridPosition)obj;
-            return this.getCol() == position.getCol()
-                    && this.getRow() == position.getRow();
+
+            return this.getCol() >= position.getCol() && this.getCol() <=  position.getCol()+ Char.AVATAR_DIMENSION
+                    && this.getRow() >= position.getRow() && this.getRow() <=  position.getRow()+ Char.AVATAR_DIMENSION;
         }
         return false;
     }

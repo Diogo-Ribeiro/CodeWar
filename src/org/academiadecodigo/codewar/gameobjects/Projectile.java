@@ -32,27 +32,15 @@ public class Projectile extends GameObjects {
 
         } else {
 
+            if (type == ProjectileType.BUG) {
+
+                getPosition().move(this.getCurrentDirection(), 2);
+
+            }
+
             getPosition().move(this.getCurrentDirection(), 1);
 
-            /*switch (type) {
-
-                case KISSY:
-                    getPosition().move(Direction.DOWN, 1);
-                    break;
-
-                case DICKY:
-                    getPosition().move(Direction.DOWN, 1);
-                    break;
-
-                case QUESTION:
-                    getPosition().move(Direction.UP, 1);
-                    break;
-
-                case BUG:
-                    getPosition().move(Direction.UP, 1);
-                    break;
-            }
-     */   }
+        }
     }
 
     // TODO: 29/05/2016 move this to gameobjects
@@ -60,7 +48,7 @@ public class Projectile extends GameObjects {
 
         // TODO: 30/05/16 fix this, they are showing below the line!
         return (this.position.getRow() == 0
-                || this.position.getRow() == this.position.getGrid().getRows());
+                || this.position.getRow() == this.position.getGrid().getRows()-1);
     }
 
     public void reachTarget() {

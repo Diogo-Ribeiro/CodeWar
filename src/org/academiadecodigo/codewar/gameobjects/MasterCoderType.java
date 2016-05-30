@@ -18,7 +18,6 @@ public enum MasterCoderType {
     JOANA ("/Users/codecadet/Desktop/CodeWar/resources/MC JOANA.png"),
     NUNO ("/Users/codecadet/Desktop/CodeWar/resources/MC ANTONINHO.png");
 
-
     private String picture;
 
     MasterCoderType (String string) {
@@ -29,7 +28,7 @@ public enum MasterCoderType {
     public Picture getRepresentable() {
 
         Picture representable = new Picture(0,0,picture);
-        representable.grow((SimpleGfxGrid.CELL_SIZE*2-representable.getWidth())/2, (SimpleGfxGrid.CELL_SIZE*2 - representable.getHeight())/2);
+        representable.grow((SimpleGfxGrid.CELL_SIZE*Char.AVATAR_DIMENSION-representable.getWidth())/2, (SimpleGfxGrid.CELL_SIZE*Char.AVATAR_DIMENSION - representable.getHeight())/2);
         representable.translate(-representable.getX(), -representable.getY());
 
         return representable;

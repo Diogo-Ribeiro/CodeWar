@@ -12,18 +12,18 @@ public enum CodecadetType {
     NUNO(""),
     HENRY(""),
     JOAO(""),
-    SOFIA("/Users/codecadet/Desktop/CodeWar/resources/Sofia.png"),
+    SOFIA("Sofia.png"),
     LUIS(""),
-    DANIEL("/Users/codecadet/Desktop/CodeWar/resources/Daniel.png"),
+    DANIEL("Daniel.png"),
     JORGE(""),
     AMAURI(""),
     ANDRE(""),
-    IGOR("/Users/codecadet/Desktop/CodeWar/resources/Igor.png"),
+    IGOR("Igor.png"),
     ELIAS(""),
-    DIOGO("/Users/codecadet/Desktop/CodeWar/resources/Diogo.png"),
-    FLAVIO("/Users/codecadet/Desktop/CodeWar/resources/Flavio.png"),
+    DIOGO("Diogo.png"),
+    FLAVIO("Flavio.png"),
     BRUNO(""),
-    NELSON("/Users/codecadet/Desktop/CodeWar/resources/Nelson.png"),
+    NELSON("Nelson.png"),
     SAMUEL("");
 
     private String picture;
@@ -36,8 +36,8 @@ public enum CodecadetType {
 
     public static Picture getRepresentable() {
 
-        Picture representable = new Picture(0,0,"/Users/codecadet/Desktop/CodeWar/resources/Igor.png");
-        representable.grow((SimpleGfxGrid.CELL_SIZE*2-representable.getWidth())/2, (SimpleGfxGrid.CELL_SIZE*2 - representable.getHeight())/2);
+        Picture representable = new Picture(0,0,"Igor.png");
+        representable.grow((SimpleGfxGrid.CELL_SIZE* Char.AVATAR_DIMENSION-representable.getWidth())/2, (SimpleGfxGrid.CELL_SIZE*Char.AVATAR_DIMENSION - representable.getHeight())/2);
         representable.translate(-representable.getX(), -representable.getY());
 
         return representable;

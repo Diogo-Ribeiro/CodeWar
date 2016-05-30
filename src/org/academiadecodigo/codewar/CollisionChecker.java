@@ -2,6 +2,7 @@ package org.academiadecodigo.codewar;
 
 import org.academiadecodigo.codewar.gameobjects.Char;
 import org.academiadecodigo.codewar.gameobjects.Projectile;
+import org.academiadecodigo.codewar.gameobjects.ProjectileType;
 
 /**
  * Created by codecadet on 25/05/16.
@@ -31,6 +32,7 @@ public class CollisionChecker {
 
                 if (mcProjectiles[i] != null
                     && playerProjectiles[j] != null
+                    && playerProjectiles[j].getType() != ProjectileType.BUG
                     && mcProjectiles[i].getPosition().getCol() == playerProjectiles[j].getPosition().getCol()
                     && (mcProjectiles[i].getPosition().getRow() == playerProjectiles[j].getPosition().getRow()-1
                         || mcProjectiles[i].getPosition().getRow() == playerProjectiles[j].getPosition().getRow())) {

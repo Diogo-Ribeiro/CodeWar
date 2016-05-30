@@ -7,6 +7,7 @@ import org.academiadecodigo.codewar.representable.GridPosition;
  */
 public abstract class Char extends GameObjects {
 
+    public final static int AVATAR_DIMENSION = 4;
     private int hp = 6;
     private boolean dead;
     private boolean specialShot;
