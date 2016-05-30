@@ -2,7 +2,7 @@ package org.academiadecodigo.codewar.gameobjects;
 
 import org.academiadecodigo.codewar.representable.Representable;
 import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Picture;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 /**

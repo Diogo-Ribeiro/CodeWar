@@ -1,6 +1,6 @@
 package org.academiadecodigo.codewar.representable;
 
-import org.academiadecodigo.simplegraphics.graphics.Picture;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 /**
@@ -21,6 +21,8 @@ public interface Grid {
     public void stackOverflow();
 
     public void win();
+
+    public int getCellSize();
 
 
 }

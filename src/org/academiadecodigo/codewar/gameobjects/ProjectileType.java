@@ -1,36 +1,31 @@
 package org.academiadecodigo.codewar.gameobjects;
 
-import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Picture;
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 /**
  * Created by diogocodecadet on 23/05/16.
  */
 public enum ProjectileType {
 
-    // TODO: 29/05/2016 how can we set the images?
+    KISSY ("/Users/codecadet/Desktop/CodeWar/resources/54012f6264942f32f27114f45068fb87.png"),
+    DICKY ("/Users/codecadet/Desktop/CodeWar/resources/avatar_a112a7e0bf35_128.png"),
+    BUG ("/Users/codecadet/Desktop/CodeWar/resources/lady-beetle.png"),
+    QUESTION ("/Users/codecadet/Desktop/CodeWar/resources/00e8b7a51d52791be04e87acbe029132.png");
 
-    // TODO: Change color to adress of the pictures.
-    KISSY (Color.PINK),
-    DICKY (Color.LIGHT_GRAY),
-    BUG (Color.YELLOW),
-    QUESTION (Color.GREEN);
+    private String picture;
 
-    private Color color;
-    //TODO change Rectangle to more general representable
+    ProjectileType(String picture){
 
-    //ProjectileType (int a, int b, int c, int d, Color color) {
-    ProjectileType(Color color){
-        this.color = color;
+        this.picture = picture;
 
     }
 
     public Picture getRepresentable() {
-        //TODO change new Rectangle to new Picture.
-        Picture representable = new Picture(5, 5);
-        representable.load("/Users/codecadet/Desktop/CodeWar/resources/00e8b7a51d52791be04e87acbe029132.png");
-        System.out.println(representable);
+
+        Picture representable = new Picture(0,0,picture);
+        representable.grow((10-representable.getWidth())/2, (10 - representable.getWidth())/2);
+        System.out.println(representable.getWidth());
+        System.out.println(representable.getHeight());
         return representable;
     }
 }

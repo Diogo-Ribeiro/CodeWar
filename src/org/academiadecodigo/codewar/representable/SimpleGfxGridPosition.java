@@ -2,7 +2,7 @@ package org.academiadecodigo.codewar.representable;
 
 import org.academiadecodigo.codewar.Direction;
 import org.academiadecodigo.codewar.RandomNumberGenerator;
-import org.academiadecodigo.simplegraphics.graphics.Picture;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 /**
  * Created by codecadet on 25/05/16.
@@ -18,6 +18,14 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
 
         this.representable = representable;
         this.representable.translate(this.getCol()*SimpleGfxGrid.CELL_SIZE, this.getRow()*SimpleGfxGrid.CELL_SIZE);
+        System.out.println("col");
+        System.out.println(getCol());
+        System.out.println(representable.getX());
+        System.out.println(representable.getMaxX());
+
+        System.out.println("row");
+        System.out.println(getRow());
+        System.out.println(representable.getY());
         representable.draw();
 
     }
@@ -98,14 +106,15 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
     public Picture getRepresentable(){
         return representable;
     }
-    /*
-    @Override
-    public int getCol() {
-        return col;
-    }
 
-    @Override
-    public int getRow() {
-        return row;
-    }*/
+    public boolean equals(Object obj) {
+
+        if (obj instanceof GridPosition) {
+
+            GridPosition position = (GridPosition)obj;
+            return this.getCol() == position.getCol()
+                    && this.getRow() == position.getRow();
+        }
+        return false;
+    }
 }

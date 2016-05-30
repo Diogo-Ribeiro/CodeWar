@@ -1,7 +1,7 @@
 package org.academiadecodigo.codewar.representable;
 
 import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Picture;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.graphics.Text;
 
@@ -22,18 +22,18 @@ public class SimpleGfxGrid implements Grid {
 
         this.cols = cols;
         this.rows = rows;
+
     }
+
     Picture pic = new Picture();
     public void init() {
 
-
-        pic.load("/Users/diogocodecadet/Downloads/invaders_from_space_by_suicidalstickman.jpg");
-
+        pic.load("/Users/codecadet/Desktop/CodeWar/resources/invaders_from_space_by_suicidalstickman.jpg");
         pic.draw();
 
-        //Rectangle rectangle = new Rectangle(0, 0, cols*CELL_SIZE, rows*CELL_SIZE);
-        //rectangle.setColor(Color.BLACK);
-        //rectangle.draw();
+        Rectangle rectangle = new Rectangle(0, 0, cols*CELL_SIZE, rows*CELL_SIZE);
+        rectangle.setColor(Color.BLACK);
+        rectangle.draw();
     }
 
     public int getCols() {
@@ -78,6 +78,11 @@ public class SimpleGfxGrid implements Grid {
         Text text = new Text(150, 300, "You did it!");
         text.setColor(Color.BLACK);
         text.draw();
+    }
+
+    @Override
+    public int getCellSize() {
+        return CELL_SIZE;
     }
 }
 
