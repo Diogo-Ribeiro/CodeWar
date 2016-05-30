@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="93ac6521-8e89-4271-9748-dad7b7a43a64" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/academiadecodigo/codewar/gameobjects/CharFactory.java" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/codewar/gameobjects/CharFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/academiadecodigo/codewar/gameobjects/MasterCoderType.java" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/codewar/gameobjects/MasterCoderType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/academiadecodigo/codewar/representable/Grid.java" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/codewar/representable/Grid.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/academiadecodigo/codewar/representable/SimpleGfxGrid.java" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/codewar/representable/SimpleGfxGrid.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/academiadecodigo/codewar/representable/SimpleGfxGridPosition.java" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/codewar/representable/SimpleGfxGridPosition.java" />
     </list>
     <ignored path="CodeWar.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -97,7 +91,7 @@
         <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/codewar/representable/SimpleGfxGrid.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="375">
-              <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
+              <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -138,6 +132,7 @@
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
+        <option value="Diogo Ribeiro" />
         <option value="Diogo" />
       </list>
     </option>
@@ -745,12 +740,20 @@
       <workItem from="1464548458051" duration="7468000" />
       <workItem from="1464559618730" duration="2770000" />
       <workItem from="1464597977584" duration="2053000" />
-      <workItem from="1464600099417" duration="146000" />
+      <workItem from="1464600099417" duration="192000" />
     </task>
+    <task id="LOCAL-00001" summary="Added Background, but no working well already.">
+      <created>1464600285996</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1464600285996</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12437000" />
+    <option name="totallyTimeSpent" value="12483000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="820" extended-state="6" />
@@ -820,6 +823,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added Background, but no working well already." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Background, but no working well already." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1191,7 +1198,7 @@
     <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/codewar/representable/SimpleGfxGrid.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
-          <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
+          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
           <folding />
         </state>
       </provider>
