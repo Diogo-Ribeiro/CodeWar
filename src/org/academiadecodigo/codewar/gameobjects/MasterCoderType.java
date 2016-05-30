@@ -1,6 +1,7 @@
 package org.academiadecodigo.codewar.gameobjects;
 
 import org.academiadecodigo.codewar.representable.Representable;
+import org.academiadecodigo.codewar.representable.SimpleGfxGrid;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
@@ -10,23 +11,27 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
  */
 public enum MasterCoderType {
 
-    MARIO (new Picture(10,10), "https://apkplz.com/storage/images/com/whileone/mastercode/300/master-code.png"),
-    ANTONINHO (new Picture(10,10),"https://apkplz.com/storage/images/com/whileone/mastercode/300/master-code.png"),
-    ICEMAN (new Picture(10,10),"https://apkplz.com/storage/images/com/whileone/mastercode/300/master-code.png"),
-    FERRAO (new Picture(10,10),"https://apkplz.com/storage/images/com/whileone/mastercode/300/master-code.png"),
-    JOANA (new Picture(10,10),"https://apkplz.com/storage/images/com/whileone/mastercode/300/master-code.png"),
-    NUNO (new Picture(10,10),"https://apkplz.com/storage/images/com/whileone/mastercode/300/master-code.png");
+    MARIO ("/Users/codecadet/Desktop/CodeWar/resources/MC MARIO.png"),
+    ANTONINHO ("/Users/codecadet/Desktop/CodeWar/resources/MC ANTONINHO.png"),
+    ICEMAN ("/Users/codecadet/Desktop/CodeWar/resources/MC SERGIO.png"),
+    FERRAO ("/Users/codecadet/Desktop/CodeWar/resources/MC FERRAO.png"),
+    JOANA ("/Users/codecadet/Desktop/CodeWar/resources/MC JOANA.png"),
+    NUNO ("/Users/codecadet/Desktop/CodeWar/resources/MC ANTONINHO.png");
 
-    private Picture representable;
-    private Picture picture;
 
-    MasterCoderType (Picture representable, String pic) {
-        this.picture = representable;
-        representable.load(pic);
+    private String picture;
+
+    MasterCoderType (String string) {
+        this.picture = string;
 
     }
 
     public Picture getRepresentable() {
-        return picture;
+
+        Picture representable = new Picture(0,0,picture);
+        representable.grow((SimpleGfxGrid.CELL_SIZE*2-representable.getWidth())/2, (SimpleGfxGrid.CELL_SIZE*2 - representable.getHeight())/2);
+        representable.translate(-representable.getX(), -representable.getY());
+
+        return representable;
     }
 }

@@ -24,7 +24,7 @@ public enum ProjectileType {
     public Picture getRepresentable() {
 
         Picture representable = new Picture(0,0,picture);
-        representable.grow((SimpleGfxGrid.CELL_SIZE-representable.getWidth())/2, (SimpleGfxGrid.CELL_SIZE - representable.getWidth())/2);
+        representable.grow((SimpleGfxGrid.CELL_SIZE-representable.getWidth())/2, (SimpleGfxGrid.CELL_SIZE - representable.getHeight())/2);
         representable.translate(-representable.getX(), -representable.getY());
 
         return representable;

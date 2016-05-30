@@ -14,7 +14,7 @@ public class CharFactory {
         Char[] chars = new Char[MasterCoderType.values().length + 1];
 
         // TODO: 29/05/2016 move the position making logic to codecadet
-        chars[0] = new Codecadet(grid.makeGridPosition(grid.getCols()/2, grid.getRows()-1, new Picture(grid.getCellSize(),grid.getCellSize())));
+        chars[0] = new Codecadet(grid.makeGridPosition(grid.getCols()/2, grid.getRows()-1, CodecadetType.getRepresentable()));
 
         for (int i = 1; i < chars.length; i++) {
 

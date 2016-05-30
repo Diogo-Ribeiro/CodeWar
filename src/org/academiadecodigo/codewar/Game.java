@@ -22,7 +22,7 @@ public class Game implements KeyboardHandler {
     private Char[] chars;
     private Projectile[] playerProjectiles;
     private Projectile[] masterCoderProjectiles;
-    private Grid grid = new SimpleGfxGrid(20, 40);
+    private Grid grid = new SimpleGfxGrid(40, 45);
 
     public Game () {
 

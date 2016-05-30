@@ -26,15 +26,15 @@ public class SimpleGfxGrid implements Grid {
 
     public void init() {
 
-        //Picture pic = new Picture();
-        /*pic.load("/Users/codecadet/Desktop/CodeWar/resources/invaders_from_space_by_suicidalstickman.jpg");
+        Picture pic = new Picture();
+        pic.load("/Users/codecadet/Desktop/CodeWar/resources/animated-gif-of-fighting-games-backgrounds-16.gif");
         pic.grow((cols*CELL_SIZE - pic.getWidth())/2, (rows*CELL_SIZE - pic.getHeight())/2);
         pic.translate(-pic.getX(), -pic.getY());
-        pic.draw();*/
+        pic.draw();
 
-        Rectangle rectangle = new Rectangle(0, 0, cols*CELL_SIZE, rows*CELL_SIZE);
-        rectangle.setColor(Color.BLACK);
-        rectangle.draw();
+//        Rectangle rectangle = new Rectangle(0, 0, cols*CELL_SIZE, rows*CELL_SIZE);
+//        rectangle.setColor(Color.BLACK);
+//        rectangle.draw();
     }
 
     public int getCols() {
