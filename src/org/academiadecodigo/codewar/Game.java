@@ -8,14 +8,15 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
+import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.ListIterator;
 
 /**
  * Created by diogocodecadet on 23/05/16.
  */
 public class Game implements KeyboardHandler {
 
-    public static final int MASTER_CODERS = MasterCoderType.values().length;
     public static final int MAX_PROJECTILES = 5;
 
     private Keyboard k;
@@ -39,6 +40,9 @@ public class Game implements KeyboardHandler {
 
         grid.init();
         masterCoders = MasterCoderFactory.maker(grid);
+        playerProjectiles = new LinkedList<>();
+        masterCoderProjectiles = new LinkedList<>();
+
 
         //todo make "menu" method
         player = CodeCadetFactory.make(grid, CodecadetType.IGOR);
@@ -56,8 +60,8 @@ public class Game implements KeyboardHandler {
             player.move();
 
             masterCodersShoot();
-            updateProjectiles(masterCoderProjectiles);
-            updateProjectiles(playerProjectiles);
+            projectilesMove(playerProjectiles);
+            projectilesMove(masterCoderProjectiles);
             checkCollisions(masterCoderProjectiles, playerProjectiles, masterCoders, player);
 
             Thread.sleep(100);
@@ -78,11 +82,26 @@ public class Game implements KeyboardHandler {
         return true;
     }
 
-    private void checkCollisions(Projectile[] mcProjectiles, Projectile[] playerProjectiles, Char[] chars, Codecadet player) {
+    private void checkCollisions(LinkedList <Projectile> mcProjectiles, LinkedList <Projectile> playerProjectiles, Char[] chars, Codecadet player) {
 
         CollisionChecker.check(mcProjectiles, player);
         CollisionChecker.check(playerProjectiles, chars);
         CollisionChecker.check(mcProjectiles, playerProjectiles);
+        projectileUpdate(mcProjectiles);
+        projectileUpdate(playerProjectiles);
+
+    }
+
+    private void projectileUpdate(LinkedList<Projectile> projectiles) {
+
+        ListIterator <Projectile> a = projectiles.listIterator();
+
+        while (a.hasNext()) {
+
+          if (a.next().isHitTarget()) {
+                a.remove();
+            }
+        }
     }
 
     private void codeCadetShoot(ProjectileType type) {
@@ -95,7 +114,11 @@ public class Game implements KeyboardHandler {
 
             } else {
 
-                playerProjectiles.add(player.specialShoot());
+                Projectile p = player.specialShoot();
+
+                if (p != null) {
+                    playerProjectiles.add(p);
+                }
             }
         }
     }
@@ -117,21 +140,13 @@ public class Game implements KeyboardHandler {
         }
     }
 
-    private void updateProjectiles (Projectile[] projectiles) {
+    private void projectilesMove (LinkedList <Projectile> projectiles) {
 
-        for (int i = 0; i < projectiles.length; i++) {
+        Iterator<Projectile> a = projectiles.iterator();
 
-            if (projectiles[i] != null) {
+        while(a.hasNext()) {
 
-                if (projectiles[i].isHitTarget()) {
-
-                    projectiles[i] = null;
-
-                } else {
-
-                    projectiles[i].move();
-                }
-            }
+          a.next().move();
         }
     }
 

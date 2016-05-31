@@ -5,53 +5,70 @@ import org.academiadecodigo.codewar.gameobjects.Codecadet;
 import org.academiadecodigo.codewar.gameobjects.Projectile;
 import org.academiadecodigo.codewar.gameobjects.ProjectileType;
 
+import java.util.LinkedList;
+import java.util.ListIterator;
+
 /**
  * Created by codecadet on 25/05/16.
  */
 public class CollisionChecker {
 
-    public static void check(Projectile[] projectiles, Char[] chars) {
+    public static void check(LinkedList<Projectile> projectiles, Char[] chars) {
 
         for (int i = 0; i < chars.length; i++) {
 
-            for (int j = 0; j < projectiles.length; j++) {
+            ListIterator<Projectile> a = projectiles.listIterator();
 
-                if (projectiles[j] != null && projectiles[j].getPosition().equals(chars[i].getPosition())) {
+            while(a.hasNext()) {
 
-                    projectiles[j].reachTarget(); //update boolean, says it can be deleted
-                    chars[i].getHit(projectiles[j]);//deals damage (?) || increases counters
+                Projectile p = a.next();
+
+                if (p.getPosition().equals(chars[i].getPosition())) {
+
+                    chars[i].getHit(p);
+                    p.reachTarget();
+
                 }
             }
         }
     }
 
-    public static void check (Projectile[] mcProjectiles, Codecadet player) {
+    public static void check (LinkedList<Projectile> mcProjectiles, Codecadet player) {
 
-        for (int i = 0; i < mcProjectiles.length; i++) {
+        ListIterator<Projectile> a = mcProjectiles.listIterator();
 
-            if (mcProjectiles[i] != null && mcProjectiles[i].getPosition().equals(player.getPosition())) {
+        while(a.hasNext()) {
 
-                mcProjectiles[i].reachTarget(); //update boolean, says it can be deleted
-                player.getHit(mcProjectiles[i]);//deals damage (?) || increases counters
+            Projectile p = a.next();
+
+            if (p.getPosition().equals(player.getPosition())) {
+
+                player.getHit(p);
+                p.reachTarget();
+                a.remove();
             }
         }
     }
 
-    public static void check(Projectile[] mcProjectiles, Projectile[] playerProjectiles) {
+    public static void check(LinkedList<Projectile> mcProjectiles, LinkedList<Projectile> playerProjectiles) {
 
-        for (int i = 0; i < mcProjectiles.length; i++) {
+        ListIterator<Projectile> a = mcProjectiles.listIterator();
+        ListIterator<Projectile> b = playerProjectiles.listIterator();
 
-            for (int j = 0; j < playerProjectiles.length; j++) {
+        while (a.hasNext()) {
 
-                if (mcProjectiles[i] != null
-                    && playerProjectiles[j] != null
-                    && playerProjectiles[j].getType() != ProjectileType.BUG
-                    && mcProjectiles[i].getPosition().getCol() == playerProjectiles[j].getPosition().getCol()
-                    && (mcProjectiles[i].getPosition().getRow() == playerProjectiles[j].getPosition().getRow()-1
-                        || mcProjectiles[i].getPosition().getRow() == playerProjectiles[j].getPosition().getRow())) {
+            Projectile p = a.next();
 
-                    mcProjectiles[i].reachTarget();
-                    playerProjectiles[j].reachTarget(); //update boolean, says it can be deleted
+            while (b.hasNext()) {
+
+                Projectile q = b.next();
+
+                if (p.getPosition().equals(q.getPosition()) && !(q.getType() == ProjectileType.BUG)) {
+
+                    q.reachTarget();
+                    a.remove();
+                    p.reachTarget();
+                    b.remove();
                 }
             }
         }

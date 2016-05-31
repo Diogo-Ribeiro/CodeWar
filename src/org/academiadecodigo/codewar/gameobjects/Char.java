@@ -11,13 +11,13 @@ public abstract class Char extends GameObjects {
     private int hp = 6;
     private boolean dead;
     private boolean specialShot;
-    private GridPosition position;
-
     private boolean moving;
+    private GridPosition position;
 
     public Char (GridPosition position) {
 
         this.position = position;
+
     }
     public abstract void move ( );
 
