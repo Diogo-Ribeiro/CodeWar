@@ -15,7 +15,7 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
 
     public SimpleGfxGridPosition (SimpleGfxGrid grid, Picture representable) {
 
-        super(RandomNumberGenerator.get(0, grid.getCols()- Char.AVATAR_DIMENSION), 0, grid);
+        super(RandomNumberGenerator.get(0, grid.getCols()-1), 0, grid);
 
         this.representable = representable;
         this.representable.translate(this.getCol()*SimpleGfxGrid.CELL_SIZE, this.getRow()*SimpleGfxGrid.CELL_SIZE);
