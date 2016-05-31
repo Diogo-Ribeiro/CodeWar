@@ -2,6 +2,8 @@ package org.academiadecodigo.codewar.gameobjects;
 
 import org.academiadecodigo.codewar.Direction;
 import org.academiadecodigo.codewar.representable.GridPosition;
+import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
@@ -16,10 +18,17 @@ public class Codecadet extends Char {
 
     private static final int KISSIES_TO_BUG = 4;
     private int kissyCounter;
+    private Rectangle kissyBar;
+    private Rectangle kissyBarFill;
 
     public Codecadet(GridPosition position) {
 
         super(position);
+        kissyBar = new Rectangle(0, getPosition().getGrid().getRows()*getPosition().getGrid().getCellSize() - 20, 80, 20);
+        kissyBarFill = new Rectangle(0, getPosition().getGrid().getRows()*getPosition().getGrid().getCellSize() - 20, 0, 0);
+        kissyBarFill.setColor(Color.MAGENTA);
+        kissyBar.setColor(Color.MAGENTA);
+        kissyBar.draw();
     }
 
     @Override
@@ -37,7 +46,14 @@ public class Codecadet extends Char {
 
         if (projectile.getType() == ProjectileType.KISSY) {
 
-            kissyCounter++;
+            if (kissyCounter < 4) {
+
+                kissyCounter++;
+                kissyBarFill.delete();
+                kissyBarFill = new Rectangle(0, getPosition().getGrid().getRows() * getPosition().getGrid().getCellSize() - 20, kissyBarFill.getWidth() + 20, 20);
+                kissyBarFill.setColor(Color.MAGENTA);
+                kissyBarFill.fill();
+            }
 
         } else if (projectile.getType() == ProjectileType.DICKY) {
 
@@ -60,7 +76,10 @@ public class Codecadet extends Char {
         if (kissyCounter >= KISSIES_TO_BUG) {
 
             kissyCounter = 0;
+            kissyBarFill.delete();
+            kissyBarFill = new Rectangle(0, getPosition().getGrid().getRows() * getPosition().getGrid().getCellSize() - 20, 0, 0);
             return ProjectileFactory.get(ProjectileType.BUG, this.getPosition(), Direction.UP);
+
         }
         // TODO: 31/05/16 exception
         return null;
