@@ -76,8 +76,9 @@ public class SimpleGfxGrid implements Grid {
         rectangle.setColor(Color.WHITE);
         rectangle.fill();
 
-        Text text = new Text(150, 300, "You did it!");
+        Text text = new Text(0, 0, "You did it!");
         text.setColor(Color.BLACK);
+        text.translate(cols*CELL_SIZE/2 - text.getWidth()/2, rows*CELL_SIZE/2 + text.getHeight()/2);
         text.draw();
     }
 
