@@ -9,6 +9,7 @@ import org.academiadecodigo.codewar.representable.GridPosition;
 public class Codecadet extends Char{
 
     // TODO: 24/05/16 one char for each codecadet and associated game mode
+    private boolean moving;
 
     //// TODO: 28/05/2016 find better name
     private int kissyCounter;
@@ -21,7 +22,7 @@ public class Codecadet extends Char{
     @Override
     public void move () {
 
-        if (isMoving()) {
+        if (moving) {
 
             getPosition().move(this.getCurrentDirection(), 1);
 
@@ -48,7 +49,6 @@ public class Codecadet extends Char{
 
     public Projectile specialShoot() {
 
-        //// TODO: 30/05/16 make it draw the text instead of printing to the console
         System.out.println(kissyCounter);
         if (kissyCounter >= 4) {
 
@@ -59,4 +59,7 @@ public class Codecadet extends Char{
         return null;
     }
 
+    public void setMoving(boolean moving) {
+        this.moving = moving;
+    }
 }

@@ -13,8 +13,6 @@ public abstract class Char extends GameObjects {
     private boolean specialShot;
     private GridPosition position;
 
-    private boolean moving;
-
     public Char (GridPosition position) {
 
         this.position = position;
@@ -45,13 +43,5 @@ public abstract class Char extends GameObjects {
 
     public GridPosition getPosition() {
         return position;
-    }
-
-    public boolean isMoving() {
-        return moving;
-    }
-
-    public void setMoving(boolean moving) {
-        this.moving = moving;
     }
 }
