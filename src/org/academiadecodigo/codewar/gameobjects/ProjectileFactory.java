@@ -11,7 +11,7 @@ public class ProjectileFactory {
 
         if (type == ProjectileType.KISSY || type == ProjectileType.DICKY) {
 
-            position = position.getGrid().makeGridPosition(position.getCol(), position.getRow()+Char.AVATAR_DIMENSION,type.getRepresentable());
+            position = position.getGrid().makeGridPosition(position.getCol(), position.getRow() + Char.AVATAR_DIMENSION,type.getRepresentable());
 
         } else {
 

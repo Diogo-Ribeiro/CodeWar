@@ -31,7 +31,6 @@ public enum CodecadetType {
     CodecadetType(String picture){
 
         this.picture = picture;
-
     }
 
     public static Picture getRepresentable() {
@@ -42,5 +41,4 @@ public enum CodecadetType {
 
         return representable;
     }
-
 }

@@ -76,11 +76,11 @@ public class MasterCoder extends Char {
             // TODO: 25/05/16 think of adequate shooting probabilities
             int r = RandomNumberGenerator.get(0, 10);
 
-            if (r < 3) {
+            if (r < 2) {
 
                 return ProjectileFactory.get(ProjectileType.KISSY, this.getPosition(), Direction.DOWN);
 
-            } else if (r == 3) {
+            } else if (r >= 2 && r < 4) {
 
                 return ProjectileFactory.get(ProjectileType.DICKY, this.getPosition(), Direction.DOWN);
 
@@ -89,8 +89,6 @@ public class MasterCoder extends Char {
 
         return null;
     }
-
-    // TODO: 27/05/16 remove grid from arguments
 
     public boolean isHittingWall(){
 

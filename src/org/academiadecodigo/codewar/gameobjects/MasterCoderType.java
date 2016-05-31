@@ -11,7 +11,7 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
  */
 public enum MasterCoderType {
 
-    MARIO ("/Users/codecadet/Desktop/CodeWar/resources/MC MARIO.png"),
+    MARIO ("MC MARIO.png"),
     ANTONINHO ("/Users/codecadet/Desktop/CodeWar/resources/MC ANTONINHO.png"),
     ICEMAN ("/Users/codecadet/Desktop/CodeWar/resources/MC SERGIO.png"),
     FERRAO ("/Users/codecadet/Desktop/CodeWar/resources/MC FERRAO.png"),

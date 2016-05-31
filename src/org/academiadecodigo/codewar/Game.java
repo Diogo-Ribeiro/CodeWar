@@ -8,7 +8,6 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
@@ -17,12 +16,9 @@ import java.util.ListIterator;
  */
 public class Game implements KeyboardHandler {
 
-    public static final int MAX_PROJECTILES = 5;
-
+    public static final int MAX_PLAYERS_PROJECTILES = 5;
+    public static final int MAX_MC_PROJECTILES = 20;
     private Keyboard k;
-
-    // TODO: 29/05/2016 separate player from other chars
-
     private Codecadet player;
     private MasterCoder[] masterCoders;
     private LinkedList<Projectile> playerProjectiles;
@@ -44,7 +40,7 @@ public class Game implements KeyboardHandler {
         masterCoderProjectiles = new LinkedList<>();
 
 
-        //todo make "menu" method
+        //todo make "menu" method, calls start()
         player = CodeCadetFactory.make(grid, CodecadetType.IGOR);
     }
 
@@ -60,8 +56,8 @@ public class Game implements KeyboardHandler {
             player.move();
 
             masterCodersShoot();
-            projectilesMove(playerProjectiles);
-            projectilesMove(masterCoderProjectiles);
+            projectileUpdate(masterCoderProjectiles);
+            projectileUpdate(playerProjectiles);
             checkCollisions(masterCoderProjectiles, playerProjectiles, masterCoders, player);
 
             Thread.sleep(100);
@@ -71,7 +67,7 @@ public class Game implements KeyboardHandler {
 
     private boolean allMasterCodersDead() {
 
-        for (int i = 1; i < masterCoders.length; i++) {
+        for (int i = 0; i < masterCoders.length; i++) {
 
             if (!masterCoders[i].isDead()) {
 
@@ -82,31 +78,19 @@ public class Game implements KeyboardHandler {
         return true;
     }
 
-    private void checkCollisions(LinkedList <Projectile> mcProjectiles, LinkedList <Projectile> playerProjectiles, Char[] chars, Codecadet player) {
+    private void checkCollisions(LinkedList <Projectile> mcProjectiles, LinkedList <Projectile> playerProjectiles, MasterCoder[] masterCoders, Codecadet player) {
 
+        // TODO: 31/05/16 juntar tudo huma unica lista e passar pro collision detector
+        // TODO: 31/05/16 interface collidable
         CollisionChecker.check(mcProjectiles, player);
-        CollisionChecker.check(playerProjectiles, chars);
+        CollisionChecker.check(playerProjectiles, masterCoders);
         CollisionChecker.check(mcProjectiles, playerProjectiles);
-        projectileUpdate(mcProjectiles);
-        projectileUpdate(playerProjectiles);
 
-    }
-
-    private void projectileUpdate(LinkedList<Projectile> projectiles) {
-
-        ListIterator <Projectile> a = projectiles.listIterator();
-
-        while (a.hasNext()) {
-
-          if (a.next().isHitTarget()) {
-                a.remove();
-            }
-        }
     }
 
     private void codeCadetShoot(ProjectileType type) {
 
-        if (playerProjectiles.size() < MAX_PROJECTILES) {
+        if (playerProjectiles.size() < MAX_PLAYERS_PROJECTILES) {
 
             if (type == ProjectileType.QUESTION) {
 
@@ -128,7 +112,7 @@ public class Game implements KeyboardHandler {
         Projectile currentProjectile;
         for (int i = 0; i < masterCoders.length; i ++) {
 
-            if (masterCoderProjectiles.size() < masterCoders.length * MAX_PROJECTILES / 2) {
+            if (masterCoderProjectiles.size() < MAX_MC_PROJECTILES) {
 
                 currentProjectile = masterCoders[i].shoot();
 
@@ -140,16 +124,24 @@ public class Game implements KeyboardHandler {
         }
     }
 
-    private void projectilesMove (LinkedList <Projectile> projectiles) {
+    private void projectileUpdate(LinkedList<Projectile> projectiles) {
 
-        Iterator<Projectile> a = projectiles.iterator();
+        ListIterator <Projectile> a = projectiles.listIterator();
 
-        while(a.hasNext()) {
+        while (a.hasNext()) {
 
-          a.next().move();
+            Projectile p = a.next();
+
+            if (p.isHitTarget()) {
+
+                a.remove();
+
+            } else {
+
+                p.move();
+            }
         }
     }
-
 
     public void gameOver () {
 
@@ -207,16 +199,6 @@ public class Game implements KeyboardHandler {
     private void registerKeyboardInput() {
         k = new Keyboard(this);
 
-        KeyboardEvent event5 = new KeyboardEvent();
-        event5.setKey(KeyboardEvent.KEY_SPACE);
-        event5.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        k.addEventListener(event5);
-
-        KeyboardEvent event6 = new KeyboardEvent();
-        event6.setKey(KeyboardEvent.KEY_SPACE);
-        event6.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
-        k.addEventListener(event6);
-
         KeyboardEvent event = new KeyboardEvent();
         event.setKey(KeyboardEvent.KEY_LEFT);
         event.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
@@ -241,6 +223,17 @@ public class Game implements KeyboardHandler {
         event4.setKey(KeyboardEvent.KEY_B);
         event4.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         k.addEventListener(event4);
+
+        KeyboardEvent event5 = new KeyboardEvent();
+        event5.setKey(KeyboardEvent.KEY_SPACE);
+        event5.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        k.addEventListener(event5);
+
+        KeyboardEvent event6 = new KeyboardEvent();
+        event6.setKey(KeyboardEvent.KEY_SPACE);
+        event6.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+        k.addEventListener(event6);
+
     }
 }
 
