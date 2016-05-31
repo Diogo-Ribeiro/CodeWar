@@ -12,11 +12,11 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 public enum MasterCoderType {
 
     MARIO ("MC MARIO.png"),
-    ANTONINHO ("/Users/codecadet/Desktop/CodeWar/resources/MC ANTONINHO.png"),
-    ICEMAN ("/Users/codecadet/Desktop/CodeWar/resources/MC SERGIO.png"),
-    FERRAO ("/Users/codecadet/Desktop/CodeWar/resources/MC FERRAO.png"),
-    JOANA ("/Users/codecadet/Desktop/CodeWar/resources/MC JOANA.png"),
-    NUNO ("/Users/codecadet/Desktop/CodeWar/resources/MC ANTONINHO.png");
+    ANTONINHO ("MC ANTONINHO.png"),
+    ICEMAN ("MC SERGIO.png"),
+    FERRAO ("MC FERRAO.png"),
+    JOANA ("MC JOANA.png"),
+    NUNO ("MC ANTONINHO.png");
 
     private String picture;
 
