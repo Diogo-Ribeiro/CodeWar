@@ -27,7 +27,7 @@ public class SimpleGfxGrid implements Grid {
     public void init() {
 
         Picture pic = new Picture();
-        pic.load("/Users/codecadet/Desktop/CodeWar/resources/animated-gif-of-fighting-games-backgrounds-16.gif");
+        pic.load("resources/animated-gif-of-fighting-games-backgrounds-16.gif");
         pic.grow((cols*CELL_SIZE - pic.getWidth())/2, (rows*CELL_SIZE - pic.getHeight())/2);
         pic.translate(-pic.getX(), -pic.getY());
         pic.draw();
@@ -76,9 +76,8 @@ public class SimpleGfxGrid implements Grid {
         rectangle.setColor(Color.WHITE);
         rectangle.fill();
 
-        Text text = new Text(0, 0, "You did it!");
+        Text text = new Text(150, 300, "You did it!");
         text.setColor(Color.BLACK);
-        text.translate(cols*CELL_SIZE/2 - text.getWidth()/2, rows*CELL_SIZE/2 + text.getHeight()/2);
         text.draw();
     }
 

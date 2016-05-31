@@ -8,13 +8,12 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
  */
 public enum ProjectileType {
 
-    KISSY ("/Users/codecadet/Desktop/CodeWar/resources/54012f6264942f32f27114f45068fb87.png"),
-    DICKY ("/Users/codecadet/Desktop/CodeWar/resources/avatar_a112a7e0bf35_128.png"),
-    BUG ("/Users/codecadet/Desktop/CodeWar/resources/lady-beetle.png"),
-    QUESTION ("/Users/codecadet/Desktop/CodeWar/resources/00e8b7a51d52791be04e87acbe029132.png");
+    KISSY ("resources/54012f6264942f32f27114f45068fb87.png"),
+    DICKY ("resources/avatar_a112a7e0bf35_128.png"),
+    BUG ("resources/lady-beetle.png"),
+    QUESTION ("resources/00e8b7a51d52791be04e87acbe029132.png");
 
     private String picture;
-
 
     ProjectileType(String picture){
 

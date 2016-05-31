@@ -11,12 +11,13 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
  */
 public enum MasterCoderType {
 
-    MARIO ("/Users/codecadet/Desktop/CodeWar/resources/MC MARIO.png"),
-    ANTONINHO ("/Users/codecadet/Desktop/CodeWar/resources/MC ANTONINHO.png"),
-    ICEMAN ("/Users/codecadet/Desktop/CodeWar/resources/MC SERGIO.png"),
-    FERRAO ("/Users/codecadet/Desktop/CodeWar/resources/MC FERRAO.png"),
-    JOANA ("/Users/codecadet/Desktop/CodeWar/resources/MC JOANA.png"),
-    NUNO ("/Users/codecadet/Desktop/CodeWar/resources/MC ANTONINHO.png");
+    MARIO ("resources/MC MARIO.png"),
+    ANTONINHO ("resources/MC ANTONINHO.png"),
+    ICEMAN ("resources/MC SERGIO.png"),
+    FERRAO ("resources/MC FERRAO.png"),
+    JOANA ("resources/MC JOANA.png"),
+    NUNO ("resources/MC ANTONINHO.png");
+
 
     private String picture;
 
@@ -28,7 +29,7 @@ public enum MasterCoderType {
     public Picture getRepresentable() {
 
         Picture representable = new Picture(0,0,picture);
-        representable.grow((SimpleGfxGrid.CELL_SIZE*Char.AVATAR_DIMENSION-representable.getWidth())/2, (SimpleGfxGrid.CELL_SIZE*Char.AVATAR_DIMENSION - representable.getHeight())/2);
+        representable.grow((SimpleGfxGrid.CELL_SIZE*2-representable.getWidth())/2, (SimpleGfxGrid.CELL_SIZE*2 - representable.getHeight())/2);
         representable.translate(-representable.getX(), -representable.getY());
 
         return representable;
