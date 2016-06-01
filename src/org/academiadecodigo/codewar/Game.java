@@ -43,13 +43,12 @@ public class Game implements KeyboardHandler {
 
     public void init () throws InterruptedException {
 
-        grid.init();
-
         playerProjectiles = new LinkedList<>();
         masterCoderProjectiles = new LinkedList<>();
-
+        grid.init();
         menu.init();
         player = CodeCadetFactory.make(grid, menu.choose());
+
 
         start();
     }

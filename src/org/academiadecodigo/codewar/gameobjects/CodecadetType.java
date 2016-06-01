@@ -7,23 +7,24 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
  * Created by codecadet on 30/05/16.
  */
 public enum CodecadetType {
-    ANA(""),
-    LAURA(""),
+    ANA("Ana.png"),
+    LAURA("Laura.png"),
     NUNO("Nuno.png"),
-    HENRY(""),
-    JOAO(""),
+    HENRY("Henry.png"),
+    JOAO("Joao.png"),
     SOFIA("Sofia.png"),
-    LUIS(""),
+    LUIS("Luis.png"),
     DANIEL("Daniel.png"),
-    AMAURI(""),
-    ANDRE(""),
+    AMAURI("Amauri.png"),
+    ANDRE("Andre.png"),
     IGOR("Igor.png"),
     ELIAS("Elias.png"),
     DIOGO("Diogo.png"),
     FLAVIO("Flavio.png"),
-    BRUNO(""),
+    BRUNO("Daniel.png"),
     NELSON("Nelson.png"),
-    SAMUEL("");
+    SAMUEL("Daniel.png"),
+    JORGE("Jorge.png");
 
     private String picture;
 
