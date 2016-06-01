@@ -15,6 +15,10 @@ public interface GridPosition {
 
     public void setRow(int row);
 
+    public int getMaxX ();
+
+    public int getMaxY ();
+
     public Grid getGrid();
 
     public void move(Direction direction, int distance);

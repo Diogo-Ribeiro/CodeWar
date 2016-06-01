@@ -9,17 +9,16 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 public enum CodecadetType {
     ANA(""),
     LAURA(""),
-    NUNO(""),
+    NUNO("Nuno.png"),
     HENRY(""),
     JOAO(""),
     SOFIA("Sofia.png"),
     LUIS(""),
     DANIEL("Daniel.png"),
-    JORGE(""),
     AMAURI(""),
     ANDRE(""),
     IGOR("Igor.png"),
-    ELIAS(""),
+    ELIAS("Elias.png"),
     DIOGO("Diogo.png"),
     FLAVIO("Flavio.png"),
     BRUNO(""),
@@ -33,9 +32,9 @@ public enum CodecadetType {
         this.picture = picture;
     }
 
-    public static Picture getRepresentable() {
+    public Picture getRepresentable() {
 
-        Picture representable = new Picture(0,0,"Igor.png");
+        Picture representable = new Picture(0,0,picture);
         representable.grow((SimpleGfxGrid.CELL_SIZE* Char.AVATAR_DIMENSION-representable.getWidth())/2, (SimpleGfxGrid.CELL_SIZE*Char.AVATAR_DIMENSION - representable.getHeight())/2);
         representable.translate(-representable.getX(), -representable.getY());
 

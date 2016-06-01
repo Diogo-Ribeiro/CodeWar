@@ -31,11 +31,11 @@ public class Projectile extends GameObjects {
 
         } else {
 
-            if (type == ProjectileType.BUG) {
+           /* if (type == ProjectileType.BUG) {
 
                 getPosition().move(this.getCurrentDirection(), 2);
 
-            }
+            }*/
 
             getPosition().move(this.getCurrentDirection(), 1);
 
@@ -46,7 +46,7 @@ public class Projectile extends GameObjects {
     public boolean reachedEdge(){
 
         return (this.position.getRow() == 0
-                || this.position.getRow() == this.position.getGrid().getRows()-1);
+                || this.position.getMaxY() == this.position.getGrid().getRows());
     }
 
     public void reachTarget() {

@@ -63,12 +63,10 @@ public class CollisionChecker {
 
                 Projectile q = b.next();
 
-                if (p.getPosition().equals(q.getPosition()) && !(q.getType() == ProjectileType.BUG)) {
+                if ((p.getPosition().equals(q.getPosition()) && !(q.getType() == ProjectileType.BUG) && !(p.getType() == ProjectileType.BUG) )) {
 
                     q.reachTarget();
-                    a.remove();
                     p.reachTarget();
-                    b.remove();
                 }
             }
         }

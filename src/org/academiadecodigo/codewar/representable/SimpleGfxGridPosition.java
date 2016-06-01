@@ -10,7 +10,6 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
  */
 public class SimpleGfxGridPosition extends AbstractGridPosition {
 
-    // TODO: 27/05/16  change to image
     private Picture representable;
 
     public SimpleGfxGridPosition (SimpleGfxGrid grid, Picture representable) {
@@ -21,6 +20,10 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
         this.representable.translate(this.getCol()*SimpleGfxGrid.CELL_SIZE, this.getRow()*SimpleGfxGrid.CELL_SIZE);
         representable.draw();
 
+        System.out.println(getCol()                                              );
+        System.out.println(getRow());
+        System.out.println(getMaxX());
+        System.out.println(getMaxY());
     }
 
     public SimpleGfxGridPosition (int col, int row, SimpleGfxGrid grid, Picture representable) {
@@ -30,57 +33,66 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
         this.representable = representable;
         this.representable.translate(this.getCol()*SimpleGfxGrid.CELL_SIZE, this.getRow()*SimpleGfxGrid.CELL_SIZE);
         representable.draw();
-
     }
 
-    // TODO: 29/05/2016 switch instead of is elses
+    @Override
+    public int getMaxX() {
+        return getCol() + representable.getWidth()/getGrid().getCellSize();
+    }
+
+    @Override
+    public int getMaxY() {
+        return getRow() + representable.getHeight()/getGrid().getCellSize();
+    }
+
     @Override
     public void move (Direction direction, int dist) {
 
-        if (direction == Direction.LEFT) {
+        switch (direction) {
 
-            if (this.getCol() - dist < 0) {
+            case LEFT:
 
-               dist = this.getCol();
-            }
+                if (this.getCol() - dist < 0) {
 
-            this.setCol(this.getCol() - dist);
-            representable.translate(-(dist * SimpleGfxGrid.CELL_SIZE), 0);
+                    dist = this.getCol();
+                }
 
-        } else if (direction == Direction.RIGHT){
+                this.setCol(this.getCol() - dist);
+                representable.translate(-(dist * SimpleGfxGrid.CELL_SIZE), 0);
+                break;
 
-            if (this.getCol() + dist > getGrid().getCols()-Char.AVATAR_DIMENSION) {
+            case RIGHT:
 
-                dist = (getGrid().getCols()-Char.AVATAR_DIMENSION) - this.getCol();
-            }
+                if (this.getCol() + dist > getGrid().getCols() - Char.AVATAR_DIMENSION) {
 
-            this.setCol(this.getCol() + dist);
-            representable.translate(dist * SimpleGfxGrid.CELL_SIZE, 0);
+                    dist = (getGrid().getCols() - Char.AVATAR_DIMENSION) - this.getCol();
+                }
 
-        }else if(direction == Direction.DOWN){
+                this.setCol(this.getCol() + dist);
+                representable.translate(dist * SimpleGfxGrid.CELL_SIZE, 0);
+                break;
 
-            if(this.getRow() + dist > getGrid().getRows()){
+            case UP:
 
-                dist = (getGrid().getRows())- this.getRow();
-            }
+                if (this.getRow() - dist < 0) {
 
-            this.setRow(this.getRow() + dist);
-            representable.translate(0, dist * SimpleGfxGrid.CELL_SIZE);
+                    dist = this.getRow();
+                }
 
-        } else if(direction == Direction.UP){
+                this.setRow(this.getRow() - dist);
+                representable.translate(0, -dist * SimpleGfxGrid.CELL_SIZE);
+                break;
 
-            if(this.getRow() - dist < 0){
-                dist =  this.getRow();
-            }
+            case DOWN:
 
-            this.setRow(this.getRow()- dist);
-            representable.translate(0, -dist * SimpleGfxGrid.CELL_SIZE);
+                if (this.getRow() + dist > getGrid().getRows()) {
 
-        }
+                    dist = (getGrid().getRows()) - this.getRow();
+                }
 
-        else {
-
-            System.out.println("error");
+                this.setRow(this.getRow() + dist);
+                representable.translate(0, dist * SimpleGfxGrid.CELL_SIZE);
+                break;
         }
     }
 
@@ -88,7 +100,6 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
     public void show() {
 
         representable.draw();
-
     }
 
     @Override
@@ -107,9 +118,14 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
 
             GridPosition position = (GridPosition)obj;
 
-            return this.getCol() >= position.getCol() && this.getCol() <=  position.getCol()+ Char.AVATAR_DIMENSION
-                    && this.getRow() >= position.getRow() && this.getRow() <=  position.getRow()+ Char.AVATAR_DIMENSION;
+            //direção UP ou DOWN collides com obj que estejam uma row acima ou abaixo desde que a direção do outro seja diferente da sua.
+            return (this.getCol() >= position.getCol() && this.getCol() < position.getMaxX()
+                    || position.getCol() >= this.getCol() && position.getCol() < this.getMaxX())
+
+                    && (this.getRow() >= position.getRow() && this.getRow() < position.getMaxY()
+                       || position.getRow() >= this.getRow() && position.getRow() < this.getMaxY());
         }
+
         return false;
     }
 }
