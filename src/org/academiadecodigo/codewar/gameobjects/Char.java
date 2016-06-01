@@ -19,6 +19,7 @@ public abstract class Char extends GameObjects {
         this.position = position;
 
     }
+
     public abstract void move ( );
 
     public abstract Projectile shoot();
@@ -36,6 +37,8 @@ public abstract class Char extends GameObjects {
     }
 
     public void die () {
+
+        position.hide();
         dead = true;
     }
 
