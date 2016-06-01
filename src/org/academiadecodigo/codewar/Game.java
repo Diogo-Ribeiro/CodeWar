@@ -94,9 +94,56 @@ public class Game implements KeyboardHandler {
 
         // TODO: 31/05/16 juntar tudo huma unica lista e passar pro collision detector
         // TODO: 31/05/16 interface collidable
+
+
+        /*
         CollisionChecker.check(mcProjectiles, player);
         CollisionChecker.check(playerProjectiles, masterCoders);
         CollisionChecker.check(mcProjectiles, playerProjectiles);
+*/
+        ListIterator<Projectile> mcIterator = mcProjectiles.listIterator();
+        ListIterator<Projectile> plyrIterator = playerProjectiles.listIterator();
+        while(mcIterator.hasNext()) {
+            Projectile mcP = mcIterator.next();
+            CollisionChecker.check(mcP, player);
+
+        }
+
+        for(MasterCoder mc : masterCoders){
+            while(plyrIterator.hasNext()){
+                Projectile plyrP = plyrIterator.next();
+                CollisionChecker.check(plyrP,mc);
+                /*while(mcIterator.hasNext()) {
+                    Projectile mcP = mcIterator.next();
+
+                    CollisionChecker.check(plyrP,mcP);
+                }*/
+            }
+
+
+
+        }
+
+        /*
+    public static void check(LinkedList<Projectile> projectiles, Char[] chars) {
+
+        for (int i = 0; i < chars.length; i++) {
+
+            ListIterator<Projectile> a = projectiles.listIterator();
+
+            while(a.hasNext()) {
+
+                Projectile p = a.next();
+
+                if (p.getPosition().equals(chars[i].getPosition())) {
+
+                    chars[i].getHit(p);
+                    p.reachTarget();
+
+                }
+            }
+        }
+    }*/
 
     }
 
@@ -136,6 +183,8 @@ public class Game implements KeyboardHandler {
         }
     }
 
+
+    //Amauri: Mudando parte para o getHit do projectile.
     private void projectileUpdate(LinkedList<Projectile> projectiles) {
 
         ListIterator <Projectile> a = projectiles.listIterator();

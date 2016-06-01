@@ -1,9 +1,6 @@
 package org.academiadecodigo.codewar;
 
-import org.academiadecodigo.codewar.gameobjects.Char;
-import org.academiadecodigo.codewar.gameobjects.Codecadet;
-import org.academiadecodigo.codewar.gameobjects.Projectile;
-import org.academiadecodigo.codewar.gameobjects.ProjectileType;
+import org.academiadecodigo.codewar.gameobjects.*;
 
 import java.util.LinkedList;
 import java.util.ListIterator;
@@ -13,6 +10,20 @@ import java.util.ListIterator;
  */
 public class CollisionChecker {
 
+   public static void check(Projectile projectile, GameObjects object){
+
+       if(projectile.getPosition().equals(object.getPosition())){
+           object.getHit(projectile);
+           projectile.reachTarget();
+           if(object instanceof Projectile){
+              ((Projectile) object).reachTarget();
+           }
+           //System.out.println(projectile.isHitTarget());
+
+       }
+   }
+
+    /*
     public static void check(LinkedList<Projectile> projectiles, Char[] chars) {
 
         for (int i = 0; i < chars.length; i++) {
@@ -70,6 +81,6 @@ public class CollisionChecker {
                 }
             }
         }
-    }
+    }*/
 }
 

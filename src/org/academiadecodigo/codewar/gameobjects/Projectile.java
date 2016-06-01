@@ -73,4 +73,7 @@ public class Projectile extends GameObjects {
     public String toString() {
         return "I am a projectile!";
     }
+
+    @Override
+    public void getHit(Projectile projectile){}
 }

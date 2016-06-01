@@ -46,7 +46,6 @@ public class SimpleGfxGrid implements Grid {
     }
 
     @Override
-    //TODO: 29/05/2016 Change argument Rectangle to more general representable
     public SimpleGfxGridPosition makeGridPosition(Picture representable) {
 
         return new SimpleGfxGridPosition(this, representable);

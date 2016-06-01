@@ -24,7 +24,8 @@ public abstract class Char extends GameObjects {
 
     public abstract Projectile shoot();
 
-    public abstract void getHit(Projectile projectile);
+    //Amauri: Teste para o checkCollision
+    //public abstract void getHit(Projectile projectile);
 
     public void lowerHP() {
 
