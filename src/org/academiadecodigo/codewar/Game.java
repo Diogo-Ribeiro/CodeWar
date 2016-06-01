@@ -7,6 +7,10 @@ import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
+import org.academiadecodigo.simplegraphics.mouse.Mouse;
+import org.academiadecodigo.simplegraphics.mouse.MouseEvent;
+import org.academiadecodigo.simplegraphics.mouse.MouseHandler;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 import java.util.LinkedList;
 import java.util.ListIterator;
@@ -18,37 +22,45 @@ public class Game implements KeyboardHandler {
 
     public static final int MAX_PLAYERS_PROJECTILES = 5;
     public static final int MAX_MC_PROJECTILES = 20;
+
+    private Mouse m;
     private Keyboard k;
+    private CodecadetType playerType;
     private Codecadet player;
     private MasterCoder[] masterCoders;
     private LinkedList<Projectile> playerProjectiles;
     private LinkedList<Projectile> masterCoderProjectiles;
     private Grid grid = new SimpleGfxGrid(40, 45);
+    private Menu menu;
 
     public Game () {
 
         // TODO: 25/05/16 init or constructor?
         // TODO: 29/05/2016 player selection
         registerKeyboardInput();
+        menu = new Menu();
     }
 
-    public void init () {
+    public void init () throws InterruptedException {
 
         grid.init();
-        masterCoders = MasterCoderFactory.maker(grid);
+
         playerProjectiles = new LinkedList<>();
         masterCoderProjectiles = new LinkedList<>();
 
+        menu.init();
+        player = CodeCadetFactory.make(grid, menu.choose());
 
-        //todo make "menu" method, calls start()
-        player = CodeCadetFactory.make(grid, CodecadetType.IGOR);
+        start();
     }
 
     public void start () throws InterruptedException {
 
+        masterCoders = MasterCoderFactory.maker(grid);
+
         while (!player.isDead() && !allMasterCodersDead()) {
 
-            //move all chars
+
             for (int i = 0; i < masterCoders.length; i++) {
 
                 masterCoders[i].move();
@@ -234,6 +246,20 @@ public class Game implements KeyboardHandler {
         event6.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
         k.addEventListener(event6);
 
+       /* KeyboardEvent event7 = new KeyboardEvent();
+        event7.setKey(KeyboardEvent.KEY_UP);
+        event7.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        k.addEventListener(event7);
+
+        KeyboardEvent event8 = new KeyboardEvent();
+        event8.setKey(KeyboardEvent.KEY_DOWN);
+        event8.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        k.addEventListener(event8);
+
+        KeyboardEvent event9 = new KeyboardEvent();
+        event9.setKey(KeyboardEvent.KEY_C);
+        event9.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        k.addEventListener(event9);*/
     }
 }
 

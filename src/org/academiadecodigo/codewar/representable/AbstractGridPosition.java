@@ -5,7 +5,7 @@ import org.academiadecodigo.codewar.Direction;
 /**
  * Created by codecadet on 25/05/16.
  */
-public abstract class AbstractGridPosition implements GridPosition, Representable {
+public abstract class AbstractGridPosition implements GridPosition {
 
     // TODO: 29/05/2016 change all properties to private
     private int col;
@@ -43,5 +43,6 @@ public abstract class AbstractGridPosition implements GridPosition, Representabl
     public Grid getGrid() {
         return grid;
     }
+
 
 }

@@ -62,11 +62,13 @@ public class SimpleGfxGrid implements Grid {
     public void stackOverflow() {
 
         Rectangle rectangle = new Rectangle(0, 0, cols*getCellSize(), rows*getCellSize());
+        rectangle.setColor(Color.WHITE);
         rectangle.fill();
 
-        Text text = new Text(150, 300, "StackOverflow");
-        text.setColor(Color.RED);
-        text.draw();
+        Picture picture = new Picture();
+        picture.load("Screen Shot 2016-06-01 at 10.57.52.png");
+        picture.translate((rows*CELL_SIZE - picture.getHeight())/2, cols*CELL_SIZE - picture.getWidth());
+        picture.draw();
     }
 
     @Override
