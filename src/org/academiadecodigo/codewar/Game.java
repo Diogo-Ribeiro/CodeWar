@@ -12,11 +12,9 @@ import org.academiadecodigo.simplegraphics.mouse.MouseEvent;
 import org.academiadecodigo.simplegraphics.mouse.MouseHandler;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-import java.io.*;
-
-import sun.audio.*;
-
 import javax.sound.sampled.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
@@ -25,12 +23,10 @@ import java.util.ListIterator;
  */
 public class Game implements KeyboardHandler {
 
-    private static final int MAX_PLAYERS_PROJECTILES = 5;
-    private static final int MAX_MC_PROJECTILES = 20;
+    public static final int MAX_PLAYERS_PROJECTILES = 5;
+    public static final int MAX_MC_PROJECTILES = 20;
 
-    private Mouse m;
     private Keyboard k;
-    private CodecadetType playerType;
     private Codecadet player;
     private MasterCoder[] masterCoders;
     private LinkedList<Projectile> playerProjectiles;
@@ -38,27 +34,27 @@ public class Game implements KeyboardHandler {
     private Grid grid = new SimpleGfxGrid(40, 45);
     private Menu menu;
 
-    public Game() {
+    public Game () {
 
         // TODO: 25/05/16 init or constructor?
         // TODO: 29/05/2016 player selection
         registerKeyboardInput();
+        playSound();
         menu = new Menu();
     }
 
-    public void init() throws InterruptedException {
-        playSound();
+    public void init () throws InterruptedException {
+
         playerProjectiles = new LinkedList<>();
         masterCoderProjectiles = new LinkedList<>();
         grid.init();
         menu.init();
         player = CodeCadetFactory.make(grid, menu.choose());
 
-
         start();
     }
 
-    private void start() throws InterruptedException {
+    public void start () throws InterruptedException {
 
         masterCoders = MasterCoderFactory.maker(grid);
 
@@ -94,7 +90,7 @@ public class Game implements KeyboardHandler {
         return true;
     }
 
-    private void checkCollisions(LinkedList<Projectile> mcProjectiles, LinkedList<Projectile> playerProjectiles, MasterCoder[] masterCoders, Codecadet player) {
+    private void checkCollisions(LinkedList <Projectile> mcProjectiles, LinkedList <Projectile> playerProjectiles, MasterCoder[] masterCoders, Codecadet player) {
 
         // TODO: 31/05/16 juntar tudo huma unica lista e passar pro collision detector
         // TODO: 31/05/16 interface collidable
@@ -123,10 +119,10 @@ public class Game implements KeyboardHandler {
         }
     }
 
-    private void masterCodersShoot() {
+    private void masterCodersShoot () {
 
         Projectile currentProjectile;
-        for (int i = 0; i < masterCoders.length; i++) {
+        for (int i = 0; i < masterCoders.length; i ++) {
 
             if (masterCoderProjectiles.size() < MAX_MC_PROJECTILES) {
 
@@ -142,7 +138,7 @@ public class Game implements KeyboardHandler {
 
     private void projectileUpdate(LinkedList<Projectile> projectiles) {
 
-        ListIterator<Projectile> a = projectiles.listIterator();
+        ListIterator <Projectile> a = projectiles.listIterator();
 
         while (a.hasNext()) {
 
@@ -159,7 +155,7 @@ public class Game implements KeyboardHandler {
         }
     }
 
-    private void gameOver() {
+    public void gameOver () {
 
         if (player.isDead()) {
 
@@ -269,7 +265,7 @@ public class Game implements KeyboardHandler {
     private void playSound() {
         AudioInputStream in;
 
-        File soundFile = new File("/Users/diogocodecadet/Desktop/CodeWar/resources/Lindsey Stirling &amp; Peter Hollens-Star Wars Medley www.myfreemp3.space .wav");
+        File soundFile = new File("resources/music.wav");
 
         try {
             in = AudioSystem.getAudioInputStream(soundFile);
@@ -289,7 +285,6 @@ public class Game implements KeyboardHandler {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }
 

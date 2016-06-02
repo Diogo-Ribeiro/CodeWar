@@ -21,9 +21,9 @@ public enum CodecadetType {
     ELIAS("Elias.png"),
     DIOGO("Diogo.png"),
     FLAVIO("Flavio.png"),
-    BRUNO("Daniel.png"),
+    BRUNO("Bruno.png"),
     NELSON("Nelson.png"),
-    SAMUEL("Daniel.png"),
+    SAMUEL("Samuel.png"),
     JORGE("Jorge.png");
 
     private String picture;
