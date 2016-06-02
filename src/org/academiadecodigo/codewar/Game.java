@@ -12,6 +12,9 @@ import org.academiadecodigo.simplegraphics.mouse.MouseEvent;
 import org.academiadecodigo.simplegraphics.mouse.MouseHandler;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
+import javax.sound.sampled.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
@@ -23,9 +26,7 @@ public class Game implements KeyboardHandler {
     public static final int MAX_PLAYERS_PROJECTILES = 5;
     public static final int MAX_MC_PROJECTILES = 15;
 
-    private Mouse m;
     private Keyboard k;
-    private CodecadetType playerType;
     private Codecadet player;
     private MasterCoder[] masterCoders;
     private LinkedList<Projectile> playerProjectiles;
@@ -38,16 +39,15 @@ public class Game implements KeyboardHandler {
         // TODO: 25/05/16 init or constructor?
         // TODO: 29/05/2016 player selection
         registerKeyboardInput();
+        playSound();
         menu = new Menu();
     }
 
     public void init () throws InterruptedException {
 
-        grid.init();
-
         playerProjectiles = new LinkedList<>();
         masterCoderProjectiles = new LinkedList<>();
-
+        grid.init();
         menu.init();
         player = CodeCadetFactory.make(grid, menu.choose());
 
@@ -326,6 +326,30 @@ public class Game implements KeyboardHandler {
         event9.setKey(KeyboardEvent.KEY_C);
         event9.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         k.addEventListener(event9);*/
+    }
+
+    private void playSound() {
+        AudioInputStream in;
+
+        File soundFile = new File("resources/music.wav");
+
+        try {
+            in = AudioSystem.getAudioInputStream(soundFile);
+            AudioSystem.getAudioFileFormat(soundFile);
+            Clip clip;
+            clip = AudioSystem.getClip();
+            clip.open(in);
+            clip.start();
+
+        } catch (UnsupportedAudioFileException e) {
+            e.printStackTrace();
+
+        } catch (LineUnavailableException e) {
+            e.printStackTrace();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
 

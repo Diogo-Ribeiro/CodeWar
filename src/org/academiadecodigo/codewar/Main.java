@@ -2,12 +2,14 @@ package org.academiadecodigo.codewar;
 
 import org.academiadecodigo.codewar.gameobjects.MasterCoder;
 
+import java.io.FileNotFoundException;
+
 /**
  * Created by diogocodecadet on 23/05/16.
  */
 public class Main {
     // TODO: 24/05/16 change name to beijinhos & caralhinhos
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException, FileNotFoundException {
 
         Game g = new Game();
 

@@ -10,6 +10,7 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
+import org.w3c.dom.css.Rect;
 
 import static org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent.*;
 
@@ -24,7 +25,7 @@ public class Menu implements KeyboardHandler{
     private boolean notDone = true;
 
     public void init() {
-
+        
         rectangle = new Rectangle(0,0,Char.AVATAR_DIMENSION* SimpleGfxGrid.CELL_SIZE, Char.AVATAR_DIMENSION* SimpleGfxGrid.CELL_SIZE);
         rectangle.setColor(Color.RED);
         rectangle.draw();
