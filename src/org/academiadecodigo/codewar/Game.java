@@ -21,7 +21,7 @@ import java.util.ListIterator;
 public class Game implements KeyboardHandler {
 
     public static final int MAX_PLAYERS_PROJECTILES = 5;
-    public static final int MAX_MC_PROJECTILES = 20;
+    public static final int MAX_MC_PROJECTILES = 10;
 
     private Mouse m;
     private Keyboard k;
@@ -103,26 +103,41 @@ public class Game implements KeyboardHandler {
 */
         ListIterator<Projectile> mcIterator = mcProjectiles.listIterator();
         ListIterator<Projectile> plyrIterator = playerProjectiles.listIterator();
-        while(mcIterator.hasNext()) {
-            Projectile mcP = mcIterator.next();
-            CollisionChecker.check(mcP, player);
 
+        for(int j = 0 ; j < mcProjectiles.size(); j++){
+            CollisionChecker.check(mcProjectiles.get(j), player);
+           for(int i = 0; i < playerProjectiles.size(); i++) {
+
+              // Projectile mcP = mcIterator.next();
+               for(MasterCoder mc : masterCoders) {
+
+                       CollisionChecker.check(playerProjectiles.get(i), mc);
+
+                   }
+
+               if (playerProjectiles.get(i).getType().equals(ProjectileType.QUESTION)) {
+                   CollisionChecker.check(playerProjectiles.get(i), mcProjectiles.get(j));
+                   //
+               }
+           }
         }
 
-        for(MasterCoder mc : masterCoders){
+
+/*
             while(plyrIterator.hasNext()){
                 Projectile plyrP = plyrIterator.next();
+                for(MasterCoder mc : masterCoders){
                 CollisionChecker.check(plyrP,mc);
-                /*while(mcIterator.hasNext()) {
-                    Projectile mcP = mcIterator.next();
-
-                    CollisionChecker.check(plyrP,mcP);
-                }*/
             }
 
-
-
         }
+/*
+       // while(mcIterator.hasNext()) {
+           // Projectile mcP = mcIterator.next();
+            //CollisionChecker.check(plyrP,mcP);
+
+
+
 
         /*
     public static void check(LinkedList<Projectile> projectiles, Char[] chars) {
@@ -188,8 +203,8 @@ public class Game implements KeyboardHandler {
     private void projectileUpdate(LinkedList<Projectile> projectiles) {
 
         ListIterator <Projectile> a = projectiles.listIterator();
-
         while (a.hasNext()) {
+
 
             Projectile p = a.next();
 

@@ -13,13 +13,13 @@ public class CollisionChecker {
    public static void check(Projectile projectile, GameObjects object){
 
        if(projectile.getPosition().equals(object.getPosition())){
+
            object.getHit(projectile);
            projectile.reachTarget();
            if(object instanceof Projectile){
               ((Projectile) object).reachTarget();
            }
            //System.out.println(projectile.isHitTarget());
-
        }
    }
 
