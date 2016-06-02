@@ -26,9 +26,7 @@ public class Game implements KeyboardHandler {
     public static final int MAX_PLAYERS_PROJECTILES = 5;
     public static final int MAX_MC_PROJECTILES = 20;
 
-    private Mouse m;
     private Keyboard k;
-    private CodecadetType playerType;
     private Codecadet player;
     private MasterCoder[] masterCoders;
     private LinkedList<Projectile> playerProjectiles;
@@ -52,7 +50,6 @@ public class Game implements KeyboardHandler {
         grid.init();
         menu.init();
         player = CodeCadetFactory.make(grid, menu.choose());
-
 
         start();
     }
@@ -268,7 +265,7 @@ public class Game implements KeyboardHandler {
     private void playSound() {
         AudioInputStream in;
 
-        File soundFile = new File("music.wav");
+        File soundFile = new File("resources/music.wav");
 
         try {
             in = AudioSystem.getAudioInputStream(soundFile);
