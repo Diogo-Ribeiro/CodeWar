@@ -21,7 +21,7 @@ import java.util.ListIterator;
 public class Game implements KeyboardHandler {
 
     public static final int MAX_PLAYERS_PROJECTILES = 5;
-    public static final int MAX_MC_PROJECTILES = 10;
+    public static final int MAX_MC_PROJECTILES = 15;
 
     private Mouse m;
     private Keyboard k;
@@ -106,6 +106,7 @@ public class Game implements KeyboardHandler {
 
         for(int j = 0 ; j < mcProjectiles.size(); j++){
             CollisionChecker.check(mcProjectiles.get(j), player);
+
            for(int i = 0; i < playerProjectiles.size(); i++) {
 
               // Projectile mcP = mcIterator.next();
@@ -203,6 +204,7 @@ public class Game implements KeyboardHandler {
     private void projectileUpdate(LinkedList<Projectile> projectiles) {
 
         ListIterator <Projectile> a = projectiles.listIterator();
+
         while (a.hasNext()) {
 
 
