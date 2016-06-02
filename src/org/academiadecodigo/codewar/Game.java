@@ -7,10 +7,6 @@ import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
-import org.academiadecodigo.simplegraphics.mouse.Mouse;
-import org.academiadecodigo.simplegraphics.mouse.MouseEvent;
-import org.academiadecodigo.simplegraphics.mouse.MouseHandler;
-import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 import javax.sound.sampled.*;
 import java.io.File;
@@ -33,12 +29,10 @@ public class Game implements KeyboardHandler {
     private LinkedList<Projectile> masterCoderProjectiles;
     private Grid grid = new SimpleGfxGrid(40, 45);
     private Menu menu;
+    private Clip clip;
 
     public Game () {
 
-        // TODO: 25/05/16 init or constructor?
-        // TODO: 29/05/2016 player selection
-        registerKeyboardInput();
         playSound();
         menu = new Menu();
     }
@@ -49,24 +43,24 @@ public class Game implements KeyboardHandler {
         masterCoderProjectiles = new LinkedList<>();
         grid.init();
         menu.init();
+        registerKeyboardInput();
         player = CodeCadetFactory.make(grid, menu.choose());
 
         start();
     }
 
-    public void start () throws InterruptedException {
+    private void start () throws InterruptedException {
 
         masterCoders = MasterCoderFactory.maker(grid);
 
         while (!player.isDead() && !allMasterCodersDead()) {
 
+            for (MasterCoder mc : masterCoders) {
 
-            for (int i = 0; i < masterCoders.length; i++) {
-
-                masterCoders[i].move();
+                mc.move();
             }
-            player.move();
 
+            player.move();
             masterCodersShoot();
             projectileUpdate(masterCoderProjectiles);
             projectileUpdate(playerProjectiles);
@@ -74,6 +68,7 @@ public class Game implements KeyboardHandler {
 
             Thread.sleep(100);
         }
+
         gameOver();
     }
 
@@ -92,75 +87,22 @@ public class Game implements KeyboardHandler {
 
     private void checkCollisions(LinkedList <Projectile> mcProjectiles, LinkedList <Projectile> playerProjectiles, MasterCoder[] masterCoders, Codecadet player) {
 
-        // TODO: 31/05/16 juntar tudo huma unica lista e passar pro collision detector
-        // TODO: 31/05/16 interface collidable
-
-
-        /*
-        CollisionChecker.check(mcProjectiles, player);
-        CollisionChecker.check(playerProjectiles, masterCoders);
-        CollisionChecker.check(mcProjectiles, playerProjectiles);
-*/
-        ListIterator<Projectile> mcIterator = mcProjectiles.listIterator();
-        ListIterator<Projectile> plyrIterator = playerProjectiles.listIterator();
-
-        for(int j = 0 ; j < mcProjectiles.size(); j++){
+        for (int j = 0; j < mcProjectiles.size(); j++) {
             CollisionChecker.check(mcProjectiles.get(j), player);
 
-           for(int i = 0; i < playerProjectiles.size(); i++) {
+            for (int i = 0; i < playerProjectiles.size(); i++) {
 
-              // Projectile mcP = mcIterator.next();
-               for(MasterCoder mc : masterCoders) {
+                for (MasterCoder mc : masterCoders) {
 
-                       CollisionChecker.check(playerProjectiles.get(i), mc);
+                    CollisionChecker.check(playerProjectiles.get(i), mc);
+                }
 
-                   }
+                if (playerProjectiles.get(i).getType().equals(ProjectileType.QUESTION)) {
 
-               if (playerProjectiles.get(i).getType().equals(ProjectileType.QUESTION)) {
-                   CollisionChecker.check(playerProjectiles.get(i), mcProjectiles.get(j));
-                   //
-               }
-           }
-        }
-
-
-/*
-            while(plyrIterator.hasNext()){
-                Projectile plyrP = plyrIterator.next();
-                for(MasterCoder mc : masterCoders){
-                CollisionChecker.check(plyrP,mc);
-            }
-
-        }
-/*
-       // while(mcIterator.hasNext()) {
-           // Projectile mcP = mcIterator.next();
-            //CollisionChecker.check(plyrP,mcP);
-
-
-
-
-        /*
-    public static void check(LinkedList<Projectile> projectiles, Char[] chars) {
-
-        for (int i = 0; i < chars.length; i++) {
-
-            ListIterator<Projectile> a = projectiles.listIterator();
-
-            while(a.hasNext()) {
-
-                Projectile p = a.next();
-
-                if (p.getPosition().equals(chars[i].getPosition())) {
-
-                    chars[i].getHit(p);
-                    p.reachTarget();
-
+                    CollisionChecker.check(playerProjectiles.get(i), mcProjectiles.get(j));
                 }
             }
         }
-    }*/
-
     }
 
     private void codeCadetShoot(ProjectileType type) {
@@ -176,6 +118,7 @@ public class Game implements KeyboardHandler {
                 Projectile p = player.specialShoot();
 
                 if (p != null) {
+
                     playerProjectiles.add(p);
                 }
             }
@@ -199,14 +142,11 @@ public class Game implements KeyboardHandler {
         }
     }
 
-
-    //Amauri: Mudando parte para o getHit do projectile.
     private void projectileUpdate(LinkedList<Projectile> projectiles) {
 
         ListIterator <Projectile> a = projectiles.listIterator();
 
         while (a.hasNext()) {
-
 
             Projectile p = a.next();
 
@@ -222,6 +162,8 @@ public class Game implements KeyboardHandler {
     }
 
     public void gameOver () {
+
+        clip.close();
 
         if (player.isDead()) {
 
@@ -311,43 +253,32 @@ public class Game implements KeyboardHandler {
         event6.setKey(KeyboardEvent.KEY_SPACE);
         event6.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
         k.addEventListener(event6);
-
-       /* KeyboardEvent event7 = new KeyboardEvent();
-        event7.setKey(KeyboardEvent.KEY_UP);
-        event7.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        k.addEventListener(event7);
-
-        KeyboardEvent event8 = new KeyboardEvent();
-        event8.setKey(KeyboardEvent.KEY_DOWN);
-        event8.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        k.addEventListener(event8);
-
-        KeyboardEvent event9 = new KeyboardEvent();
-        event9.setKey(KeyboardEvent.KEY_C);
-        event9.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        k.addEventListener(event9);*/
     }
 
     private void playSound() {
+
         AudioInputStream in;
 
         File soundFile = new File("resources/music.wav");
 
         try {
+
             in = AudioSystem.getAudioInputStream(soundFile);
             AudioSystem.getAudioFileFormat(soundFile);
-            Clip clip;
             clip = AudioSystem.getClip();
             clip.open(in);
             clip.start();
 
         } catch (UnsupportedAudioFileException e) {
+
             e.printStackTrace();
 
         } catch (LineUnavailableException e) {
+
             e.printStackTrace();
 
         } catch (IOException e) {
+
             e.printStackTrace();
         }
     }

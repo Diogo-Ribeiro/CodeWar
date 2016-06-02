@@ -10,14 +10,11 @@ public abstract class Char extends GameObjects {
     public final static int AVATAR_DIMENSION = 4;
     private int hp = 6;
     private boolean dead;
-    private boolean specialShot;
     private boolean moving;
-    private GridPosition position;
 
     public Char (GridPosition position) {
 
-        this.position = position;
-
+        super (position);
     }
 
     public abstract void move ( );
@@ -39,16 +36,12 @@ public abstract class Char extends GameObjects {
 
     public void die () {
 
-        position.hide();
+        getPosition().hide();
         dead = true;
     }
 
     public boolean isDead() {
         return dead;
-    }
-
-    public GridPosition getPosition() {
-        return position;
     }
 
     public boolean isMoving() {

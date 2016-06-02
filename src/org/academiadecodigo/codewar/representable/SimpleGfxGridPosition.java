@@ -114,12 +114,11 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
 
             GridPosition position = (GridPosition)obj;
 
-            //direção UP ou DOWN collides com obj que estejam uma row acima ou abaixo desde que a direção do outro seja diferente da sua.
             return (this.getCol() >= position.getCol() && this.getCol() <= position.getMaxX()
                     || position.getCol() >= this.getCol() && position.getCol() < this.getMaxX())
 
                     && (this.getRow() >= position.getRow() && this.getRow() < position.getMaxY()
-                       || position.getRow() >= this.getRow() && position.getRow() < this.getMaxY());
+                    || position.getRow() >= this.getRow() && position.getRow() < this.getMaxY());
         }
 
         return false;

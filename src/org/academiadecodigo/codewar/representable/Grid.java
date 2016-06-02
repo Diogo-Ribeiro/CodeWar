@@ -1,7 +1,6 @@
 package org.academiadecodigo.codewar.representable;
 
 import org.academiadecodigo.simplegraphics.pictures.Picture;
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 /**
  * Created by codecadet on 25/05/16.

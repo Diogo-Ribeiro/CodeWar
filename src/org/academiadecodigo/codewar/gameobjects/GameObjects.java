@@ -9,7 +9,12 @@ import org.academiadecodigo.codewar.representable.GridPosition;
 public abstract class GameObjects{
     // Allow direct access from subclasses
     private Direction currentDirection;
+    private GridPosition position;
 
+    public GameObjects (GridPosition position) {
+
+        this.position = position;
+    }
     public abstract void getHit(Projectile projectile);
 
     public void setCurrentDirection(Direction newDirection){
@@ -20,8 +25,9 @@ public abstract class GameObjects{
         return currentDirection;
     }
 
-    public abstract GridPosition getPosition();
+    public GridPosition getPosition() {
 
-
+        return position;
+    }
 }
 

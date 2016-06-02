@@ -5,13 +5,10 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.graphics.Text;
 
-import java.awt.*;
-import java.awt.image.ImageObserver;
-import java.awt.image.ImageProducer;
-
 /**
  * Created by codecadet on 25/05/16.
  */
+
 public class SimpleGfxGrid implements Grid {
 
     public static final int CELL_SIZE = 20;
@@ -26,18 +23,15 @@ public class SimpleGfxGrid implements Grid {
 
     public void init() {
 
-        Picture pic = new Picture();
-        pic.load("resources/animated-gif-of-fighting-games-backgrounds-16.gif");
-        pic.grow((cols*CELL_SIZE - pic.getWidth())/2, (rows*CELL_SIZE - pic.getHeight())/2);
-        pic.translate(-pic.getX(), -pic.getY());
-        pic.draw();
-
-//        Rectangle rectangle = new Rectangle(0, 0, cols*CELL_SIZE, rows*CELL_SIZE);
-//        rectangle.setColor(Color.BLACK);
-//        rectangle.draw();
+        Picture bg = new Picture();
+        bg.load("resources/animated-gif-of-fighting-games-backgrounds-16.gif");
+        bg.grow((cols*CELL_SIZE - bg.getWidth())/2, (rows*CELL_SIZE - bg.getHeight())/2);
+        bg.translate(-bg.getX(), -bg.getY());
+        bg.draw();
     }
 
     public int getCols() {
+
         return cols;
     }
 

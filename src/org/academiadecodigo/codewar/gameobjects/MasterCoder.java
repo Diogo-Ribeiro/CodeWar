@@ -73,9 +73,8 @@ public class MasterCoder extends Char {
     public Projectile shoot () {
 
         if (!isDead()) {
-            // TODO: 25/05/16 think of adequate shooting probabilities
-            int r = RandomNumberGenerator.get(0, 10);
 
+            int r = RandomNumberGenerator.get(0, 10);
             if (r < 2) {
 
                 return ProjectileFactory.get(ProjectileType.KISSY, this.getPosition(), Direction.DOWN);

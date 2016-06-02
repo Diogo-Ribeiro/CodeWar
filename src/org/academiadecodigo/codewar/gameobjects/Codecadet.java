@@ -4,24 +4,16 @@ import org.academiadecodigo.codewar.Direction;
 import org.academiadecodigo.codewar.representable.GridPosition;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
-import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
 /**
  * Created by diogocodecadet on 23/05/16.
  */
 public class Codecadet extends Char {
 
-    // TODO: 24/05/16 one char for each codecadet and associated game mode
-
     private static final int KISSIES_TO_BUG = 4;
     private int kissyCounter;
     private Rectangle kissyBar;
     private Rectangle kissyBarFill;
-    private Rectangle hpBar;
-    private Rectangle hpBarFill;
 
     public Codecadet(GridPosition position) {
 

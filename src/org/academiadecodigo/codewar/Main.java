@@ -1,7 +1,5 @@
 package org.academiadecodigo.codewar;
 
-import org.academiadecodigo.codewar.gameobjects.MasterCoder;
-
 import java.io.FileNotFoundException;
 
 /**
@@ -15,9 +13,6 @@ public class Main {
 
         //run the 'settings' part, which allows the player to choose the game mode and the codecadet char.
         g.init();
-
-        //start the actual game.
-       g.start();
 
     }
 }
