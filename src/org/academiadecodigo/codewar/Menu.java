@@ -76,7 +76,7 @@ public class Menu implements KeyboardHandler{
 
         switch (keyboardEvent.getKey()) {
 
-            case KEY_UP:
+            case KEY_LEFT:
                 if (i == 9) {
                     rectangle.translate(Char.AVATAR_DIMENSION* SimpleGfxGrid.CELL_SIZE*8, -Char.AVATAR_DIMENSION* SimpleGfxGrid.CELL_SIZE);
                     i--;
@@ -86,7 +86,7 @@ public class Menu implements KeyboardHandler{
                 }
                 break;
 
-            case KEY_DOWN:
+            case KEY_RIGHT:
 
                 if (i == 8) {
                     rectangle.translate(-Char.AVATAR_DIMENSION* SimpleGfxGrid.CELL_SIZE*8, Char.AVATAR_DIMENSION* SimpleGfxGrid.CELL_SIZE);
@@ -112,19 +112,19 @@ public class Menu implements KeyboardHandler{
 
         k = new Keyboard(this);
 
+        KeyboardEvent event = new KeyboardEvent();
+        event.setKey(KeyboardEvent.KEY_LEFT);
+        event.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        k.addEventListener(event);
+
+        KeyboardEvent event1 = new KeyboardEvent();
+        event1.setKey(KeyboardEvent.KEY_RIGHT);
+        event1.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        k.addEventListener(event1);
+
         KeyboardEvent event2 = new KeyboardEvent();
-        event2.setKey(KeyboardEvent.KEY_UP);
+        event2.setKey(KeyboardEvent.KEY_C);
         event2.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         k.addEventListener(event2);
-
-        KeyboardEvent event3 = new KeyboardEvent();
-        event3.setKey(KeyboardEvent.KEY_DOWN);
-        event3.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        k.addEventListener(event3);
-
-        KeyboardEvent event4 = new KeyboardEvent();
-        event4.setKey(KeyboardEvent.KEY_C);
-        event4.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        k.addEventListener(event4);
     }
 }
