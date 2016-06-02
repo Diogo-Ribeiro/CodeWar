@@ -281,7 +281,6 @@ public class Game implements KeyboardHandler {
         } catch (LineUnavailableException e) {
             e.printStackTrace();
 
-
         } catch (IOException e) {
             e.printStackTrace();
         }
