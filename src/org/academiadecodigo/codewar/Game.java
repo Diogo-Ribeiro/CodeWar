@@ -12,6 +12,9 @@ import org.academiadecodigo.simplegraphics.mouse.MouseEvent;
 import org.academiadecodigo.simplegraphics.mouse.MouseHandler;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
+import javax.sound.sampled.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
@@ -38,6 +41,7 @@ public class Game implements KeyboardHandler {
         // TODO: 25/05/16 init or constructor?
         // TODO: 29/05/2016 player selection
         registerKeyboardInput();
+        playSound();
         menu = new Menu();
     }
 
@@ -259,6 +263,31 @@ public class Game implements KeyboardHandler {
         event9.setKey(KeyboardEvent.KEY_C);
         event9.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         k.addEventListener(event9);*/
+    }
+
+    private void playSound() {
+        AudioInputStream in;
+
+        File soundFile = new File("music.wav");
+
+        try {
+            in = AudioSystem.getAudioInputStream(soundFile);
+            AudioSystem.getAudioFileFormat(soundFile);
+            Clip clip;
+            clip = AudioSystem.getClip();
+            clip.open(in);
+            clip.start();
+
+        } catch (UnsupportedAudioFileException e) {
+            e.printStackTrace();
+
+        } catch (LineUnavailableException e) {
+            e.printStackTrace();
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
 
