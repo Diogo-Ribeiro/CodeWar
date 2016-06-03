@@ -11,6 +11,7 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 public class Codecadet extends Char {
 
     private static final int KISSIES_TO_BUG = 4;
+    private int health = 6;
     private int kissyCounter;
     private Rectangle kissyBar;
     private Rectangle kissyBarFill;
@@ -24,6 +25,19 @@ public class Codecadet extends Char {
         kissyBarFill.setColor(Color.MAGENTA);
         kissyBar.setColor(Color.MAGENTA);
         kissyBar.draw();
+    }
+
+    /**
+     * decrease health of character
+     */
+    public void lowHealth() {
+
+        health--;
+
+        if (health == 0) {
+
+         die();
+        }
     }
 
     @Override
@@ -51,7 +65,7 @@ public class Codecadet extends Char {
 
         } else if (projectile.getType() == ProjectileType.DICKY) {
 
-            lowerHP();
+            lowHealth();
         }
     }
 

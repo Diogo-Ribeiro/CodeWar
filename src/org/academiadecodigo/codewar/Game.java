@@ -28,20 +28,21 @@ public class Game implements KeyboardHandler {
     private LinkedList<Projectile> playerProjectiles;
     private LinkedList<Projectile> masterCoderProjectiles;
     private Grid grid = new SimpleGfxGrid(40, 45);
+
+
     private Menu menu;
     private Clip clip;
 
     public Game () {
 
         playSound();
-        menu = new Menu();
+        menu = new Menu(grid);
     }
 
     public void init () throws InterruptedException {
 
         playerProjectiles = new LinkedList<>();
         masterCoderProjectiles = new LinkedList<>();
-        grid.init();
         menu.init();
         registerKeyboardInput();
         player = CodeCadetFactory.make(grid, menu.choose());

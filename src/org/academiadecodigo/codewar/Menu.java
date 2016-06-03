@@ -2,9 +2,11 @@ package org.academiadecodigo.codewar;
 
 import org.academiadecodigo.codewar.gameobjects.Char;
 import org.academiadecodigo.codewar.gameobjects.CodecadetType;
+import org.academiadecodigo.codewar.representable.Grid;
 import org.academiadecodigo.codewar.representable.SimpleGfxGrid;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
@@ -22,9 +24,22 @@ public class Menu implements KeyboardHandler{
     private Rectangle rectangle;
     private int i = 0;
     private boolean notDone = true;
+    private Picture pic;
+    private Grid grid;
+
+    public Menu(Grid grid) {
+        this.grid = grid;
+    }
 
     public void init() {
-        
+
+        pic = new Picture();
+        pic.load("resources/menu.jpg");
+        pic.grow((grid.getCols()*grid.getCellSize() - pic.getWidth())/2, (grid.getRows()*grid.getCellSize()- pic.getHeight())/2);
+        pic.translate(-pic.getX(), -pic.getY());
+        pic.draw();
+
+
         rectangle = new Rectangle(0,0,Char.AVATAR_DIMENSION* SimpleGfxGrid.CELL_SIZE, Char.AVATAR_DIMENSION* SimpleGfxGrid.CELL_SIZE);
         rectangle.setColor(Color.RED);
         rectangle.draw();
@@ -67,6 +82,8 @@ public class Menu implements KeyboardHandler{
         }
 
         rectangle.delete();
+        pic.delete();
+        grid.init();
 
         return CodecadetType.values()[i];
     }
