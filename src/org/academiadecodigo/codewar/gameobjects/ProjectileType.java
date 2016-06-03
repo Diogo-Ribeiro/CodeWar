@@ -4,7 +4,7 @@ import org.academiadecodigo.codewar.representable.SimpleGfxGrid;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 /**
- * Created by diogocodecadet on 23/05/16.
+ * Represents all possible projectiles in the game with their picture.
  */
 public enum ProjectileType {
 
@@ -13,19 +13,29 @@ public enum ProjectileType {
     BUG ("bug-alt-512.png"),
     QUESTION ("00e8b7a51d52791be04e87acbe029132.png");
 
+    /**
+     * @param picture string of the path to resource directory.
+     */
     private String picture;
+
 
     ProjectileType(String picture){
 
         this.picture = picture;
     }
 
+    /**
+     * draw the picture that represents the projectile
+     * @return representable
+     */
     public Picture getRepresentable() {
 
         Picture representable = new Picture(0,0,picture);
+        //change size of picture.
+        //divides to 2 because grow method enlarge dx to both sides.
         representable.grow((SimpleGfxGrid.CELL_SIZE*2 -representable.getWidth())/2, (SimpleGfxGrid.CELL_SIZE*2 - representable.getHeight())/2);
+        //decrease size of picture.
         representable.translate(-representable.getX(), -representable.getY());
-
         return representable;
     }
 }
