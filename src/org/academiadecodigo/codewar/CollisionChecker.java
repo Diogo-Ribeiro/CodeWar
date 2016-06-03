@@ -37,18 +37,18 @@ public class CollisionChecker {
     public static void checkCollisions(LinkedList<Projectile> mcProjectiles, LinkedList <Projectile> playerProjectiles, MasterCoder[] masterCoders, Codecadet player) {
 
         for (int j = 0; j < mcProjectiles.size(); j++) {
-            CollisionChecker.check(mcProjectiles.get(j), player);
+            check(mcProjectiles.get(j), player);
 
             for (int i = 0; i < playerProjectiles.size(); i++) {
 
                 for (MasterCoder mc : masterCoders) {
 
-                    CollisionChecker.check(playerProjectiles.get(i), mc);
+                    check(playerProjectiles.get(i), mc);
                 }
 
                 if (playerProjectiles.get(i).getType().equals(ProjectileType.QUESTION)) {
 
-                    CollisionChecker.check(playerProjectiles.get(i), mcProjectiles.get(j));
+                    check(playerProjectiles.get(i), mcProjectiles.get(j));
                 }
             }
         }
