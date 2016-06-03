@@ -28,17 +28,22 @@ class Game implements KeyboardHandler {
     private LinkedList<Projectile> playerProjectiles;
     private LinkedList<Projectile> masterCoderProjectiles;
     private Grid grid = new SimpleGfxGrid(40, 45);
-
-
     private Menu menu;
     private Clip clip;
 
+    /**
+     * instantiates a new game and starts the sound.
+     */
     Game () {
 
         playSound();
         menu = new Menu(grid);
     }
 
+    /**
+     * initializes the lists and the menu. after the character selection starts the game.
+     * @throws InterruptedException
+     */
     void init () throws InterruptedException {
 
         playerProjectiles = new LinkedList<>();
@@ -50,6 +55,10 @@ class Game implements KeyboardHandler {
         start();
     }
 
+    /**
+     * manages the turns.
+     * @throws InterruptedException
+     */
     private void start () throws InterruptedException {
 
         masterCoders = MasterCoderFactory.maker(grid);
@@ -73,6 +82,10 @@ class Game implements KeyboardHandler {
         gameOver();
     }
 
+    /**
+     * iterates over the MasterCoders array to check if any of them is still in play.
+     * @return
+     */
     private boolean allMasterCodersDead() {
 
         for (MasterCoder mc : masterCoders) {
@@ -86,6 +99,10 @@ class Game implements KeyboardHandler {
         return true;
     }
 
+    /**
+     * gets a projectile from the player and stores it in a projectile list.
+     * @param type
+     */
     private void codeCadetShoot(ProjectileType type) {
 
         if (playerProjectiles.size() < MAX_PLAYERS_PROJECTILES) {
@@ -106,6 +123,9 @@ class Game implements KeyboardHandler {
         }
     }
 
+    /**
+     * iterates over the array of MasterCoders and calls the method shoot().
+     */
     private void masterCodersShoot () {
 
         Projectile currentProjectile;
@@ -123,6 +143,10 @@ class Game implements KeyboardHandler {
         }
     }
 
+    /**
+     * updates the projectile lists, removing those which have reached targets and moving those which are still in play.
+     * @param projectiles
+     */
     private void projectileUpdate(LinkedList<Projectile> projectiles) {
 
         ListIterator <Projectile> a = projectiles.listIterator();
@@ -142,6 +166,9 @@ class Game implements KeyboardHandler {
         }
     }
 
+    /**
+     * stops the music and shows the final screens.
+     */
     private void gameOver () {
 
         clip.close();
@@ -156,6 +183,10 @@ class Game implements KeyboardHandler {
         }
     }
 
+    /**
+     * part of the keyboard logic.
+     * @param e
+     */
     public void keyPressed(KeyboardEvent e) {
 
         switch (e.getKey()) {
@@ -182,6 +213,10 @@ class Game implements KeyboardHandler {
         }
     }
 
+    /**
+     * part of the keyboard logic.
+     * @param e
+     */
     public void keyReleased(KeyboardEvent e) {
 
         switch (e.getKey()) {
@@ -197,6 +232,9 @@ class Game implements KeyboardHandler {
         }
     }
 
+    /**
+     * register the keyboard events.
+     */
     private void registerKeyboardInput() {
         k = new Keyboard(this);
 
@@ -236,6 +274,9 @@ class Game implements KeyboardHandler {
         k.addEventListener(event6);
     }
 
+    /**
+     * plays the background music.
+     */
     private void playSound() {
 
         AudioInputStream in;

@@ -50,7 +50,7 @@ public interface Grid {
 
     /**
      *
-     * @return the consersion rate from columns/rows to pixels.
+     * @return the conversion rate from columns/rows to pixels.
      */
     public int getCellSize();
 
