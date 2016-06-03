@@ -18,7 +18,7 @@ import static org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent.*;
 /**
  * Created by codecadet on 01/06/16.
  */
-public class Menu implements KeyboardHandler{
+class Menu implements KeyboardHandler{
 
     private Keyboard k;
     private Rectangle rectangle;
@@ -27,11 +27,11 @@ public class Menu implements KeyboardHandler{
     private Picture pic;
     private Grid grid;
 
-    public Menu(Grid grid) {
+    Menu(Grid grid) {
         this.grid = grid;
     }
 
-    public void init() {
+    void init() {
 
         pic = new Picture();
         pic.load("resources/menu.jpg");
@@ -46,7 +46,7 @@ public class Menu implements KeyboardHandler{
         registerKeyboardInput();
     }
 
-    public CodecadetType choose() throws InterruptedException {
+    CodecadetType choose() throws InterruptedException {
 
         Picture[] cadets = new Picture[CodecadetType.values().length];
         for (int i = 0; i < cadets.length; i++ ) {
@@ -76,9 +76,9 @@ public class Menu implements KeyboardHandler{
             Thread.sleep(100);
         }
 
-        for (int i = 0; i < cadets.length; i++) {
+        for (Picture p : cadets) {
 
-            cadets[i].delete();
+            p.delete();
         }
 
         rectangle.delete();

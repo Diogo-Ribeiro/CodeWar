@@ -11,11 +11,11 @@ import org.academiadecodigo.codewar.representable.SimpleGfxGridPosition;
  */
 public class Projectile extends GameObjects {
 
-    ProjectileType type;
+    private ProjectileType type;
     private boolean hitTarget;
 
     //Amauri and Henry: made this constructor and method reachedEdge
-    public Projectile(ProjectileType type, GridPosition position, Direction direction){
+    Projectile(ProjectileType type, GridPosition position, Direction direction){
 
         super(position);
         this.type = type;

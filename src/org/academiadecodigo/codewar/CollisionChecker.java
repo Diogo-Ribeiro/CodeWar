@@ -7,7 +7,7 @@ import java.util.LinkedList;
 /**
  * Created by codecadet on 25/05/16.
  */
-public class CollisionChecker {
+class CollisionChecker {
 
     /**
      * Checks for collisions between any projectile and any game object (projectile, mc, codecadet)
@@ -34,7 +34,7 @@ public class CollisionChecker {
      * @param masterCoders
      * @param player
      */
-    public static void checkCollisions(LinkedList<Projectile> mcProjectiles, LinkedList <Projectile> playerProjectiles, MasterCoder[] masterCoders, Codecadet player) {
+    static void checkCollisions(LinkedList<Projectile> mcProjectiles, LinkedList <Projectile> playerProjectiles, MasterCoder[] masterCoders, Codecadet player) {
 
         for (int j = 0; j < mcProjectiles.size(); j++) {
             check(mcProjectiles.get(j), player);

@@ -17,10 +17,10 @@ import java.util.ListIterator;
 /**
  * Created by diogocodecadet on 23/05/16.
  */
-public class Game implements KeyboardHandler {
+class Game implements KeyboardHandler {
 
-    public static final int MAX_PLAYERS_PROJECTILES = 5;
-    public static final int MAX_MC_PROJECTILES = 15;
+    private static final int MAX_PLAYERS_PROJECTILES = 5;
+    private static final int MAX_MC_PROJECTILES = 15;
 
     private Keyboard k;
     private Codecadet player;
@@ -33,13 +33,13 @@ public class Game implements KeyboardHandler {
     private Menu menu;
     private Clip clip;
 
-    public Game () {
+    Game () {
 
         playSound();
         menu = new Menu(grid);
     }
 
-    public void init () throws InterruptedException {
+    void init () throws InterruptedException {
 
         playerProjectiles = new LinkedList<>();
         masterCoderProjectiles = new LinkedList<>();
@@ -75,9 +75,9 @@ public class Game implements KeyboardHandler {
 
     private boolean allMasterCodersDead() {
 
-        for (int i = 0; i < masterCoders.length; i++) {
+        for (MasterCoder mc : masterCoders) {
 
-            if (!masterCoders[i].isDead()) {
+            if (!mc.isDead()) {
 
                 return false;
             }
@@ -85,26 +85,6 @@ public class Game implements KeyboardHandler {
 
         return true;
     }
-
-    /*private void checkCollisions(LinkedList <Projectile> mcProjectiles, LinkedList <Projectile> playerProjectiles, MasterCoder[] masterCoders, Codecadet player) {
-
-        for (int j = 0; j < mcProjectiles.size(); j++) {
-            CollisionChecker.check(mcProjectiles.get(j), player);
-
-            for (int i = 0; i < playerProjectiles.size(); i++) {
-
-                for (MasterCoder mc : masterCoders) {
-
-                    CollisionChecker.check(playerProjectiles.get(i), mc);
-                }
-
-                if (playerProjectiles.get(i).getType().equals(ProjectileType.QUESTION)) {
-
-                    CollisionChecker.check(playerProjectiles.get(i), mcProjectiles.get(j));
-                }
-            }
-        }
-    }*/
 
     private void codeCadetShoot(ProjectileType type) {
 
@@ -129,11 +109,11 @@ public class Game implements KeyboardHandler {
     private void masterCodersShoot () {
 
         Projectile currentProjectile;
-        for (int i = 0; i < masterCoders.length; i ++) {
+        for (MasterCoder mc : masterCoders) {
 
             if (masterCoderProjectiles.size() < MAX_MC_PROJECTILES) {
 
-                currentProjectile = masterCoders[i].shoot();
+                currentProjectile = mc.shoot();
 
                 if (currentProjectile != null) {
 
@@ -162,7 +142,7 @@ public class Game implements KeyboardHandler {
         }
     }
 
-    public void gameOver () {
+    private void gameOver () {
 
         clip.close();
 

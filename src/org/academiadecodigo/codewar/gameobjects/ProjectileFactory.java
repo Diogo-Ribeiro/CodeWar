@@ -5,9 +5,9 @@ import org.academiadecodigo.codewar.representable.GridPosition;
 /**
  * Created by diogocodecadet on 23/05/16.
  */
-public class ProjectileFactory {
+class ProjectileFactory {
 
-    public static Projectile get(ProjectileType type, GridPosition position, Direction direction){
+    static Projectile get(ProjectileType type, GridPosition position, Direction direction){
 
         if (type == ProjectileType.KISSY || type == ProjectileType.DICKY) {
 

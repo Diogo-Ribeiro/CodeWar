@@ -11,7 +11,7 @@ public abstract class GameObjects{
     private Direction currentDirection;
     private GridPosition position;
 
-    public GameObjects (GridPosition position) {
+    GameObjects (GridPosition position) {
 
         this.position = position;
     }
@@ -21,7 +21,7 @@ public abstract class GameObjects{
         currentDirection = newDirection;
     }
 
-    public Direction getCurrentDirection(){
+    Direction getCurrentDirection(){
         return currentDirection;
     }
 

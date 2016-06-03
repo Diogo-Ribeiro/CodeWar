@@ -19,7 +19,7 @@ public class MasterCoder extends Char {
 
     // TODO: 24/05/16 mcs open mouth to shoot kissies or dickies
 
-    public MasterCoder (MasterCoderType type, GridPosition position) {
+    MasterCoder (MasterCoderType type, GridPosition position) {
 
         super(position);
         this.type = type;
@@ -85,14 +85,13 @@ public class MasterCoder extends Char {
             } else if (r >= 2 && r < 4) {
 
                 return ProjectileFactory.get(ProjectileType.DICKY, this.getPosition(), Direction.DOWN);
-
             }
         }
 
         return null;
     }
 
-    public boolean isHittingWall(){
+    private boolean isHittingWall(){
 
         return (getPosition().getCol() <= 0 || getPosition().getCol()>= getPosition().getGrid().getCols()-Char.AVATAR_DIMENSION);
     }

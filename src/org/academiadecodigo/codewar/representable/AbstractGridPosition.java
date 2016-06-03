@@ -12,7 +12,7 @@ public abstract class AbstractGridPosition implements GridPosition {
     private int row;
     private Grid grid;
 
-    public AbstractGridPosition(int col, int row, Grid grid) {
+    AbstractGridPosition(int col, int row, Grid grid) {
         this.col = col;
         this.row = row;
         this.grid = grid;

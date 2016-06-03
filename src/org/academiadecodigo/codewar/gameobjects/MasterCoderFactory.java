@@ -22,7 +22,5 @@ public class MasterCoderFactory {
 
         return masterCoders;
     }
-
-
 }
 

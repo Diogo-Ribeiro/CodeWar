@@ -6,6 +6,7 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 /**
  * Created by codecadet on 30/05/16.
  */
+
 public enum CodecadetType {
     ANA("Ana.png"),
     LAURA("Laura.png"),

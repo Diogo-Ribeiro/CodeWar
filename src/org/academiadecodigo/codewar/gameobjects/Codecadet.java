@@ -16,7 +16,7 @@ public class Codecadet extends Char {
     private Rectangle kissyBar;
     private Rectangle kissyBarFill;
 
-    public Codecadet(GridPosition position) {
+    Codecadet(GridPosition position) {
 
         super(position);
 
@@ -30,7 +30,7 @@ public class Codecadet extends Char {
     /**
      * decrease health of character
      */
-    public void lowHealth() {
+    private void lowerHealth() {
 
         health--;
 
@@ -65,7 +65,7 @@ public class Codecadet extends Char {
 
         } else if (projectile.getType() == ProjectileType.DICKY) {
 
-            lowHealth();
+            lowerHealth();
         }
     }
 
@@ -76,8 +76,6 @@ public class Codecadet extends Char {
 
     public Projectile specialShoot() {
 
-        // TODO: 31/05/16 barrinha hp
-
         if (kissyCounter >= KISSIES_TO_BUG) {
 
             kissyCounter = 0;
@@ -85,7 +83,7 @@ public class Codecadet extends Char {
             kissyBarFill = new Rectangle(0, getPosition().getGrid().getRows() * getPosition().getGrid().getCellSize() - 20, 0, 0);
             return ProjectileFactory.get(ProjectileType.BUG, this.getPosition(), Direction.UP);
         }
-        // TODO: 31/05/16 exception
+
         return null;
     }
 }
