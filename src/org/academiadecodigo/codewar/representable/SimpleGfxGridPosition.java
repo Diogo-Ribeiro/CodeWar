@@ -12,6 +12,11 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
 
     private Picture representable;
 
+    /**
+     * creates a random grid position
+     * @param grid simple-graphics grid
+     * @param representable picture representing a game object
+     */
     public SimpleGfxGridPosition (SimpleGfxGrid grid, Picture representable) {
 
         super(RandomNumberGenerator.get(0, grid.getCols()-1), 0, grid);
@@ -22,6 +27,13 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
 
     }
 
+    /**
+     * creates a fixed grid position
+     * @param col position column
+     * @param row position row
+     * @param grid simple-graphics grid
+     * @param representable picture representing a game object
+     */
     public SimpleGfxGridPosition (int col, int row, SimpleGfxGrid grid, Picture representable) {
 
         super (col, row, grid);
@@ -104,10 +116,20 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
         representable.delete();
     }
 
+    /**
+     * gets the picture representing a game object.
+     * @return picture of game object
+     */
     public Picture getRepresentable(){
         return representable;
     }
 
+    /**
+     * compares the position of two game objects
+     * @param obj the object position we want to compare
+     * @return true if the objects would collide
+     */
+    @Override
     public boolean equals(Object obj) {
 
         if (obj instanceof GridPosition) {

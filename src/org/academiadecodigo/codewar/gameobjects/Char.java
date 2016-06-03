@@ -26,7 +26,7 @@ public abstract class Char extends GameObjects {
 
     /**
      * makes the character move.
-     * call position.move().
+     * calls position.move().
      */
     public abstract void move ( );
 

@@ -16,6 +16,10 @@ public class Codecadet extends Char {
     private Rectangle kissyBar;
     private Rectangle kissyBarFill;
 
+    /**
+     * Constructor of class Codecadet.
+     * @param position
+     */
     public Codecadet(GridPosition position) {
 
         super(position);
@@ -28,7 +32,7 @@ public class Codecadet extends Char {
     }
 
     /**
-     * decrease health of character
+     * decreases health of character.
      */
     public void lowHealth() {
 
@@ -40,6 +44,9 @@ public class Codecadet extends Char {
         }
     }
 
+    /**
+     * makes the Codecadet move.
+     */
     @Override
     public void move() {
 
@@ -49,6 +56,10 @@ public class Codecadet extends Char {
         }
     }
 
+    /**
+     * Receives a projectile and makes the Codecadet get hit by increasing kissyCounter or by lowering its health, depending on projectile type.
+     * @param projectile
+     */
     @Override
     public void getHit(Projectile projectile) {
 
@@ -69,11 +80,19 @@ public class Codecadet extends Char {
         }
     }
 
+    /**
+     * makes the Codecadet shoot a Question.
+     * @return Projectile.
+     */
     public Projectile shoot() {
 
         return ProjectileFactory.get(ProjectileType.QUESTION, getPosition(), Direction.UP);
     }
 
+    /**
+     * makes the Codecadet shoot a Bug, as long as kissyCounter has reached an established value.
+     * @return Projectile
+     */
     public Projectile specialShoot() {
 
         // TODO: 31/05/16 barrinha hp
