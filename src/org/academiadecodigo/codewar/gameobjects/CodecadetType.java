@@ -7,6 +7,7 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
  * Enum with the codecadet types and his names.
  * Created by codecadet on 30/05/16.
  */
+
 public enum CodecadetType {
     ANA("Ana.png"),
     LAURA("Laura.png"),

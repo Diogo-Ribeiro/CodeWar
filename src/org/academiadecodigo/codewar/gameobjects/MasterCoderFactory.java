@@ -6,10 +6,15 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 import java.util.LinkedList;
 
 /**
- * Created by diogocodecadet on 23/05/16.
+ * Create all Master Coders.
  */
 public class MasterCoderFactory {
 
+    /**
+     * Create an array with all de Master Coders.
+     * @param grid
+     * @return Master Coders with a position.
+     */
     public static MasterCoder[] maker(Grid grid) {
 
 
@@ -22,7 +27,5 @@ public class MasterCoderFactory {
 
         return masterCoders;
     }
-
-
 }
 

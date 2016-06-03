@@ -7,12 +7,12 @@ import java.util.LinkedList;
 /**
  * Created by codecadet on 25/05/16.
  */
-public class CollisionChecker {
+class CollisionChecker {
 
     /**
      * Checks for collisions between any projectile and any game object (projectile, mc, codecadet)
-     * @param projectile
-     * @param object
+     * @param projectile represents either MasterCoder Projectile or Codecadet Projectile
+     * @param object represents any game object (Projectile, MasterCoder or Codecadet)
      */
     private static void check(Projectile projectile, GameObjects object) {
 
@@ -29,12 +29,12 @@ public class CollisionChecker {
 
     /**
      * Checks for collisions between mcProjectiles and playerProjectiles and codecadet; and between playerProjectiles and masterCoders
-     * @param mcProjectiles
-     * @param playerProjectiles
-     * @param masterCoders
-     * @param player
+     * @param mcProjectiles Linked List of MasterCoder Projectiles
+     * @param playerProjectiles Linked List of Player Projectiles
+     * @param masterCoders Array of MasterCoders
+     * @param player The Codecadet
      */
-    public static void checkCollisions(LinkedList<Projectile> mcProjectiles, LinkedList <Projectile> playerProjectiles, MasterCoder[] masterCoders, Codecadet player) {
+    static void checkCollisions(LinkedList<Projectile> mcProjectiles, LinkedList <Projectile> playerProjectiles, MasterCoder[] masterCoders, Codecadet player) {
 
         for (int j = 0; j < mcProjectiles.size(); j++) {
             check(mcProjectiles.get(j), player);

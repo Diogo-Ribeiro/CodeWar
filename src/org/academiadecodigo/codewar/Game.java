@@ -17,10 +17,10 @@ import java.util.ListIterator;
 /**
  * Created by diogocodecadet on 23/05/16.
  */
-public class Game implements KeyboardHandler {
+class Game implements KeyboardHandler {
 
-    public static final int MAX_PLAYERS_PROJECTILES = 5;
-    public static final int MAX_MC_PROJECTILES = 15;
+    private static final int MAX_PLAYERS_PROJECTILES = 5;
+    private static final int MAX_MC_PROJECTILES = 15;
 
     private Keyboard k;
     private Codecadet player;
@@ -28,18 +28,23 @@ public class Game implements KeyboardHandler {
     private LinkedList<Projectile> playerProjectiles;
     private LinkedList<Projectile> masterCoderProjectiles;
     private Grid grid = new SimpleGfxGrid(40, 45);
-
-
     private Menu menu;
     private Clip clip;
 
-    public Game() {
+    /**
+     * instantiates a new game and starts the sound.
+     */
+    Game () {
 
         playSound();
         menu = new Menu(grid);
     }
 
-    public void init() throws InterruptedException {
+    /**
+     * initializes the lists and the menu. after the character selection starts the game.
+     * @throws InterruptedException
+     */
+    void init () throws InterruptedException {
 
         playerProjectiles = new LinkedList<>();
         masterCoderProjectiles = new LinkedList<>();
@@ -50,7 +55,11 @@ public class Game implements KeyboardHandler {
         start();
     }
 
-    private void start() throws InterruptedException {
+    /**
+     * manages the turns.
+     * @throws InterruptedException
+     */
+    private void start () throws InterruptedException {
 
         masterCoders = MasterCoderFactory.maker(grid);
 
@@ -73,11 +82,15 @@ public class Game implements KeyboardHandler {
         gameOver();
     }
 
+    /**
+     * iterates over the MasterCoders array to check if any of them is still in play.
+     * @return
+     */
     private boolean allMasterCodersDead() {
 
-        for (int i = 0; i < masterCoders.length; i++) {
+        for (MasterCoder mc : masterCoders) {
 
-            if (!masterCoders[i].isDead()) {
+            if (!mc.isDead()) {
 
                 return false;
             }
@@ -86,6 +99,10 @@ public class Game implements KeyboardHandler {
         return true;
     }
 
+    /**
+     * gets a projectile from the player and stores it in a projectile list.
+     * @param type
+     */
     private void codeCadetShoot(ProjectileType type) {
 
         if (playerProjectiles.size() < MAX_PLAYERS_PROJECTILES) {
@@ -106,14 +123,17 @@ public class Game implements KeyboardHandler {
         }
     }
 
-    private void masterCodersShoot() {
+    /**
+     * iterates over the array of MasterCoders and calls the method shoot().
+     */
+    private void masterCodersShoot () {
 
         Projectile currentProjectile;
-        for (int i = 0; i < masterCoders.length; i++) {
+        for (MasterCoder mc : masterCoders) {
 
             if (masterCoderProjectiles.size() < MAX_MC_PROJECTILES) {
 
-                currentProjectile = masterCoders[i].shoot();
+                currentProjectile = mc.shoot();
 
                 if (currentProjectile != null) {
 
@@ -123,9 +143,13 @@ public class Game implements KeyboardHandler {
         }
     }
 
+    /**
+     * updates the projectile lists, removing those which have reached targets and moving those which are still in play.
+     * @param projectiles
+     */
     private void projectileUpdate(LinkedList<Projectile> projectiles) {
 
-        ListIterator<Projectile> a = projectiles.listIterator();
+        ListIterator <Projectile> a = projectiles.listIterator();
 
         while (a.hasNext()) {
 
@@ -142,7 +166,10 @@ public class Game implements KeyboardHandler {
         }
     }
 
-    public void gameOver() {
+    /**
+     * stops the music and shows the final screens.
+     */
+    private void gameOver () {
 
         clip.close();
 
@@ -156,6 +183,10 @@ public class Game implements KeyboardHandler {
         }
     }
 
+    /**
+     * part of the keyboard logic.
+     * @param e
+     */
     public void keyPressed(KeyboardEvent e) {
 
         switch (e.getKey()) {
@@ -182,6 +213,10 @@ public class Game implements KeyboardHandler {
         }
     }
 
+    /**
+     * part of the keyboard logic.
+     * @param e
+     */
     public void keyReleased(KeyboardEvent e) {
 
         switch (e.getKey()) {
@@ -197,6 +232,9 @@ public class Game implements KeyboardHandler {
         }
     }
 
+    /**
+     * register the keyboard events.
+     */
     private void registerKeyboardInput() {
         k = new Keyboard(this);
 
@@ -236,6 +274,9 @@ public class Game implements KeyboardHandler {
         k.addEventListener(event6);
     }
 
+    /**
+     * plays the background music.
+     */
     private void playSound() {
 
         AudioInputStream in;

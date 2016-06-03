@@ -3,7 +3,7 @@ package org.academiadecodigo.codewar.gameobjects;
 import org.academiadecodigo.codewar.representable.GridPosition;
 
 /**
- * Created by diogocodecadet on 23/05/16.
+ *
  * Represents all possible characters of the game.
  */
 public abstract class Char extends GameObjects {
@@ -19,16 +19,17 @@ public abstract class Char extends GameObjects {
      * Constructor of class Char.
      * @param position
      */
-    public Char (GridPosition position) {
+    Char (GridPosition position) {
 
         super (position);
     }
 
     /**
      * makes the character move.
-     * call position.move().
+     * calls position.move().
      */
     public abstract void move ( );
+
 
     /**
      * @return Projectile.
@@ -40,7 +41,7 @@ public abstract class Char extends GameObjects {
      * set field dead to true.
      */
 
-    public void die () {
+    void die () {
 
         getPosition().hide();
         dead = true;
@@ -58,7 +59,7 @@ public abstract class Char extends GameObjects {
      * check if character is moving.
      * @return true if it is moving.
      */
-    public boolean isMoving() {
+    boolean isMoving() {
         return moving;
     }
 
