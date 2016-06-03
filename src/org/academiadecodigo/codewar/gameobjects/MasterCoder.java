@@ -5,11 +5,13 @@ import org.academiadecodigo.codewar.RandomNumberGenerator;
 import org.academiadecodigo.codewar.representable.GridPosition;
 
 /**
+ *
  * Created by diogocodecadet on 23/05/16.
  */
 public class MasterCoder extends Char {
 
     private final int MAX_STEP = 20;
+
 
     private MasterCoderType type;
     private int step;
@@ -67,6 +69,7 @@ public class MasterCoder extends Char {
 
             setMoving(false);
             step = MAX_STEP;
+
         }
     }
 
