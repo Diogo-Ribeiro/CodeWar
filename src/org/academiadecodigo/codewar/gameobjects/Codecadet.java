@@ -16,7 +16,11 @@ public class Codecadet extends Char {
     private Rectangle kissyBar;
     private Rectangle kissyBarFill;
 
-    Codecadet(GridPosition position) {
+    /**
+     * Constructor of class Codecadet.
+     * @param position
+     */
+    public Codecadet(GridPosition position) {
 
         super(position);
 
@@ -28,9 +32,9 @@ public class Codecadet extends Char {
     }
 
     /**
-     * decrease health of character
+     * decreases health of character.
      */
-    private void lowerHealth() {
+    public void lowHealth() {
 
         health--;
 
@@ -40,6 +44,9 @@ public class Codecadet extends Char {
         }
     }
 
+    /**
+     * makes the Codecadet move.
+     */
     @Override
     public void move() {
 
@@ -49,6 +56,10 @@ public class Codecadet extends Char {
         }
     }
 
+    /**
+     * Receives a projectile and makes the Codecadet get hit by increasing kissyCounter or by lowering its health, depending on projectile type.
+     * @param projectile
+     */
     @Override
     public void getHit(Projectile projectile) {
 
@@ -65,16 +76,26 @@ public class Codecadet extends Char {
 
         } else if (projectile.getType() == ProjectileType.DICKY) {
 
-            lowerHealth();
+            lowHealth();
         }
     }
 
+    /**
+     * makes the Codecadet shoot a Question.
+     * @return Projectile.
+     */
     public Projectile shoot() {
 
         return ProjectileFactory.get(ProjectileType.QUESTION, getPosition(), Direction.UP);
     }
 
+    /**
+     * makes the Codecadet shoot a Bug, as long as kissyCounter has reached an established value.
+     * @return Projectile
+     */
     public Projectile specialShoot() {
+
+        // TODO: 31/05/16 barrinha hp
 
         if (kissyCounter >= KISSIES_TO_BUG) {
 
@@ -83,7 +104,7 @@ public class Codecadet extends Char {
             kissyBarFill = new Rectangle(0, getPosition().getGrid().getRows() * getPosition().getGrid().getCellSize() - 20, 0, 0);
             return ProjectileFactory.get(ProjectileType.BUG, this.getPosition(), Direction.UP);
         }
-
+        // TODO: 31/05/16 exception
         return null;
     }
 }

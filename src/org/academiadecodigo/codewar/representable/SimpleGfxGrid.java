@@ -15,12 +15,20 @@ public class SimpleGfxGrid implements Grid {
     private int cols;
     private int rows;
 
+    /**
+     * Constructor for class SimpleGfxGrid.
+     * @param cols number of grid columns
+     * @param rows number of grid rows
+     */
     public SimpleGfxGrid (int cols, int rows) {
 
         this.cols = cols;
         this.rows = rows;
     }
 
+    /**
+     * initializes the simple-graphics grid.
+     */
     public void init() {
 
         Picture bg = new Picture();
@@ -30,26 +38,47 @@ public class SimpleGfxGrid implements Grid {
         bg.draw();
     }
 
+    /**
+     * returns the number of columns.
+     * @return number of columns
+     */
     public int getCols() {
 
         return cols;
     }
 
+    /**
+     * returns the number of rows.
+     * @return number of rows
+     */
     public int getRows() {
         return rows;
     }
 
+    /**
+     * receives a game representable and returns its random grid position.
+     * @param representable picture representing any game object
+     * @return simple-graphics random grid position
+     */
     @Override
     public SimpleGfxGridPosition makeGridPosition(Picture representable) {
 
         return new SimpleGfxGridPosition(this, representable);
     }
 
+    /**
+     * receives a game representable and returns its fixed grid position.
+     * @param col position column
+     * @param row position row
+     * @param representable picture representing any game object
+     * @return simple-graphics fixed grid position
+     */
     @Override
     public GridPosition makeGridPosition(int col, int row, Picture representable) {
 
         return new SimpleGfxGridPosition(col, row, this, representable);
     }
+
 
     @Override
     public void stackOverflow() {
