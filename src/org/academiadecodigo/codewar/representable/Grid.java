@@ -7,8 +7,6 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
  */
 public interface Grid {
 
-
-
     public void init();
 
     public int getCols();
