@@ -93,7 +93,7 @@ public class Menu implements KeyboardHandler{
 
         switch (keyboardEvent.getKey()) {
 
-            case KEY_LEFT:
+            case KEY_UP:
                 if (i == 9) {
                     rectangle.translate(Char.AVATAR_DIMENSION* SimpleGfxGrid.CELL_SIZE*8, -Char.AVATAR_DIMENSION* SimpleGfxGrid.CELL_SIZE);
                     i--;
@@ -103,7 +103,7 @@ public class Menu implements KeyboardHandler{
                 }
                 break;
 
-            case KEY_RIGHT:
+            case KEY_DOWN:
 
                 if (i == 8) {
                     rectangle.translate(-Char.AVATAR_DIMENSION* SimpleGfxGrid.CELL_SIZE*8, Char.AVATAR_DIMENSION* SimpleGfxGrid.CELL_SIZE);
@@ -130,12 +130,12 @@ public class Menu implements KeyboardHandler{
         k = new Keyboard(this);
 
         KeyboardEvent event = new KeyboardEvent();
-        event.setKey(KeyboardEvent.KEY_LEFT);
+        event.setKey(KeyboardEvent.KEY_UP);
         event.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         k.addEventListener(event);
 
         KeyboardEvent event1 = new KeyboardEvent();
-        event1.setKey(KeyboardEvent.KEY_RIGHT);
+        event1.setKey(KeyboardEvent.KEY_DOWN);
         event1.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         k.addEventListener(event1);
 
