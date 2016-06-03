@@ -33,13 +33,13 @@ public class Game implements KeyboardHandler {
     private Menu menu;
     private Clip clip;
 
-    public Game () {
+    public Game() {
 
         playSound();
         menu = new Menu(grid);
     }
 
-    public void init () throws InterruptedException {
+    public void init() throws InterruptedException {
 
         playerProjectiles = new LinkedList<>();
         masterCoderProjectiles = new LinkedList<>();
@@ -50,7 +50,7 @@ public class Game implements KeyboardHandler {
         start();
     }
 
-    private void start () throws InterruptedException {
+    private void start() throws InterruptedException {
 
         masterCoders = MasterCoderFactory.maker(grid);
 
@@ -86,26 +86,6 @@ public class Game implements KeyboardHandler {
         return true;
     }
 
-    /*private void checkCollisions(LinkedList <Projectile> mcProjectiles, LinkedList <Projectile> playerProjectiles, MasterCoder[] masterCoders, Codecadet player) {
-
-        for (int j = 0; j < mcProjectiles.size(); j++) {
-            CollisionChecker.check(mcProjectiles.get(j), player);
-
-            for (int i = 0; i < playerProjectiles.size(); i++) {
-
-                for (MasterCoder mc : masterCoders) {
-
-                    CollisionChecker.check(playerProjectiles.get(i), mc);
-                }
-
-                if (playerProjectiles.get(i).getType().equals(ProjectileType.QUESTION)) {
-
-                    CollisionChecker.check(playerProjectiles.get(i), mcProjectiles.get(j));
-                }
-            }
-        }
-    }*/
-
     private void codeCadetShoot(ProjectileType type) {
 
         if (playerProjectiles.size() < MAX_PLAYERS_PROJECTILES) {
@@ -126,10 +106,10 @@ public class Game implements KeyboardHandler {
         }
     }
 
-    private void masterCodersShoot () {
+    private void masterCodersShoot() {
 
         Projectile currentProjectile;
-        for (int i = 0; i < masterCoders.length; i ++) {
+        for (int i = 0; i < masterCoders.length; i++) {
 
             if (masterCoderProjectiles.size() < MAX_MC_PROJECTILES) {
 
@@ -145,7 +125,7 @@ public class Game implements KeyboardHandler {
 
     private void projectileUpdate(LinkedList<Projectile> projectiles) {
 
-        ListIterator <Projectile> a = projectiles.listIterator();
+        ListIterator<Projectile> a = projectiles.listIterator();
 
         while (a.hasNext()) {
 
@@ -162,7 +142,7 @@ public class Game implements KeyboardHandler {
         }
     }
 
-    public void gameOver () {
+    public void gameOver() {
 
         clip.close();
 

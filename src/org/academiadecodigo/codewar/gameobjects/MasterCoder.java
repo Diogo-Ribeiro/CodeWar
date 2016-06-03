@@ -5,7 +5,6 @@ import org.academiadecodigo.codewar.RandomNumberGenerator;
 import org.academiadecodigo.codewar.representable.GridPosition;
 
 /**
- *
  * Created by diogocodecadet on 23/05/16.
  */
 public class MasterCoder extends Char {
@@ -16,10 +15,19 @@ public class MasterCoder extends Char {
     private MasterCoderType type;
     private int step;
 
+    /**
+     * The MasterCoder constructor recieves a MasterCoderType and a GridPosition.
+     * Call's the superclass to store the position.
+     * Atributes to the MasterCoder Class the type that recieves in the parameter.
+     * Atributes to the step the MAX_STEP.
+     * Call the setMoving() from Char and set it true.
+     * Call the setCurrentDirection() and set the Direction with getRandomX().
+     *
+     * @param type
+     * @param position
+     */
 
-    // TODO: 24/05/16 mcs open mouth to shoot kissies or dickies
-
-    public MasterCoder (MasterCoderType type, GridPosition position) {
+    public MasterCoder(MasterCoderType type, GridPosition position) {
 
         super(position);
         this.type = type;
@@ -28,8 +36,11 @@ public class MasterCoder extends Char {
         this.setCurrentDirection(Direction.getRandomX());
     }
 
+    /**
+     * The move() make the mastercoder move to the next position if the mastercoder isn't dead already.
+     */
     @Override
-    public void move (){
+    public void move() {
 
         if (!isDead() && isMoving()) {
 
@@ -58,6 +69,12 @@ public class MasterCoder extends Char {
         step--;
     }
 
+
+    /**
+     * The getHit() recieves a Projectile and if the MasterCoder has HP, set the move to false. Otherwise call the die() method.
+     *
+     * @param projectile
+     */
     @Override
     public void getHit(Projectile projectile) {
 
@@ -73,7 +90,13 @@ public class MasterCoder extends Char {
         }
     }
 
-    public Projectile shoot () {
+    /**
+     * The shoot() check if the MasterCoder isn't dead and if it isn't creates a new projectile of a Type selected randomly.
+     *
+     * @return Projectile
+     */
+
+    public Projectile shoot() {
 
         if (!isDead()) {
 
@@ -92,8 +115,14 @@ public class MasterCoder extends Char {
         return null;
     }
 
-    public boolean isHittingWall(){
+    /**
+     * The isHittingWall() check if MasterCodet is in the grid limit and if it is returns true.
+     *
+     * @return
+     */
 
-        return (getPosition().getCol() <= 0 || getPosition().getCol()>= getPosition().getGrid().getCols()-Char.AVATAR_DIMENSION);
+    public boolean isHittingWall() {
+
+        return (getPosition().getCol() <= 0 || getPosition().getCol() >= getPosition().getGrid().getCols() - Char.AVATAR_DIMENSION);
     }
 }
