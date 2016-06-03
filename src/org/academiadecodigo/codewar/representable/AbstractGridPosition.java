@@ -7,11 +7,16 @@ import org.academiadecodigo.codewar.Direction;
  */
 public abstract class AbstractGridPosition implements GridPosition {
 
-    // TODO: 29/05/2016 change all properties to private
     private int col;
     private int row;
     private Grid grid;
 
+    /**
+     * Constructs a new AbstractGridPosition at the specified Column and Row.
+     * @param col
+     * @param row
+     * @param grid
+     */
     AbstractGridPosition(int col, int row, Grid grid) {
         this.col = col;
         this.row = row;
@@ -27,6 +32,7 @@ public abstract class AbstractGridPosition implements GridPosition {
         return col;
     }
 
+    @Override
     public void setCol(int col) {
         this.col = col;
     }
@@ -36,10 +42,12 @@ public abstract class AbstractGridPosition implements GridPosition {
         return row;
     }
 
+    @Override
     public void setRow(int row) {
         this.row = row;
     }
 
+    @Override
     public Grid getGrid() {
         return grid;
     }

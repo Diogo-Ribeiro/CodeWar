@@ -18,8 +18,8 @@ public enum MasterCoderType {
     private String picture;
 
     MasterCoderType (String string) {
-        this.picture = string;
 
+        this.picture = string;
     }
 
     public Picture getRepresentable() {
