@@ -64,7 +64,7 @@ public class Game implements KeyboardHandler {
             masterCodersShoot();
             projectileUpdate(masterCoderProjectiles);
             projectileUpdate(playerProjectiles);
-            checkCollisions(masterCoderProjectiles, playerProjectiles, masterCoders, player);
+            CollisionChecker.checkCollisions(masterCoderProjectiles, playerProjectiles, masterCoders, player);
 
             Thread.sleep(100);
         }
@@ -85,7 +85,7 @@ public class Game implements KeyboardHandler {
         return true;
     }
 
-    private void checkCollisions(LinkedList <Projectile> mcProjectiles, LinkedList <Projectile> playerProjectiles, MasterCoder[] masterCoders, Codecadet player) {
+    /*private void checkCollisions(LinkedList <Projectile> mcProjectiles, LinkedList <Projectile> playerProjectiles, MasterCoder[] masterCoders, Codecadet player) {
 
         for (int j = 0; j < mcProjectiles.size(); j++) {
             CollisionChecker.check(mcProjectiles.get(j), player);
@@ -103,7 +103,7 @@ public class Game implements KeyboardHandler {
                 }
             }
         }
-    }
+    }*/
 
     private void codeCadetShoot(ProjectileType type) {
 
