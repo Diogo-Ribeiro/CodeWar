@@ -9,24 +9,24 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
  */
 
 public enum CodecadetType {
-    ANA("Ana.png"),
-    LAURA("Laura.png"),
-    NUNO("Nuno.png"),
-    HENRY("Henry.png"),
-    JOAO("Joao.png"),
-    SOFIA("Sofia.png"),
-    LUIS("Luis.png"),
-    DANIEL("Daniel.png"),
-    AMAURI("Amauri.png"),
-    ANDRE("Andre.png"),
-    IGOR("Igor.png"),
-    ELIAS("Elias.png"),
-    DIOGO("Diogo.png"),
-    FLAVIO("Flavio.png"),
-    BRUNO("Bruno.png"),
-    NELSON("Nelson.png"),
-    SAMUEL("Samuel.png"),
-    JORGE("Jorge.png");
+    ANA("resources/Ana.png"),
+    LAURA("resources/Laura.png"),
+    NUNO("resources/Nuno.png"),
+    HENRY("resources/Henry.png"),
+    JOAO("resources/Joao.png"),
+    SOFIA("resources/Sofia.png"),
+    LUIS("resources/Luis.png"),
+    DANIEL("resources/Daniel.png"),
+    AMAURI("resources/Amauri.png"),
+    ANDRE("resources/Andre.png"),
+    IGOR("resources/Igor.png"),
+    ELIAS("resources/Elias.png"),
+    DIOGO("resources/Diogo.png"),
+    FLAVIO("resources/Flavio.png"),
+    BRUNO("resources/Bruno.png"),
+    NELSON("resources/Nelson.png"),
+    SAMUEL("resources/Samuel.png"),
+    JORGE("resources/Jorge.png");
 
     private String picture;
 

@@ -79,7 +79,6 @@ public class SimpleGfxGrid implements Grid {
         return new SimpleGfxGridPosition(col, row, this, representable);
     }
 
-
     @Override
     public void stackOverflow() {
 
@@ -88,8 +87,8 @@ public class SimpleGfxGrid implements Grid {
         rectangle.fill();
 
         Picture picture = new Picture();
-        picture.load("Screen Shot 2016-06-01 at 10.57.52.png");
-        picture.translate((rows*CELL_SIZE - picture.getHeight())/2, cols*CELL_SIZE - picture.getWidth());
+        picture.load("resources/Screen Shot 2016-06-01 at 10.57.52.png");
+        picture.translate((cols*CELL_SIZE - picture.getWidth())/2, rows*CELL_SIZE - picture.getHeight());
         picture.draw();
     }
 
@@ -100,10 +99,10 @@ public class SimpleGfxGrid implements Grid {
         rectangle.setColor(Color.WHITE);
         rectangle.fill();
 
-        Text text = new Text(150, 300, "You did it!");
-        text.setColor(Color.BLACK);
-        text.translate(cols*CELL_SIZE/2 - text.getWidth()/2, rows*CELL_SIZE/2 + text.getHeight()/2);
-        text.draw();
+        Picture picture = new Picture();
+        picture.load("resources/win.png");
+        picture.translate((cols*CELL_SIZE - picture.getWidth())/2, (rows*CELL_SIZE - picture.getHeight())/2 );
+        picture.draw();
     }
 
     @Override

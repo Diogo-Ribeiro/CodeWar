@@ -8,10 +8,10 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
  */
 public enum ProjectileType {
 
-    KISSY ("54012f6264942f32f27114f45068fb87.png"),
-    DICKY ("avatar_a112a7e0bf35_128.png"),
-    BUG ("bug-alt-512.png"),
-    QUESTION ("00e8b7a51d52791be04e87acbe029132.png");
+    KISSY ("resources/54012f6264942f32f27114f45068fb87.png"),
+    DICKY ("resources/avatar_a112a7e0bf35_128.png"),
+    BUG ("resources/bug-alt-512.png"),
+    QUESTION ("resources/00e8b7a51d52791be04e87acbe029132.png");
 
     /**
      * @param picture string of the path to resource directory.

@@ -8,12 +8,12 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
  */
 public enum MasterCoderType {
 
-    MARIO ("MC MARIO.png"),
-    ANTONINHO ("MC ANTONINHO.png"),
-    ICEMAN ("MC SERGIO.png"),
-    FERRAO ("MC FERRAO.png"),
-    JOANA ("MC JOANA.png"),
-    NUNO ("MC ANTONINHO.png");
+    MARIO ("resources/MC MARIO.png"),
+    ANTONINHO ("resources/MC ANTONINHO.png"),
+    ICEMAN ("resources/MC SERGIO.png"),
+    FERRAO ("resources/MC FERRAO.png"),
+    JOANA ("resources/MC JOANA.png"),
+    NUNO ("resources/MC CAMPELO.png");
 
     /**
      * @param picture path.

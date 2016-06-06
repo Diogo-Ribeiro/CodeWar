@@ -27,7 +27,7 @@ class Game implements KeyboardHandler {
     private MasterCoder[] masterCoders;
     private LinkedList<Projectile> playerProjectiles;
     private LinkedList<Projectile> masterCoderProjectiles;
-    private Grid grid = new SimpleGfxGrid(40, 45);
+    private Grid grid;
     private Menu menu;
     private Clip clip;
 
@@ -35,7 +35,7 @@ class Game implements KeyboardHandler {
      * instantiates a new game and starts the sound.
      */
     Game () {
-
+        grid = new SimpleGfxGrid(40, 45);
         playSound();
         menu = new Menu(grid);
     }
@@ -281,7 +281,7 @@ class Game implements KeyboardHandler {
 
         AudioInputStream in;
 
-        File soundFile = new File("resources/music.wav");
+        File soundFile = new File("/Users/codecadet/Desktop/CodeWar/src/music.wav");
 
         try {
 
